@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Rent-a-Car/1.0.0": {
+        "runtime": {
+          "Rent-a-Car.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Rent-a-Car/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

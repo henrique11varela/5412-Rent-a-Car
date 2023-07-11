@@ -1,0 +1,17 @@
+C:\Users\henri\Desktop\5412_Rent-a-Car\bin\Debug\net6.0-windows\Rent-a-Car.exe
+C:\Users\henri\Desktop\5412_Rent-a-Car\bin\Debug\net6.0-windows\Rent-a-Car.deps.json
+C:\Users\henri\Desktop\5412_Rent-a-Car\bin\Debug\net6.0-windows\Rent-a-Car.runtimeconfig.json
+C:\Users\henri\Desktop\5412_Rent-a-Car\bin\Debug\net6.0-windows\Rent-a-Car.dll
+C:\Users\henri\Desktop\5412_Rent-a-Car\bin\Debug\net6.0-windows\Rent-a-Car.pdb
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.csproj.AssemblyReference.cache
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent_a_Car.Form1.resources
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.csproj.GenerateResource.cache
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.AssemblyInfoInputs.cache
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.AssemblyInfo.cs
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.csproj.CoreCompileInputs.cache
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.dll
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\refint\Rent-a-Car.dll
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.pdb
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\Rent-a-Car.genruntimeconfig.cache
+C:\Users\henri\Desktop\5412_Rent-a-Car\obj\Debug\net6.0-windows\ref\Rent-a-Car.dll
