@@ -2,6 +2,7 @@ using Rent_a_Car.Views;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Button = System.Windows.Forms.Button;
 using View0 = Rent_a_Car.Views.View0;
 
@@ -105,6 +106,7 @@ namespace Rent_a_Car
             button.TabIndex = 0;
             button.Text = text;
             button.UseVisualStyleBackColor = true;
+            //click event
             void button_Click(object sender, EventArgs e)
             {
                 foreach (Panel view in Views)
@@ -114,6 +116,19 @@ namespace Rent_a_Car
                 Views[id].Visible = true;
             }
             button.Click += button_Click;
+            //enter event
+            void button_enter(object sender, EventArgs e)
+            {
+                button.BackColor = Color.FromArgb(255, 150, 255);
+            }
+            button.MouseEnter += button_enter;
+            //leave event
+            void button_leave(object sender, EventArgs e)
+            {
+                button.BackColor = Color.FromArgb(255, 255, 255);
+            }
+            button.MouseLeave += button_leave;
+
             return button;
         }
 
