@@ -1,46 +1,64 @@
-class Carro : Veiculo{
-    #region attributes
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    private int quantDoors;
-    private bool isManual;
+namespace Rent_a_Car.Classes
+{
+    internal class Carro : Veiculo
+    {
+        #region attributes
 
-    #endregion
+        private int quantDoors;
+        private bool isManual;
+
+        #endregion
 
 
-    #region getset
-    public int QuantDoors{
-        get{
-            return quantDoors;
+        #region getset
+        public int QuantDoors
+        {
+            get
+            {
+                return quantDoors;
+            }
+            set
+            {
+                quantDoors = value;
+            }
         }
-        set{
-            quantDoors = value;
+
+        public bool IsManual
+        {
+            get
+            {
+                return isManual;
+            }
+            set
+            {
+                isManual = value;
+            }
         }
-    }
+        #endregion
 
-    public bool IsManual{
-        get{
-            return isManual;
+
+        #region constructors
+
+        public Carro() : base()
+        {
+            quantDoors = 0;
+            isManual = true;
         }
-        set{
-            isManual = value;
+
+        public Carro(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantDoors, bool isManual) : base(marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
+        {
+            this.quantDoors = quantDoors;
+            this.isManual = isManual;
         }
+
+        #endregion
+
+
     }
-    #endregion
-
-
-    #region constructors
-
-    public Carro() : base(){
-        quantDoors = 0;
-        isManual = true;
-    }
-
-    public Carro(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantDoors, bool isManual) : base(marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia){
-        this.quantDoors = quantDoors;
-        this.isManual = isManual;
-    }
-
-    #endregion
-
-
 }
