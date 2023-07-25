@@ -24,6 +24,7 @@ namespace Rent_a_Car
         {
             //FORM1 SETUP
             this.Size = new Size(form_width, form_height);
+            this.Font = new Font("Segoe UI", 9);
 
             //NAV SETUP
             nav = CreateNavElement();
