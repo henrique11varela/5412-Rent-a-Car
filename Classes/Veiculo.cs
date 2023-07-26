@@ -10,7 +10,7 @@ namespace Rent_a_Car.Classes
     {
         #region attributes
         //private variables
-        private string id;
+        private int id;
         private string marca;
         private string modelo;
         private string cor;
@@ -25,7 +25,7 @@ namespace Rent_a_Car.Classes
 
         #region getset
         //getters, setters
-        public string Id
+        public int Id
         {
             get
             {
@@ -150,6 +150,7 @@ namespace Rent_a_Car.Classes
         //constructors
         public Veiculo()
         {
+            id = 0;
             marca = "";
             modelo = "";
             cor = "";
@@ -161,8 +162,9 @@ namespace Rent_a_Car.Classes
             valorDia = 0;
         }
 
-        public Veiculo(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia)
+        public Veiculo(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia)
         {
+            this.id = id;
             this.marca = marca;
             this.modelo = modelo;
             this.cor = cor;

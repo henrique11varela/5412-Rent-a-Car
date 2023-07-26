@@ -1,0 +1,13 @@
+int tempId = 1;
+Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
+Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
+Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
+Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
+Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
+Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
+Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
+Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
+Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
+Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
+Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
+Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);

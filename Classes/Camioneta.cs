@@ -46,7 +46,7 @@ namespace Rent_a_Car.Classes
             maxPassengers = 0;
         }
 
-        public Camioneta(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantAxis, int maxPassengers) : base(marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
+        public Camioneta(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantAxis, int maxPassengers) : base(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
         {
             this.quantAxis = quantAxis;
             this.maxPassengers = maxPassengers;

@@ -51,7 +51,7 @@ namespace Rent_a_Car.Classes
             isManual = true;
         }
 
-        public Carro(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantDoors, bool isManual) : base(marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
+        public Carro(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantDoors, bool isManual) : base(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
         {
             this.quantDoors = quantDoors;
             this.isManual = isManual;

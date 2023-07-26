@@ -37,7 +37,7 @@ namespace Rent_a_Car.Classes
             cubicCapacity = 0;
         }
 
-        public Mota(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int cubicCapacity) : base(marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
+        public Mota(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int cubicCapacity) : base(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
         {
             this.cubicCapacity = cubicCapacity;
         }

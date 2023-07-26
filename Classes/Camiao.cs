@@ -32,7 +32,7 @@ namespace Rent_a_Car.Classes
             maxWeight = 0;
         }
 
-        public Camiao(string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, float maxWeight) : base(marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
+        public Camiao(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, float maxWeight) : base(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia)
         {
             this.maxWeight = maxWeight;
         }
