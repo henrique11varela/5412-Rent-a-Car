@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Button = System.Windows.Forms.Button;
-using View0 = Rent_a_Car.Views.View0;
+using vehicleList = Rent_a_Car.Views.vehicleList;
 
 namespace Rent_a_Car
 {
@@ -50,7 +50,7 @@ namespace Rent_a_Car
             }
 
             //Example of change of view
-            View0.Setup(Tabs[0], Views[0]);
+            vehicleList.Setup(Tabs[0], Views[0]);
 
             InitializeComponent();
         }
