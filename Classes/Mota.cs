@@ -42,6 +42,9 @@ namespace Rent_a_Car.Classes
             this.cubicCapacity = cubicCapacity;
         }
 
-        #endregion
-    }
+        public Mota(Mota c) : this(c.Id, c.Marca, c.Modelo, c.Cor, c.QuantRodas, c.Matricula, c.Ano, c.Status, c.FreeExpect, c.ValorDia, c.CubicCapacity)
+        { }
+
+            #endregion
+        }
 }

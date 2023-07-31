@@ -36,6 +36,10 @@ namespace Rent_a_Car.Classes
         {
             this.maxWeight = maxWeight;
         }
+        public Camiao(Camiao c) : this(c.Id, c.Marca, c.Modelo, c.Cor, c.QuantRodas, c.Matricula, c.Ano, c.Status, c.FreeExpect, c.ValorDia, c.MaxWeight)
+        {
+
+        }
         #endregion
     }
 }

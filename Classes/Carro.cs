@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Rent_a_Car.Classes
 {
@@ -55,6 +59,9 @@ namespace Rent_a_Car.Classes
         {
             this.quantDoors = quantDoors;
             this.isManual = isManual;
+        }
+        public Carro(Carro c) : this(c.Id, c.Marca, c.Modelo, c.Cor, c.QuantRodas, c.Matricula, c.Ano, c.Status, c.FreeExpect, c.ValorDia, c.QuantDoors, c.IsManual)
+        { 
         }
 
         #endregion
