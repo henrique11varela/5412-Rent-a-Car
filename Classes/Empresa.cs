@@ -49,7 +49,7 @@ namespace Rent_a_Car.Classes
         }
         public static void AddCarro(Carro c)
         {
-            carros.Add(c);
+            carros.Add(new Carro(c));
         }
         //Add Camiao
         public static void AddCamiao(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, float maxWeight)
@@ -58,7 +58,7 @@ namespace Rent_a_Car.Classes
         }
         public static void AddCamiao(Camiao c)
         {
-            camioes.Add(c);
+            camioes.Add(new Camiao(c));
         }
         //Add Camioneta
         public static void AddCamioneta(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantAxis, int maxPassengers)
@@ -67,7 +67,7 @@ namespace Rent_a_Car.Classes
         }
         public static void AddCamioneta(Camioneta c)
         {
-            camionetas.Add(c);
+            camionetas.Add(new Camioneta(c));
         }
         //Add Mota
         public static void AddMota(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int cubicCapacity)
@@ -76,7 +76,7 @@ namespace Rent_a_Car.Classes
         }
         public static void AddMota(Mota c)
         {
-            motas.Add(c);
+            motas.Add(new Mota(c));
         }
         #endregion
 
