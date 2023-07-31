@@ -32,8 +32,7 @@
             // 
             // Form1
             // 
-            ClientSize = new Size(800, 450);
-            FormBorderStyle = FormBorderStyle.None;
+            //ClientSize = new Size(800, 450);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);

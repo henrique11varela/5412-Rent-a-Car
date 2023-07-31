@@ -11,11 +11,12 @@ namespace Rent_a_Car
     public partial class Form1 : Form
     {
         //CONSTANTS
-        const int form_width = 800;
-        const int form_height = 450;
-        const int nav_bar_height = 30;
+        int form_width = Screen.PrimaryScreen.WorkingArea.Width;
+        int form_height = Screen.PrimaryScreen.WorkingArea.Height;
+        int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
         const int number_of_views = 5;
 
+        int ActiveView = 0;
         Panel nav = new Panel();
         List<Button> Tabs = new List<Button>();
         List<Panel> Views = new List<Panel>();
@@ -25,6 +26,8 @@ namespace Rent_a_Car
             //FORM1 SETUP
             this.Size = new Size(form_width, form_height);
             this.Font = new Font("Segoe UI", 9);
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
             //NAV SETUP
             nav = CreateNavElement();
@@ -59,10 +62,29 @@ namespace Rent_a_Car
         /// <returns>Panel element</returns>
         private Button CreateCloseButtonElement()
         {
+            //Constants
+            Color bgc = Color.FromArgb(255, 102, 102);
+            Color bgcHover = Color.FromArgb(255, 153, 153);
+
             Button close = new Button();
-            close.Text = "X";
             close.Location = new Point(this.Size.Width - nav_bar_height, 0);
             close.Size = new Size(nav_bar_height, nav_bar_height);
+            close.ForeColor = Color.White;
+            close.BackColor = bgc;
+            close.Text = "X";
+            close.Font = new Font("Segoe UI", (int)(nav_bar_height * 0.2));
+            close.TextAlign = ContentAlignment.MiddleCenter;
+            void enter(object sender, EventArgs e)
+            {
+                close.BackColor = bgcHover;
+            }
+            close.MouseEnter += enter;
+            void leave(object sender, EventArgs e)
+            {
+                close.BackColor = bgc;
+            }
+            close.MouseLeave += leave;
+            //ACTION
             void closeWindow(object sender, EventArgs e)
             {
                 this.Close();
@@ -77,10 +99,8 @@ namespace Rent_a_Car
         {
             Panel nav = new Panel();
             nav.BackColor = SystemColors.ActiveCaption;
-            nav.Dock = DockStyle.Top;
             nav.Location = new Point(0, 0);
-            nav.Size = new Size(this.ClientSize.Width, nav_bar_height);
-            nav.TabIndex = 0;
+            nav.Size = new Size(this.Width, nav_bar_height);
             return nav;
         }
 
@@ -90,10 +110,8 @@ namespace Rent_a_Car
         {
             Panel panel = new Panel();
             panel.BackColor = Color.FromArgb(255, 192, 192);
-            panel.Dock = DockStyle.Fill;
             panel.Location = new Point(0, nav_bar_height);
-            panel.Size = new Size(this.Size.Width, this.Size.Height - nav_bar_height);
-            panel.TabIndex = 1;
+            panel.Size = new Size(this.Width, this.Height);
             return panel;
         }
 
@@ -101,35 +119,41 @@ namespace Rent_a_Car
         /// <returns>Button element</returns>
         private Button CreateTabElement(string text, int x, int width, int id)
         {
+            //Constants
+            Color inactiveColor = Color.White;
+            Color activeColor = Color.IndianRed;
+            Color hoverColor = Color.Pink;
+
             Button button = new Button();
             button.Location = new Point(x, 0);
             button.Size = new Size(width, nav_bar_height);
-            button.TabIndex = 0;
             button.Text = text;
             button.UseVisualStyleBackColor = true;
-            //click event
-            void button_Click(object sender, EventArgs e)
-            {
-                foreach (Panel view in Views)
-                {
-                    view.Visible = false;
-                }
-                Views[id].Visible = true;
-            }
-            button.Click += button_Click;
             //enter event
             void button_enter(object sender, EventArgs e)
             {
-                button.BackColor = Color.FromArgb(255, 150, 255);
+                button.BackColor = hoverColor;
             }
             button.MouseEnter += button_enter;
             //leave event
             void button_leave(object sender, EventArgs e)
             {
-                button.BackColor = Color.FromArgb(255, 255, 255);
+                button.BackColor = ActiveView == id ? activeColor : inactiveColor;
             }
             button.MouseLeave += button_leave;
-
+            //click event
+            void button_Click(object sender, EventArgs e)
+            {
+                for (int i = 0; i < number_of_views; i++)
+                {
+                    Views[i].Visible = false;
+                    Tabs[i].BackColor = inactiveColor;
+                }
+                ActiveView = id;
+                Tabs[id].BackColor = activeColor;
+                Views[id].Visible = true;
+            }
+            button.Click += button_Click;
             return button;
         }
 
