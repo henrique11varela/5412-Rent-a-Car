@@ -32,13 +32,12 @@
             // 
             // Form1
             // 
-            //ClientSize = new Size(800, 450);
+            ClientSize = new Size(284, 261);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
         }
 
         #endregion
-
     }
 }

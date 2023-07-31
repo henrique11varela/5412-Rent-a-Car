@@ -6,6 +6,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Button = System.Windows.Forms.Button;
 using vehicleList = Rent_a_Car.Views.vehicleList;
+using Emp = Rent_a_Car.Classes.Empresa;
+using ts = Rent_a_Car.ThemeScheme;
 
 namespace Rent_a_Car
 {
@@ -49,6 +51,21 @@ namespace Rent_a_Car
                 this.Controls.Add(view);
             }
 
+            int tempId = 1;
+            Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
+            Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
+            Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
+            Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
+            Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
+            Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
+            Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
+            Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
+            Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
+            Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
+            Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
+            Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
+
+
             //Example of change of view
             vehicleList.Setup(Tabs[0], Views[0]);
 
@@ -60,8 +77,8 @@ namespace Rent_a_Car
         private Button CreateCloseButtonElement()
         {
             //Constants
-            Color bgc = Color.FromArgb(255, 102, 102);
-            Color bgcHover = Color.FromArgb(255, 153, 153);
+            Color bgc = ts.danger;
+            Color bgcHover = ts.danger_emphasis;
 
             Button close = new Button();
             close.Location = new Point(this.Size.Width - nav_bar_height, 0);
@@ -100,7 +117,7 @@ namespace Rent_a_Car
         private Panel CreateNavElement()
         {
             Panel nav = new Panel();
-            nav.BackColor = SystemColors.ActiveCaption;
+            nav.BackColor = ts.light;
             nav.Location = new Point(0, 0);
             nav.Size = new Size(this.Width, nav_bar_height);
             return nav;
@@ -110,7 +127,7 @@ namespace Rent_a_Car
         /// <returns>Panel element</returns>
         private Panel CreateViewElement()
         {
-            Color bgc = Color.White;
+            Color bgc = ts.light;
 
             Panel panel = new Panel();
             panel.BackColor = bgc;
@@ -124,13 +141,14 @@ namespace Rent_a_Car
         private Button CreateTabElement(string text, int x, int width, int id)
         {
             //Constants
-            Color inactiveColor = Color.IndianRed;
-            Color activeColor = Color.White;
-            Color hoverColor = Color.Pink;
+            Color inactiveColor = ts.dark;
+            Color activeColor = ts.light;
+            Color hoverColor = ts.dark_emphasis;
 
             Button button = new Button();
             button.Location = new Point(x, 0);
             button.Size = new Size(width, nav_bar_height);
+            button.Font = ts.mediumFont;
             button.Text = text;
             button.UseVisualStyleBackColor = true;
             button.FlatStyle = FlatStyle.Flat;
@@ -146,6 +164,7 @@ namespace Rent_a_Car
             void button_leave(object sender, EventArgs e)
             {
                 button.BackColor = ActiveView == id ? activeColor : inactiveColor;
+                button.ForeColor = ActiveView == id ? inactiveColor : activeColor;
             }
             button.MouseLeave += button_leave;
             //click event
@@ -155,14 +174,17 @@ namespace Rent_a_Car
                 {
                     Views[i].Visible = false;
                     Tabs[i].BackColor = inactiveColor;
+                    Tabs[i].ForeColor = activeColor;
                 }
                 ActiveView = id;
-                Tabs[id].BackColor = activeColor;
+                button.ForeColor = inactiveColor;
+                button.BackColor = activeColor;
                 Views[id].Visible = true;
             }
             button.Click += button_Click;
             return button;
         }
 
+        
     }
 }

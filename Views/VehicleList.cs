@@ -1,11 +1,14 @@
-﻿using Rent_a_Car.Components.Tables;
+﻿using Rent_a_Car.Classes;
+using Rent_a_Car.Components.Tables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataGridView = System.Windows.Forms.DataGridView;
+using VehicleTable = Rent_a_Car.Components.Tables.VehicleTable;
+using Emp = Rent_a_Car.Classes.Empresa;
+using ts = Rent_a_Car.ThemeScheme;
 
 namespace Rent_a_Car.Views
 {
@@ -18,8 +21,7 @@ namespace Rent_a_Car.Views
             tab.Text = "Vehicle List";
 
             //Content
-            Font mediumFont = new Font("Segoe UI", 10);
-            Font largeFont = new Font("Segoe UI", 16);
+            
 
 
 
@@ -27,42 +29,51 @@ namespace Rent_a_Car.Views
             Label pageTitle = new Label();
             pageTitle.Text = "List of Vehicles";
             pageTitle.TextAlign = ContentAlignment.TopCenter;
-            pageTitle.Font = largeFont;
+            pageTitle.Font = ts.largeFont;
             pageTitle.Size = new Size(view.Width, pageTitle.Font.Height); ;
             pageTitle.Location = new Point(0, pageTitle.Font.Height);
-
-
+            view.Controls.Add(pageTitle);
 
             //Insert Table
-            VehicleTable.Setup(view, pageTitle.Font.Height * 3, 25, 25, 25);
-
-
-
-
+            int[] cols = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var vehicleTable = VehicleTable.Setup(view, pageTitle.Font.Height * 3, 25, 25, 25, cols);
+            VehicleTable.FillData(vehicleTable, Emp.VehicleList);
 
             ///button with label
+            Color bgc = ts.dark_emphasis;
+            Color bgcHover = ts.dark;
 
             Button newVehicle = new Button();
-            newVehicle.Location = new Point(550, 40);
+            newVehicle.Location = new Point(550, (pageTitle.Font.Height * 3 - ts.mediumFont.Height * 2) / 2);
+            newVehicle.Size = new Size(150, ts.mediumFont.Height * 2);
             newVehicle.Name = "newVehicle";
-            newVehicle.Size = new Size(150, 30);
-            newVehicle.Text = "Add Vehicle          |  +  ";
-            newVehicle.TextAlign = ContentAlignment.MiddleLeft;
-            newVehicle.Font = mediumFont;
-
-            static void newVehicleClick(object sender, EventArgs e)
+            newVehicle.Text = "Add Vehicle |  +  ";
+            newVehicle.TextAlign = ContentAlignment.MiddleCenter;
+            newVehicle.Font = ts.mediumFont;
+            newVehicle.FlatStyle = FlatStyle.Flat;
+            newVehicle.FlatAppearance.BorderSize = 0;
+            newVehicle.BackColor = bgc;
+            void newVehicleEnter(object sender, EventArgs e)
             {
-
+                newVehicle.BackColor = bgcHover;
             }
-
-
-
-
-
-
-            //Add content to view
+            void newVehicleLeave(object sender, EventArgs e)
+            {
+                newVehicle.BackColor = bgc;
+            }
+            void newVehicleClick(object sender, EventArgs e)
+            {
+                newVehicle.BackColor = bgc;
+                Empresa.AddCarro(new Carro()); ;
+                VehicleTable.FillData(vehicleTable, Emp.VehicleList);
+            }
+            newVehicle.Click += newVehicleClick;
+            newVehicle.Enter += newVehicleEnter;
+            newVehicle.Leave += newVehicleLeave;
             view.Controls.Add(newVehicle);
-            view.Controls.Add(pageTitle);
+            newVehicle.BringToFront();
+
+
         }
     }
 }
