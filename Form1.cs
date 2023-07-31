@@ -1,4 +1,5 @@
 using Rent_a_Car.Views;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -13,8 +14,8 @@ namespace Rent_a_Car
         //CONSTANTS
         int form_width = Screen.PrimaryScreen.WorkingArea.Width;
         int form_height = Screen.PrimaryScreen.WorkingArea.Height;
-        int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
         const int number_of_views = 5;
+        int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
 
         int ActiveView = 0;
         Panel nav = new Panel();
@@ -46,10 +47,6 @@ namespace Rent_a_Car
                 Panel view = CreateViewElement();
                 Views.Add(view);
                 this.Controls.Add(view);
-
-                //TESTING
-                int test = 255 / (1 + i);
-                Views[i].BackColor = Color.FromArgb(test, test, test);
             }
 
             //Example of change of view
@@ -74,21 +71,26 @@ namespace Rent_a_Car
             close.Text = "X";
             close.Font = new Font("Segoe UI", (int)(nav_bar_height * 0.2));
             close.TextAlign = ContentAlignment.MiddleCenter;
+            close.FlatStyle = FlatStyle.Flat;
+            close.FlatAppearance.BorderSize = 0;
             void enter(object sender, EventArgs e)
             {
                 close.BackColor = bgcHover;
             }
-            close.MouseEnter += enter;
             void leave(object sender, EventArgs e)
             {
                 close.BackColor = bgc;
             }
-            close.MouseLeave += leave;
-            //ACTION
             void closeWindow(object sender, EventArgs e)
             {
-                this.Close();
+                DialogResult dialogResult = MessageBox.Show("Exit the program?", "Exit", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.Close();
+                }
             }
+            close.MouseEnter += enter;
+            close.MouseLeave += leave;
             close.Click += closeWindow;
             return close;
         }
@@ -108,8 +110,10 @@ namespace Rent_a_Car
         /// <returns>Panel element</returns>
         private Panel CreateViewElement()
         {
+            Color bgc = Color.White;
+
             Panel panel = new Panel();
-            panel.BackColor = Color.FromArgb(255, 192, 192);
+            panel.BackColor = bgc;
             panel.Location = new Point(0, nav_bar_height);
             panel.Size = new Size(this.Width, this.Height);
             return panel;
@@ -120,8 +124,8 @@ namespace Rent_a_Car
         private Button CreateTabElement(string text, int x, int width, int id)
         {
             //Constants
-            Color inactiveColor = Color.White;
-            Color activeColor = Color.IndianRed;
+            Color inactiveColor = Color.IndianRed;
+            Color activeColor = Color.White;
             Color hoverColor = Color.Pink;
 
             Button button = new Button();
@@ -129,6 +133,9 @@ namespace Rent_a_Car
             button.Size = new Size(width, nav_bar_height);
             button.Text = text;
             button.UseVisualStyleBackColor = true;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button_leave(new Object(), new EventArgs());
             //enter event
             void button_enter(object sender, EventArgs e)
             {

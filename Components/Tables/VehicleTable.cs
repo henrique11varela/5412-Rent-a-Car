@@ -8,15 +8,15 @@ namespace Rent_a_Car.Components.Tables
 {
     internal static class VehicleTable
     {
-        public static void Setup(Panel view, int margin_x) {
+        public static DataGridView Setup(Panel view, int margin_top, int margin_right, int margin_bottom, int margin_left) {
             //Constants
 
             ///daratgridview and respective cells creation
             DataGridView dgv = new DataGridView();
 
             //grid and cells stylling
-            dgv.Location = new Point(margin_x, view.Top * 2);
-            dgv.Size = new Size(view.Width - margin_x * 2, 350);
+            dgv.Location = new Point(margin_left, margin_top);
+            dgv.Size = new Size(view.Width - margin_right * 2, view.Height - margin_top - margin_bottom);
             dgv.BackgroundColor = Color.White;
 
             //columns:
@@ -35,6 +35,7 @@ namespace Rent_a_Car.Components.Tables
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             view.Controls.Add(dgv);
+            return dgv;
         }
     }
 }

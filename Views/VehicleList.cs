@@ -27,14 +27,14 @@ namespace Rent_a_Car.Views
             Label pageTitle = new Label();
             pageTitle.Text = "List of Vehicles";
             pageTitle.TextAlign = ContentAlignment.TopCenter;
-            pageTitle.AutoSize = true;
-            pageTitle.Location = new Point((view.Width - pageTitle.Width) / 2, 0);   //(widthWindow - widthLabel) / 2
             pageTitle.Font = largeFont;
+            pageTitle.Size = new Size(view.Width, pageTitle.Font.Height); ;
+            pageTitle.Location = new Point(0, pageTitle.Font.Height);
 
 
 
             //Insert Table
-            VehicleTable.Setup(view, 25);
+            VehicleTable.Setup(view, pageTitle.Font.Height * 3, 25, 25, 25);
 
 
 
