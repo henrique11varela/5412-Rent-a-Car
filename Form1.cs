@@ -69,6 +69,13 @@ namespace Rent_a_Car
             //Example of change of view
             vehicleList.Setup(Tabs[0], Views[0]);
 
+            //give names to tabs
+            
+            Tabs[1].Text = "Maintenance";
+            Tabs[2].Text = "History";
+            Tabs[3].Text = "Placeholder";
+
+
             InitializeComponent();
         }
 
