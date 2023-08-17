@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using Rent_a_Car.Views;
+using Rent_a_Car.DAL;
 
 namespace Rent_a_Car.Classes
 {
@@ -121,6 +122,13 @@ namespace Rent_a_Car.Classes
         public static dynamic ConvertObj(dynamic source)
         {
             return Convert.ChangeType(source, source.GetType());
+        }
+
+        public static void InicialSetup() {
+            carros = DAL.DAL.ConvertCarro();
+            motas = DAL.DAL.ConvertMota();
+            camioes = DAL.DAL.ConvertCamiao();
+            camionetas = DAL.DAL.ConvertCamioneta();
         }
 
         #endregion

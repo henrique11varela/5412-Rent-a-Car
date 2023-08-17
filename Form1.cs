@@ -27,8 +27,8 @@ namespace Rent_a_Car
 
         public Form1()
         {
-            CSV.readAll();
-            CSV.writeAll();
+            CSV.readAll(); //Reads CSV files
+            Emp.InicialSetup(); //Converts CSV data into the List of objects
 
             //FORM1 SETUP
             this.Size = new Size(form_width, form_height);
@@ -55,21 +55,6 @@ namespace Rent_a_Car
                 this.Controls.Add(view);
             }
 
-            int tempId = 1;
-            Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
-            Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
-            Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
-            Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
-            Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
-            Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
-            Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
-            Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
-            Emp.AddMota(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 2, "11-11-11", 2000, "free", DateTime.Now, 2, 50);
-            Emp.AddCarro(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5, true);
-            Emp.AddCamiao(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 5);
-            Emp.AddCamioneta(tempId, "marcaTeste" + tempId++, "modeloTeste", "corTeste", 4, "11-11-11", 2000, "free", DateTime.Now, 2, 4, 100);
-
-
             //Example of change of view
             vehicleList.Setup(Tabs[0], Views[0]);
 
@@ -78,7 +63,6 @@ namespace Rent_a_Car
             Tabs[1].Text = "Maintenance";
             Tabs[2].Text = "History";
             Tabs[3].Text = "Placeholder";
-
 
             InitializeComponent();
         }
@@ -114,6 +98,8 @@ namespace Rent_a_Car
                 DialogResult dialogResult = MessageBox.Show("Exit the program?", "Exit", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    //TODO: CONVERT FROM LIST OF OBJECTS TO LISTS
+                    CSV.writeAll(); //Writes the CSV data into the Files
                     this.Close();
                 }
             }
