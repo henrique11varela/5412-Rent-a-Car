@@ -6,20 +6,36 @@ using System.Threading.Tasks;
 
 namespace Rent_a_Car.DAL
 {
-    internal class DAL
+    internal static class DAL
     {
-        //Vehicles
-        List<List<string>> Carro;
-        List<List<string>> Mota;
-        List<List<string>> Camioneta;
-        List<List<string>> Camião;
-        //Estados
-        List<List<string>> Manutencao;
-        List<List<string>> Alugado;
-        List<List<string>> Reservado;
-        //Registos
-        List<List<string>> Manutencoes;
-        List<List<string>> Alugados;
+        #region ALL
+        public static void readAll()
+        {
+            csvCarro.read();
+            csvMota.read();
+            csvCamioneta.read();
+            csvCamiao.read();
+            csvManutencao.read();
+            csvAlugado.read();
+            csvReservado.read();
+            csvHistmanutencao.read();
+            csvHistalugado.read();
+        }
+        public static void writeAll()
+        {
+            csvCarro.write();
+            csvMota.write();
+            csvCamioneta.write();
+            csvCamiao.write();
+            csvManutencao.write();
+            csvAlugado.write();
+            csvReservado.write();
+            csvHistmanutencao.write();
+            csvHistalugado.write();
+        }
+        #endregion
+
+
 
 
     }

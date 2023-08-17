@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace Rent_a_Car.DAL
 {
-    internal static class csvCarro
+    internal static class csvManutencao
     {
-        public static List<List<string>> Carro = new List<List<string>>();
+        public static List<List<string>> Manutencao = new List<List<string>>();
         public static void read()
         {
-            if (File.Exists("Carro.csv"))
+            if (File.Exists("Manutencao.csv"))
             {
-                var sr = new StreamReader(@"Carro.csv");
+                var sr = new StreamReader(@"Manutencao.csv");
                 while (!sr.EndOfStream)
                 {
                     string line = sr.ReadLine();
                     List<string> splitLine = line.Split(",").ToList();
-                    Carro.Add(splitLine);
+                    Manutencao.Add(splitLine);
                 }
                 sr.Close();
-                Carro.RemoveAt(0);
+                Manutencao.RemoveAt(0);
             }
         }
         public static void write()
         {
-            var sw = new StreamWriter(@"Carro.csv");
-            int listLength = Carro.Count;
-            sw.WriteLine("id,marca,modelo,cor,quantRodas,matricula,ano,valorDia,quantDoors,isManual");
-            foreach (var item in Carro)
+            var sw = new StreamWriter(@"Manutencao.csv");
+            int listLength = Manutencao.Count;
+            sw.WriteLine("idVeiculo,dataInicio,dataPrevistaFim,problema");
+            foreach (var item in Manutencao)
             {
                 int itemLength = item.Count;
                 string newLine = item[0];
