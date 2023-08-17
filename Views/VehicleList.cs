@@ -45,7 +45,7 @@ namespace Rent_a_Car.Views
 
             Button newVehicle = new Button();
             newVehicle.Location = new Point(550, (pageTitle.Font.Height * 3 - ts.mediumFont.Height * 2) / 2);
-            newVehicle.Size = new Size(150, ts.mediumFont.Height * 2);
+            newVehicle.Size = new Size(ts.mediumFont.Height * 8, ts.mediumFont.Height * 2);
             newVehicle.Name = "newVehicle";
             newVehicle.Text = "Add Vehicle |  +  ";
             newVehicle.TextAlign = ContentAlignment.MiddleCenter;

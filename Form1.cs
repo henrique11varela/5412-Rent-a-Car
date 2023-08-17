@@ -8,6 +8,7 @@ using Button = System.Windows.Forms.Button;
 using vehicleList = Rent_a_Car.Views.vehicleList;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
+using carrocsv = Rent_a_Car.DAL.csvCarro;
 
 namespace Rent_a_Car
 {
@@ -26,6 +27,9 @@ namespace Rent_a_Car
 
         public Form1()
         {
+            carrocsv.read();
+            carrocsv.write();
+
             //FORM1 SETUP
             this.Size = new Size(form_width, form_height);
             this.Font = new Font("Segoe UI", 9);
