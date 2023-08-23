@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Button = System.Windows.Forms.Button;
-using vehicleList = Rent_a_Car.Views.vehicleList;
+using Views = Rent_a_Car.Views;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 using CSV = Rent_a_Car.DAL.DAL;
@@ -17,7 +17,7 @@ namespace Rent_a_Car
         //CONSTANTS
         int form_width = Screen.PrimaryScreen.WorkingArea.Width;
         int form_height = Screen.PrimaryScreen.WorkingArea.Height;
-        const int number_of_views = 5;
+        const int number_of_views = 3;
         int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
 
         int ActiveView = 0;
@@ -56,13 +56,9 @@ namespace Rent_a_Car
             }
 
             //Example of change of view
-            vehicleList.Setup(Tabs[0], Views[0]);
-
-            //give names to tabs
-            
-            Tabs[1].Text = "Maintenance";
-            Tabs[2].Text = "History";
-            Tabs[3].Text = "Placeholder";
+            VehicleList.Setup(Tabs[0], Views[0]);
+            MaintenanceList.Setup(Tabs[1], Views[1]);
+            HistoryList.Setup(Tabs[2], Views[2]);
 
             InitializeComponent();
         }

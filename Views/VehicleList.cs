@@ -12,22 +12,24 @@ using ts = Rent_a_Car.ThemeScheme;
 
 namespace Rent_a_Car.Views
 {
-    internal class vehicleList
+    internal class VehicleList
     {
         /// <summary>Adds elements to view[0].</summary>
         public static void Setup(Button tab, Panel view)
         {
+            string title = "Vehicle List";
+
             //Name
-            tab.Text = "Vehicle List";
+            tab.Text = title;
 
             //Content
-            
+
 
 
 
             ///label creation and styling
             Label pageTitle = new Label();
-            pageTitle.Text = "List of Vehicles";
+            pageTitle.Text = title;
             pageTitle.TextAlign = ContentAlignment.TopCenter;
             pageTitle.Font = ts.largeFont;
             pageTitle.Size = new Size(view.Width, pageTitle.Font.Height); ;
