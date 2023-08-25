@@ -26,12 +26,12 @@ namespace Rent_a_Car.Views
             pageTitle.Text = title;
             pageTitle.TextAlign = ContentAlignment.TopCenter;
             pageTitle.Font = ts.largeFont;
-            pageTitle.Size = new Size(TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width, pageTitle.Font.Height); ;
+            pageTitle.Size = new Size(TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width, pageTitle.Font.Height);
             pageTitle.Location = new Point((view.Width - TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width) / 2, pageTitle.Font.Height);
-            
-            
-            
             view.Controls.Add(pageTitle);
+            
+            
+            
         }
     }
 }
