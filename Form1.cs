@@ -18,7 +18,7 @@ namespace Rent_a_Car
         int form_width = Screen.PrimaryScreen.WorkingArea.Width;
         int form_height = Screen.PrimaryScreen.WorkingArea.Height;
         const int number_of_views = 3;
-        int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
+        public int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
 
         int ActiveView = 0;
         Panel nav = new Panel();
@@ -42,23 +42,37 @@ namespace Rent_a_Car
             nav.Controls.Add(CreateCloseButtonElement());
 
             int tabWidth = (this.ClientSize.Width - nav_bar_height) / number_of_views;
+
+            //Page 1
+            Button vehicleListTab = CreateTabElement("Vehicle List", tabWidth * 0, tabWidth, 0);
+            Tabs.Add(vehicleListTab);
+            Panel vehicleListView = CreateViewElement();
+            vehicleListView.Controls.Add(new VehicleList());
+            Views.Add(vehicleListView);
+
+            //Page 2
+            Button tab = CreateTabElement("button" + Tabs.Count, tabWidth * 1, tabWidth, 1);
+            Tabs.Add(tab);
+            Panel view = CreateViewElement();
+            //view.Controls.Add(new VehicleList());
+            Views.Add(view);
+
+            //Page 3
+            Button tab2 = CreateTabElement("button" + Tabs.Count, tabWidth * 2, tabWidth, 2);
+            Tabs.Add(tab2);
+            Panel view2 = CreateViewElement();
+            //view2.Controls.Add(new VehicleList());
+            Views.Add(view2);
+
             for (int i = 0; i < number_of_views; i++)
             {
-                //TABS
-                Button tab = CreateTabElement("button" + Tabs.Count, tabWidth * i, tabWidth, i);
-                Tabs.Add(tab);
-                nav.Controls.Add(tab);
-
-                //VIEWS
-                Panel view = CreateViewElement();
-                Views.Add(view);
-                this.Controls.Add(view);
+                nav.Controls.Add(Tabs[i]);
+                this.Controls.Add(Views[i]);
             }
 
             //Example of change of view
-            VehicleList.Setup(Tabs[0], Views[0]);
-            MaintenanceList.Setup(Tabs[1], Views[1]);
-            HistoryList.Setup(Tabs[2], Views[2]);
+            //MaintenanceList.Setup(Tabs[1], Views[1]);
+            //HistoryList.Setup(Tabs[2], Views[2]);
 
             InitializeComponent();
         }
@@ -178,6 +192,6 @@ namespace Rent_a_Car
             return button;
         }
 
-        
+
     }
 }

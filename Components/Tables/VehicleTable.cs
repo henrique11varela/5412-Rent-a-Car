@@ -1,118 +1,193 @@
-﻿using System;
+﻿using Rent_a_Car.Classes;
+using Rent_a_Car.Components.Forms;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 
 namespace Rent_a_Car.Components.Tables
 {
-    internal static class VehicleTable
+    /// <summary>
+    /// A DataGridView Element that shows a vehicle list
+    /// </summary>
+    internal class VehicleTable : DataGridView
     {
-        public static DataGridView Setup(Panel view, int margin_top, int margin_right, int margin_bottom, int margin_left)
-        {
-            int[] cols = new int[0];
-            return Setup(view, margin_top, margin_right, margin_bottom, margin_left, cols);
-        }
+        private int[] _margin = { 0, 0, 0, 0 };
 
-        public static DataGridView Setup(Panel view, int margin_top, int margin_right, int margin_bottom, int margin_left, int[] cols)
+        public VehicleTable()
         {
-            //Constants
-
-            ///daratgridview and respective cells creation
-            DataGridView dgv = new DataGridView();
-            dgv.CellContentClick += onCellClick;
+            this.ParentChanged += Setup;
+            this.CellContentClick += onCellClick;
 
             //grid and cells stylling
-            dgv.Location = new Point(margin_left, margin_top);
-            dgv.Size = new Size(view.Width - margin_right - margin_left, view.Height - margin_top - margin_bottom);
-            dgv.BackgroundColor = Color.White;
+            this.BackgroundColor = ts.light;
 
             //columns:
             //id, marca, modelo, matricula, status (icon), tipo, details, edit
-            dgv.ColumnCount = 11;
+            this.ColumnCount = 9;
 
-            dgv.Columns[0].Name = "Id";
-            dgv.Columns[1].Name = "Marca";
-            dgv.Columns[2].Name = "Modelo";
-            dgv.Columns[3].Name = "Cor";
-            dgv.Columns[4].Name = "Q Rodas";
-            dgv.Columns[5].Name = "Matricula";
-            dgv.Columns[6].Name = "Ano";
-            dgv.Columns[7].Name = "Status";
-            dgv.Columns[8].Name = "FreeExpect";
-            dgv.Columns[9].Name = "ValorDia";
-            dgv.Columns[10].Name = "Type";
+            int col = 0;
+            this.Columns[col++].Name = "Id";
+            this.Columns[col++].Name = "Marca";
+            this.Columns[col++].Name = "Modelo";
+            //this.Columns[col++].Name = "Cor";
+            //this.Columns[col++].Name = "Q Rodas";
+            this.Columns[col++].Name = "Matricula";
+            this.Columns[col++].Name = "Ano";
+            this.Columns[col++].Name = "Status";
+            this.Columns[col++].Name = "FreeExpect";
+            this.Columns[col++].Name = "ValorDia";
+            this.Columns[col++].Name = "Type";
             //Edit button column
-            dgv.Columns.Add(new DataGridViewButtonColumn());
-            dgv.Columns[11].HeaderText = "Edit";
+            this.Columns.Add(new DataGridViewButtonColumn());
+            this.Columns[col++].HeaderText = "Edit";
             //Delete button column
-            dgv.Columns.Add(new DataGridViewButtonColumn());
-            dgv.Columns[12].HeaderText = "Delete";
+            this.Columns.Add(new DataGridViewButtonColumn());
+            this.Columns[col].HeaderText = "Delete";
 
 
-            int colCount = dgv.Columns.Count;
+            int colCount = this.Columns.Count;
             for (int i = 0; i < colCount; i++)
             {
-                dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                this.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            dgv.Columns[dgv.ColumnCount - 2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgv.Columns[dgv.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.Columns[this.ColumnCount - 2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.Columns[this.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            dgv.RowHeadersVisible = false;
-            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.RowHeadersVisible = false;
+            this.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-
-            if (cols.Length > 0)
-            {
-                int length = dgv.ColumnCount;
-                for (int i = 0; i < length; i++)
-                {
-                    dgv.Columns[i].Visible = false;
-                }
-                foreach (var col in cols)
-                {
-                    dgv.Columns[col].Visible = true;
-                }
-            }
-
-            view.Controls.Add(dgv);
-            return dgv;
+            this.Columns[0].Visible = false;
         }
 
-       
-
-
-        private static void onCellClick(object sender, DataGridViewCellEventArgs e)
+        public VehicleTable(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
         {
-            if (e.ColumnIndex == 11)
+            _margin[0] = margin_top;
+            _margin[1] = margin_right;
+            _margin[2] = margin_bottom;
+            _margin[3] = margin_left;
+        }
+
+        /// <summary>
+        /// Event that places element after instance is created
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Setup(object sender, EventArgs e)
+        {
+            if (this.Parent == null)
             {
-                MessageBox.Show("Edit Logic ID: " + Emp.ConvertObj(sender).Rows[e.RowIndex].Cells[0].Value);
-                
+                return;
             }
-            else if (e.ColumnIndex == 12)
+            this.Location = new Point(_margin[3], _margin[0]);
+            this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
+            this.BringToFront();
+        }
+
+        private void onCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idClicked = Int32.Parse(this.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string clickedVehicleType = this.Rows[e.RowIndex].Cells[this.ColumnCount - 3].Value.ToString();
+
+            var clickedCarro = new Carro();
+            var clickedMota = new Mota();
+            var clickedCamiao = new Camiao();
+            var clickedCamioneta = new Camioneta();
+
+            if (clickedVehicleType == "Carro")
             {
-                MessageBox.Show("Delete Logic ID: " + Emp.ConvertObj(sender).Rows[e.RowIndex].Cells[0].Value);
+                foreach (Carro vehicle in Emp.CarrosList)
+                {
+                    if (idClicked == vehicle.Id)
+                    {
+                        clickedCarro = vehicle;
+                        break;
+                    }
+                }
+            }
+            else if (clickedVehicleType == "Mota")
+            {
+                foreach (Mota vehicle in Emp.MotasList)
+                {
+                    if (idClicked == vehicle.Id)
+                    {
+                        clickedMota = vehicle;
+                        break;
+                    }
+                }
+            }
+            else if (clickedVehicleType == "Camiao")
+            {
+                foreach (Camiao vehicle in Emp.CamioesList)
+                {
+                    if (idClicked == vehicle.Id)
+                    {
+                        clickedCamiao = vehicle;
+                        break;
+                    }
+                }
+            }
+            else if (clickedVehicleType == "Camioneta")
+            {
+                foreach (Camioneta vehicle in Emp.CamionetasList)
+                {
+                    if (idClicked == vehicle.Id)
+                    {
+                        clickedCamioneta = vehicle;
+                        break;
+                    }
+                }
+            }
+
+            if (e.ColumnIndex == this.ColumnCount - 2)
+            {
+                MessageBox.Show("Edit Logic ID: " + this.Rows[e.RowIndex].Cells[0].Value + clickedCarro.Id);
+                if (clickedVehicleType == "Carro")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CarForm(clickedCarro));
+                }
+                //else if (clickedVehicleType == "Mota")
+                //{
+                //    var motaForm = MotaForm.Setup(view, ts.largeFont.Height * 3, 25, 25, view.Width / 2 + 25, clickedMota);
+                //}
+                //else if (clickedVehicleType == "Camiao")
+                //{
+                //    var camiaoForm = CamiaoForm.Setup(view, ts.largeFont.Height * 3, 25, 25, view.Width / 2 + 25, clickedCamiao);
+                //}
+                //else if (clickedVehicleType == "Camioneta")
+                //{
+                //    var camionetaForm = CamionetaForm.Setup(view, ts.largeFont.Height * 3, 25, 25, view.Width / 2 + 25, clickedCamioneta);
+                //}
+
+
+            }
+            else if (e.ColumnIndex == this.ColumnCount - 1)
+            {
+                MessageBox.Show("Delete Logic ID: " + this.Rows[e.RowIndex].Cells[0].Value);
             }
         }
 
-        public static void FillData(DataGridView dgv, ArrayList list)
+        /// <summary>
+        /// Fills the DataGridView with the info of the list.
+        /// It expects a Vehicle List
+        /// </summary>
+        /// <param name="list"></param>
+        public void FillData(ArrayList list)
         {
-            Panel test = new Panel();
-            test.Size = new Size(5, 5);
-            test.BackColor = ts.danger;
-
-            dgv.Rows.Clear();
-            int quantCells = dgv.Rows[0].Cells.Count;
+            this.Rows.Clear();
             int length = list.Count;
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                dgv.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Cor, convertedItem.QuantRodas, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, "Edit", "Delete");
+                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, "Edit", "Delete");
             }
         }
     }

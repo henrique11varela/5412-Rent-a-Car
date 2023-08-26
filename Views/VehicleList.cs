@@ -12,46 +12,52 @@ using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 using Rent_a_Car.Components;
 using Rent_a_Car.Components.Buttons;
+using Rent_a_Car.Components.Forms;
 
 namespace Rent_a_Car.Views
 {
-    internal class VehicleList
+    internal class VehicleList : Panel
     {
-        /// <summary>Adds elements to view[0].</summary>
-        public static void Setup(Button tab, Panel view)
+        private int[] _margin = { 0, 0, 0, 0 };
+        public VehicleTable vehicleTable;
+        public VehicleControls vehicleControls;
+
+        public VehicleList()
         {
-            string title = "Vehicle List";
+            this.ParentChanged += Setup;
+            this.BackColor = ts.light; 
+        }
 
-            //Name
-            tab.Text = title;
+        /// <summary>
+        /// Event that places element after instance is created
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Setup(object sender, EventArgs e)
+        {
+            if (this.Parent == null)
+            {
+                return;
+            }
+            this.Location = new Point(_margin[3], _margin[0]);
+            this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
 
-            ///label creation and styling
             Label pageTitle = new Label();
-            pageTitle.Text = title;
+            pageTitle.Text = "Vehicle List";
             pageTitle.TextAlign = ContentAlignment.TopCenter;
             pageTitle.Font = ts.largeFont;
             pageTitle.Size = new Size(TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width, pageTitle.Font.Height);
-            pageTitle.Location = new Point((view.Width - TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width) / 2, pageTitle.Font.Height);
-            view.Controls.Add(pageTitle);
+            pageTitle.Location = new Point((this.Width - TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width) / 2, pageTitle.Font.Height);
+            this.Controls.Add(pageTitle);
 
-            //Insert Table
-            int[] cols = { 1, 2, 6, 7, 8, 9, 10, 11, 12 };
-            var vehicleTable = VehicleTable.Setup(view, pageTitle.Font.Height * 3, view.Width / 2 + 25, 25, 25, cols);
-            VehicleTable.FillData(vehicleTable, Emp.VehicleList);
+            vehicleTable = new VehicleTable(pageTitle.Font.Height * 3, this.Width / 2 + 25, 25, 25);
+            vehicleTable.FillData(Emp.VehicleList);
+            this.Controls.Add(vehicleTable);
 
-            var carForm = CarForm.Setup(view, pageTitle.Font.Height * 3, 25, 25, view.Width / 2 + 25);
+            vehicleControls = new VehicleControls(pageTitle.Font.Height * 3, 25, 25, this.Width / 2 + 25);
+            this.Controls.Add(vehicleControls);
 
-            ///button with label
-            var placeholder = new FlatButton();
-            void newVehicleClick(object sender, EventArgs e)
-            {
-                Empresa.AddCarro(new Carro()); ;
-                VehicleTable.FillData(vehicleTable, Emp.VehicleList);
-                carForm.Show();
-            }
-            placeholder.Click += newVehicleClick;
-            view.Controls.Add(placeholder);
-            //placeholder.BringToFront();
+            this.BringToFront();
         }
     }
 }

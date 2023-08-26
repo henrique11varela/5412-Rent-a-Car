@@ -150,14 +150,14 @@ namespace Rent_a_Car.Classes
         //constructors
         public Veiculo()
         {
-            id = 0;
+            id = -1;
             marca = "";
             modelo = "";
             cor = "";
             quantRodas = 0;
             matricula = "";
             ano = 0;
-            status = "";
+            status = "Free";
             freeExpect = DateTime.Now;
             valorDia = 0;
         }

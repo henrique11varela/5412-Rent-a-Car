@@ -4,11 +4,26 @@
     <Compile Update="Components\Buttons\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Forms\CarForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Forms\VehicleControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Input\InputBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Tables\VehicleTable.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\VehicleList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="_plan\panel_example.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>
