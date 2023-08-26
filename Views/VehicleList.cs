@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleTable = Rent_a_Car.Components.Tables.VehicleTable;
+using CarForm = Rent_a_Car.Components.Forms.CarForm;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 using Rent_a_Car.Components;
@@ -34,20 +35,23 @@ namespace Rent_a_Car.Views
             view.Controls.Add(pageTitle);
 
             //Insert Table
-            int[] cols = {1, 2, 6, 7, 8, 9, 10 ,11, 12};
-            var vehicleTable = VehicleTable.Setup(view, pageTitle.Font.Height * 3, view.Width/2 + 25, 25, 25, cols);
+            int[] cols = { 1, 2, 6, 7, 8, 9, 10, 11, 12 };
+            var vehicleTable = VehicleTable.Setup(view, pageTitle.Font.Height * 3, view.Width / 2 + 25, 25, 25, cols);
             VehicleTable.FillData(vehicleTable, Emp.VehicleList);
 
+            var carForm = CarForm.Setup(view, pageTitle.Font.Height * 3, 25, 25, view.Width / 2 + 25);
+
             ///button with label
-            var newVehicle = new FlatButton();
+            var placeholder = new FlatButton();
             void newVehicleClick(object sender, EventArgs e)
             {
                 Empresa.AddCarro(new Carro()); ;
                 VehicleTable.FillData(vehicleTable, Emp.VehicleList);
+                carForm.Show();
             }
-            newVehicle.Click += newVehicleClick;
-            view.Controls.Add(newVehicle);
-            newVehicle.BringToFront();
+            placeholder.Click += newVehicleClick;
+            view.Controls.Add(placeholder);
+            //placeholder.BringToFront();
         }
     }
 }

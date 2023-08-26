@@ -132,11 +132,12 @@ namespace Rent_a_Car.Components.Tables
         {
             if (e.ColumnIndex == 11)
             {
-                MessageBox.Show("Edit Logic");
+                MessageBox.Show("Edit Logic ID: " + Emp.ConvertObj(sender).Rows[e.RowIndex].Cells[0].Value);
+                
             }
             else if (e.ColumnIndex == 12)
             {
-                MessageBox.Show("Delete Logic");
+                MessageBox.Show("Delete Logic ID: " + Emp.ConvertObj(sender).Rows[e.RowIndex].Cells[0].Value);
             }
         }
 
