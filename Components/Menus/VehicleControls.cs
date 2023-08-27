@@ -1,4 +1,5 @@
 ﻿using Rent_a_Car.Components.Buttons;
+using Rent_a_Car.Components.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
 
-namespace Rent_a_Car.Components.Forms
+namespace Rent_a_Car.Components.Menus
 {
     internal class VehicleControls : Panel
     {
         private int[] _margin = { 0, 0, 0, 0 };
 
+        #region Child elements
+
+        #endregion
+
         public VehicleControls()
         {
-            this.ParentChanged += Setup;
-            this.BackColor = ts.success;
+            ParentChanged += Setup;
+            BackColor = ts.light;
         }
 
         public VehicleControls(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
@@ -33,24 +38,29 @@ namespace Rent_a_Car.Components.Forms
         /// <param name="e"></param>
         private void Setup(object sender, EventArgs e)
         {
-            if (this.Parent == null)
+            #region Preset setup
+            if (Parent == null)
             {
                 return;
             }
-            this.Location = new Point(_margin[3], _margin[0]);
-            this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
+            Location = new Point(_margin[3], _margin[0]);
+            Size = new Size(Parent.Width - _margin[1] - _margin[3], Parent.Height - _margin[0] - _margin[2]);
+            #endregion
 
             //Create carro button for testing
-            FlatButton createCarro = new FlatButton();
-            createCarro.Text = "Create Carro";
-            createCarro.Click += newCarro;
-            this.Controls.Add(createCarro);
+            FlatButton createVehicle = new FlatButton();
+            createVehicle.Text = "Create Vehicle";
+            createVehicle.Click += newCarro;
+            Controls.Add(createVehicle);
 
-            this.BringToFront();
+            #region Preset setup
+            BringToFront();
+            #endregion
         }
 
-        private void newCarro(object sender, EventArgs e) {
-            this.Controls.Add(new CarForm());
+        private void newCarro(object sender, EventArgs e)
+        {
+            Controls.Add(new CreateVehicle());
         }
     }
 }

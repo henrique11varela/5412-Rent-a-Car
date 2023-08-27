@@ -162,7 +162,7 @@ namespace Rent_a_Car.DAL
                 line.Add(Empresa.ConvertObj(item).Matricula);
                 line.Add(Empresa.ConvertObj(item).Ano.ToString());
                 line.Add(Empresa.ConvertObj(item).ValorDia.ToString());
-                line.Add(Empresa.ConvertObj(item).cubicCapacity.ToString());
+                line.Add(Empresa.ConvertObj(item).CubicCapacity.ToString());
                 list.Add(line);
             }
             csvMota.Mota = list;

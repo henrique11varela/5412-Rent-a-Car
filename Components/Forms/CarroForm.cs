@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
+using Emp = Rent_a_Car.Classes.Empresa;
 using Rent_a_Car.Components.Input;
 using Rent_a_Car.Components.Buttons;
 using Rent_a_Car.Classes;
@@ -13,19 +14,22 @@ using System.Windows.Forms;
 
 namespace Rent_a_Car.Components.Forms
 {
-    internal class CarForm : Panel
+    internal class CarroForm : Panel
     {
         private int[] _margin = { 0, 0, 0, 0 };
         private Carro carro = new Carro();
 
+        #region Child elements
+        #endregion
+
         //Create contructors
-        public CarForm()
+        public CarroForm()
         {
             this.ParentChanged += Setup;
             this.BackColor = ts.dark_emphasis;
         }
 
-        public CarForm(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
+        public CarroForm(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
         {
             _margin[0] = margin_top;
             _margin[1] = margin_right;
@@ -34,12 +38,12 @@ namespace Rent_a_Car.Components.Forms
         }
 
         //Edit constructors
-        public CarForm(Carro c) : this()
+        public CarroForm(Carro c) : this()
         {
             carro = c;
         }
 
-        public CarForm(int margin_top, int margin_right, int margin_bottom, int margin_left, Carro c) : this(c)
+        public CarroForm(int margin_top, int margin_right, int margin_bottom, int margin_left, Carro c) : this(c)
         {
             _margin[0] = margin_top;
             _margin[1] = margin_right;
@@ -49,67 +53,70 @@ namespace Rent_a_Car.Components.Forms
 
         private void Setup(object sender, EventArgs e)
         {
+            #region Preset setup
             if (this.Parent == null)
             {
                 return;
             }
             this.Location = new Point(_margin[3], _margin[0]);
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
+            #endregion
+
             int id = carro.Id;
 
             InputBox marca = new InputBox();
-            marca.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
-            marca.Location = new Point(25, 25);
             marca.label.Text = "Marca";
             this.Controls.Add(marca);
+            marca.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
+            marca.Location = new Point(25, 25);
 
             InputBox modelo = new InputBox();
-            modelo.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
-            modelo.Location = new Point(this.Width / 2 + 25, 25);
             modelo.label.Text = "Modelo";
             this.Controls.Add(modelo);
+            modelo.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
+            modelo.Location = new Point(this.Width / 2 + 25, 25);
 
             InputBox cor = new InputBox();
-            cor.Size = new Size(this.Width / 2 - (25 * 2), cor.Height);
-            cor.Location = new Point(25, 25 + (25 + cor.Height) * 1);
             cor.label.Text = "Cor";
             this.Controls.Add(cor);
+            cor.Size = new Size(this.Width / 2 - (25 * 2), cor.Height);
+            cor.Location = new Point(25, 25 + (25 + cor.Height) * 1);
 
             InputBox matricula = new InputBox();
-            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
-            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + matricula.Height) * 1);
             matricula.label.Text = "Matricula";
             this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + matricula.Height) * 1);
 
             InputBox ano = new InputBox();
-            ano.Size = new Size(this.Width / 2 - (25 * 2), ano.Height);
-            ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
             ano.label.Text = "Ano";
             this.Controls.Add(ano);
+            ano.Size = new Size(this.Width / 2 - (25 * 2), ano.Height);
+            ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
 
             InputBox quantRodas = new InputBox();
-            quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
-            quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
             quantRodas.label.Text = "quantRodas";
             this.Controls.Add(quantRodas);
+            quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
+            quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
 
             InputBox valorDia = new InputBox();
-            valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
-            valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
             valorDia.label.Text = "valorDia";
             this.Controls.Add(valorDia);
+            valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
+            valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
 
             InputBox quantDoors = new InputBox();
-            quantDoors.Size = new Size(this.Width / 2 - (25 * 2), quantDoors.Height);
-            quantDoors.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantDoors.Height) * 3);
             quantDoors.label.Text = "quantDoors";
             this.Controls.Add(quantDoors);
+            quantDoors.Size = new Size(this.Width / 2 - (25 * 2), quantDoors.Height);
+            quantDoors.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantDoors.Height) * 3);
 
             InputBox isManual = new InputBox();
-            isManual.Size = new Size(this.Width / 2 - (25 * 2), isManual.Height);
-            isManual.Location = new Point(25, 25 + (25 + isManual.Height) * 4);
             isManual.label.Text = "isManual";
             this.Controls.Add(isManual);
+            isManual.Size = new Size(this.Width / 2 - (25 * 2), isManual.Height);
+            isManual.Location = new Point(25, 25 + (25 + isManual.Height) * 4);
 
             if (id != -1)
             {
@@ -124,9 +131,9 @@ namespace Rent_a_Car.Components.Forms
                 isManual.textBox.Text = carro.IsManual.ToString();
             }
 
-
             FlatButton Submit = new FlatButton();
             Submit.Text = "Submit";
+            this.Controls.Add(Submit);
             Submit.Location = new Point(25, this.Height - Submit.Height - 25);
             Submit.Size = new Size(this.Width / 2 - 2 * 25, Submit.Height);
             Submit.BGC = ts.dark;
@@ -145,24 +152,43 @@ namespace Rent_a_Car.Components.Forms
                     carro.Matricula = matricula.textBox.Text;
                     carro.Ano = Int32.Parse(ano.textBox.Text);
                     carro.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                    carro.ValorDia = Int32.Parse(valorDia.textBox.Text);
+                    carro.ValorDia = float.Parse(valorDia.textBox.Text);
                     carro.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
                     carro.IsManual = Boolean.Parse(isManual.textBox.Text);
-                    Empresa.AddCarro(carro);
+                    Emp.AddCarro(carro);
                 }
                 else
                 {
                     //find obj and edit
+                    int length = Emp.CarrosList.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        Carro c = Emp.ConvertObj(Emp.CarrosList[i]);
+                        if (c.Id == id)
+                        {
+                            c.Marca = marca.textBox.Text;
+                            c.Modelo = modelo.textBox.Text;
+                            c.Cor = cor.textBox.Text;
+                            c.Matricula = matricula.textBox.Text;
+                            c.Ano = Int32.Parse(ano.textBox.Text);
+                            c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                            c.ValorDia = float.Parse(valorDia.textBox.Text);
+                            c.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                            c.IsManual = Boolean.Parse(isManual.textBox.Text);
+                            break;
+                        }
+                    }
                 }
+                DAL.DAL.storeCarro();
                 Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }
             Submit.Click += submitClick;
-            this.Controls.Add(Submit);
 
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
+            this.Controls.Add(Cancel);
             Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
             Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
             Cancel.BGC = ts.dark;
@@ -174,9 +200,10 @@ namespace Rent_a_Car.Components.Forms
                 parent.Controls.Remove(this);
             }
             Cancel.Click += cancelClick;
-            this.Controls.Add(Cancel);
 
+            #region Preset setup
             this.BringToFront();
+            #endregion
         }
     }
 }

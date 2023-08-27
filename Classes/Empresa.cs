@@ -81,7 +81,10 @@ namespace Rent_a_Car.Classes
         public static void AddCarro(Carro c)
         {
             carros.Add(new Carro(c));
-            DAL.DAL.storeCarro();
+        }
+
+        public static void RemoveCarro(Carro c) { 
+            carros.Remove(c);
         }
         
         //Add Camiao
@@ -95,7 +98,12 @@ namespace Rent_a_Car.Classes
             camioes.Add(new Camiao(c));
             DAL.DAL.storeCamiao();
         }
-        
+
+        public static void RemoveCamiao(Camiao c)
+        {
+            camioes.Remove(c);
+        }
+
         //Add Camioneta
         public static void AddCamioneta(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantAxis, int maxPassengers)
         {
@@ -107,7 +115,12 @@ namespace Rent_a_Car.Classes
             camionetas.Add(new Camioneta(c));
             DAL.DAL.storeCamioneta();
         }
-        
+
+        public static void RemoveCamioneta(Camioneta c)
+        {
+            camionetas.Remove(c);
+        }
+
         //Add Mota
         public static void AddMota(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int cubicCapacity)
         {
@@ -118,6 +131,11 @@ namespace Rent_a_Car.Classes
         {
             motas.Add(new Mota(c));
             DAL.DAL.storeMota();
+        }
+
+        public static void RemoveMota(Mota m)
+        {
+            motas.Remove(m);
         }
         #endregion
 

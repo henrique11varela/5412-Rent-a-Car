@@ -62,6 +62,7 @@ namespace Rent_a_Car.Components.Tables
             this.Columns[this.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             this.RowHeadersVisible = false;
+            this.AllowUserToAddRows = false;
             this.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -83,17 +84,26 @@ namespace Rent_a_Car.Components.Tables
         /// <param name="e"></param>
         private void Setup(object sender, EventArgs e)
         {
+            #region Preset setup
             if (this.Parent == null)
             {
                 return;
             }
             this.Location = new Point(_margin[3], _margin[0]);
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
+            #endregion
+
+            #region Preset setup
             this.BringToFront();
+            #endregion
         }
 
         private void onCellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex < 0 || e.RowIndex < 0)
+            {
+                return;
+            }
             int idClicked = Int32.Parse(this.Rows[e.RowIndex].Cells[0].Value.ToString());
             string clickedVehicleType = this.Rows[e.RowIndex].Cells[this.ColumnCount - 3].Value.ToString();
 
@@ -149,29 +159,88 @@ namespace Rent_a_Car.Components.Tables
 
             if (e.ColumnIndex == this.ColumnCount - 2)
             {
-                MessageBox.Show("Edit Logic ID: " + this.Rows[e.RowIndex].Cells[0].Value + clickedCarro.Id);
                 if (clickedVehicleType == "Carro")
                 {
-                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CarForm(clickedCarro));
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CarroForm(clickedCarro));
                 }
-                //else if (clickedVehicleType == "Mota")
-                //{
-                //    var motaForm = MotaForm.Setup(view, ts.largeFont.Height * 3, 25, 25, view.Width / 2 + 25, clickedMota);
-                //}
-                //else if (clickedVehicleType == "Camiao")
-                //{
-                //    var camiaoForm = CamiaoForm.Setup(view, ts.largeFont.Height * 3, 25, 25, view.Width / 2 + 25, clickedCamiao);
-                //}
-                //else if (clickedVehicleType == "Camioneta")
-                //{
-                //    var camionetaForm = CamionetaForm.Setup(view, ts.largeFont.Height * 3, 25, 25, view.Width / 2 + 25, clickedCamioneta);
-                //}
+                else if (clickedVehicleType == "Mota")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new MotaForm(clickedMota));
+                }
+                else if (clickedVehicleType == "Camiao")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CamiaoForm(clickedCamiao));
+                }
+                else if (clickedVehicleType == "Camioneta")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CamionetaForm(clickedCamioneta));
+                }
 
 
             }
             else if (e.ColumnIndex == this.ColumnCount - 1)
             {
                 MessageBox.Show("Delete Logic ID: " + this.Rows[e.RowIndex].Cells[0].Value);
+                if (clickedVehicleType == "Carro")
+                {
+                    int length = Emp.CarrosList.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        Carro c = Emp.ConvertObj(Emp.CarrosList[i]);
+                        if (c.Id == idClicked)
+                        {
+                            Emp.RemoveCarro(c);
+                            break;
+                        }
+                    }
+                    DAL.DAL.storeCarro();
+                    this.FillData(Emp.VehicleList);
+                }
+                else if (clickedVehicleType == "Mota")
+                {
+                    int length = Emp.MotasList.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        Mota m = Emp.ConvertObj(Emp.MotasList[i]);
+                        if (m.Id == idClicked)
+                        {
+                            Emp.RemoveMota(m);
+                            break;
+                        }
+                    }
+                    DAL.DAL.storeMota();
+                    this.FillData(Emp.VehicleList);
+                }
+                else if (clickedVehicleType == "Camiao")
+                {
+                    int length = Emp.CamioesList.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        Camiao c = Emp.ConvertObj(Emp.CamioesList[i]);
+                        if (c.Id == idClicked)
+                        {
+                            Emp.RemoveCamiao(c);
+                            break;
+                        }
+                    }
+                    DAL.DAL.storeCamiao();
+                    this.FillData(Emp.VehicleList);
+                }
+                else if (clickedVehicleType == "Camioneta")
+                {
+                    int length = Emp.CamionetasList.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        Camioneta c = Emp.ConvertObj(Emp.CamionetasList[i]);
+                        if (c.Id == idClicked)
+                        {
+                            Emp.RemoveCamioneta(c);
+                            break;
+                        }
+                    }
+                    DAL.DAL.storeCamioneta();
+                    this.FillData(Emp.VehicleList);
+                }
             }
         }
 

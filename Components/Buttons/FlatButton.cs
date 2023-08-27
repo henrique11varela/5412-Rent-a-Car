@@ -39,13 +39,18 @@ namespace Rent_a_Car.Components.Buttons
         }
         public FlatButton() : base()
         {
+            this.ParentChanged += Setup;
             this.Font = ts.mediumFont;
             this.Text = "Placeholder";
-            this.Size = new Size((TextRenderer.MeasureText(this.Text, this.Font).Width + this.Font.Height), this.Font.Height * 2);
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
             this.BackColor = BGC;
+        }
+
+        private void Setup(object sender, EventArgs e)
+        {
+            this.Size = new Size((TextRenderer.MeasureText(this.Text, this.Font).Width + this.Font.Height), this.Font.Height * 2);
             void newVehicleEnter(object sender, EventArgs e)
             {
                 this.BackColor = BGC_HOVER;

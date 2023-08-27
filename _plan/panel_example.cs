@@ -11,10 +11,13 @@ namespace Rent_a_Car._plan
     {
         private int[] _margin = { 0, 0, 0, 0 };
 
+        #region Child elements
+        #endregion
+
         public panel_example()
         {
             this.ParentChanged += Setup;
-            this.BackColor = ts.success;
+            this.BackColor = ts.light;
 
 
         }
@@ -34,10 +37,20 @@ namespace Rent_a_Car._plan
         /// <param name="e"></param>
         private void Setup(object sender, EventArgs e)
         {
+            #region Preset setup
+            if (this.Parent == null)
+            {
+                return;
+            }
             this.Location = new Point(_margin[3], _margin[0]);
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
-            this.BringToFront();
+            #endregion
 
+
+
+            #region Preset setup
+            this.BringToFront();
+            #endregion
         }
     }
 }

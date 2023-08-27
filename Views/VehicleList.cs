@@ -7,20 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleTable = Rent_a_Car.Components.Tables.VehicleTable;
-using CarForm = Rent_a_Car.Components.Forms.CarForm;
+using CarForm = Rent_a_Car.Components.Forms.CarroForm;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 using Rent_a_Car.Components;
 using Rent_a_Car.Components.Buttons;
-using Rent_a_Car.Components.Forms;
+using Rent_a_Car.Components.Menus;
 
 namespace Rent_a_Car.Views
 {
     internal class VehicleList : Panel
     {
         private int[] _margin = { 0, 0, 0, 0 };
+        #region Child elements
         public VehicleTable vehicleTable;
         public VehicleControls vehicleControls;
+        #endregion
 
         public VehicleList()
         {
@@ -35,12 +37,14 @@ namespace Rent_a_Car.Views
         /// <param name="e"></param>
         private void Setup(object sender, EventArgs e)
         {
+            #region Preset setup
             if (this.Parent == null)
             {
                 return;
             }
             this.Location = new Point(_margin[3], _margin[0]);
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
+            #endregion
 
             Label pageTitle = new Label();
             pageTitle.Text = "Vehicle List";
@@ -57,7 +61,9 @@ namespace Rent_a_Car.Views
             vehicleControls = new VehicleControls(pageTitle.Font.Height * 3, 25, 25, this.Width / 2 + 25);
             this.Controls.Add(vehicleControls);
 
+            #region Preset setup
             this.BringToFront();
+            #endregion
         }
     }
 }

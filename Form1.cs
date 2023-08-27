@@ -21,9 +21,11 @@ namespace Rent_a_Car
         public int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
 
         int ActiveView = 0;
+        #region Child elements
         Panel nav = new Panel();
         List<Button> Tabs = new List<Button>();
-        List<Panel> Views = new List<Panel>();
+        public List<Panel> Views = new List<Panel>();
+        #endregion
 
         public Form1()
         {
