@@ -4,6 +4,21 @@
     <Compile Update="Components\Buttons\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Cells\DetailBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Details\CamiaoDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Details\CamionetaDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Details\CarroDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Details\MotaDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Forms\CamiaoForm.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -22,7 +37,7 @@
     <Compile Update="Components\Menus\VehicleControls.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Components\Input\InputBox.cs">
+    <Compile Update="Components\Cells\InputBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Tables\VehicleTable.cs">

@@ -19,6 +19,7 @@ namespace Rent_a_Car.Components.Forms
         #region Child elements
         #endregion
 
+        #region Constructors
         //Create contructors
         public MotaForm()
         {
@@ -47,6 +48,7 @@ namespace Rent_a_Car.Components.Forms
             _margin[2] = margin_bottom;
             _margin[3] = margin_left;
         }
+        #endregion
 
         private void Setup(object sender, EventArgs e)
         {

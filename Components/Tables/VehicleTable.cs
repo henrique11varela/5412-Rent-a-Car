@@ -1,4 +1,5 @@
 ﻿using Rent_a_Car.Classes;
+using Rent_a_Car.Components.Details;
 using Rent_a_Car.Components.Forms;
 using System;
 using System.Collections;
@@ -45,6 +46,9 @@ namespace Rent_a_Car.Components.Tables
             this.Columns[col++].Name = "FreeExpect";
             this.Columns[col++].Name = "ValorDia";
             this.Columns[col++].Name = "Type";
+            //Details button column
+            this.Columns.Add(new DataGridViewButtonColumn());
+            this.Columns[col++].HeaderText = "Details";
             //Edit button column
             this.Columns.Add(new DataGridViewButtonColumn());
             this.Columns[col++].HeaderText = "Edit";
@@ -105,7 +109,7 @@ namespace Rent_a_Car.Components.Tables
                 return;
             }
             int idClicked = Int32.Parse(this.Rows[e.RowIndex].Cells[0].Value.ToString());
-            string clickedVehicleType = this.Rows[e.RowIndex].Cells[this.ColumnCount - 3].Value.ToString();
+            string clickedVehicleType = this.Rows[e.RowIndex].Cells[8].Value.ToString();
 
             var clickedCarro = new Carro();
             var clickedMota = new Mota();
@@ -157,7 +161,26 @@ namespace Rent_a_Car.Components.Tables
                 }
             }
 
-            if (e.ColumnIndex == this.ColumnCount - 2)
+            if (e.ColumnIndex == this.ColumnCount - 3)
+            {
+                if (clickedVehicleType == "Carro")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CarroDetails(clickedCarro));
+                }
+                else if (clickedVehicleType == "Mota")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new MotaDetails(clickedMota));
+                }
+                else if (clickedVehicleType == "Camiao")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CamiaoDetails(clickedCamiao));
+                }
+                else if (clickedVehicleType == "Camioneta")
+                {
+                    Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CamionetaDetails(clickedCamioneta));
+                }
+            }
+            else if (e.ColumnIndex == this.ColumnCount - 2)
             {
                 if (clickedVehicleType == "Carro")
                 {
@@ -180,7 +203,6 @@ namespace Rent_a_Car.Components.Tables
             }
             else if (e.ColumnIndex == this.ColumnCount - 1)
             {
-                MessageBox.Show("Delete Logic ID: " + this.Rows[e.RowIndex].Cells[0].Value);
                 if (clickedVehicleType == "Carro")
                 {
                     int length = Emp.CarrosList.Count;
@@ -256,7 +278,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, "Edit", "Delete");
+                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name,"Details", "Edit", "Delete");
             }
         }
     }
