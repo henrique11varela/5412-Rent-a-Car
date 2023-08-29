@@ -48,6 +48,17 @@ namespace Rent_a_Car.Components.Menus
             Size = new Size(Parent.Width - _margin[1] - _margin[3], Parent.Height - _margin[0] - _margin[2]);
             #endregion
 
+            //Logica reserva
+            var test = new DateTimePicker();
+            this.Controls.Add(test);
+            test.Location = new Point(25, 25);
+            test.Size = new Size(this.Width - 25 * 2, test.Height);
+
+
+
+
+
+
             //Create carro button for testing
             FlatButton createVehicle = new FlatButton();
             createVehicle.Text = "Create Vehicle";
