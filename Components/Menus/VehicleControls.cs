@@ -2,6 +2,7 @@
 using Rent_a_Car.Components.Forms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,8 +51,10 @@ namespace Rent_a_Car.Components.Menus
             //Create carro button for testing
             FlatButton createVehicle = new FlatButton();
             createVehicle.Text = "Create Vehicle";
+            this.Controls.Add(createVehicle);
+            createVehicle.Location = new Point(this.Width / 2 + 25, this.Height - 25 - createVehicle.Height);
+            createVehicle.Size = new Size(this.Width / 2 - 2 * 25, createVehicle.Height);
             createVehicle.Click += newCarro;
-            Controls.Add(createVehicle);
 
             #region Preset setup
             BringToFront();
