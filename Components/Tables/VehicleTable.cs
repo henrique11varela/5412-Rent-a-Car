@@ -1,6 +1,7 @@
 ﻿using Rent_a_Car.Classes;
 using Rent_a_Car.Components.Details;
 using Rent_a_Car.Components.Forms;
+using Rent_a_Car.Views;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml.Schema;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 
@@ -32,7 +34,7 @@ namespace Rent_a_Car.Components.Tables
 
             //columns:
             //id, marca, modelo, matricula, status (icon), tipo, details, edit
-            this.ColumnCount = 9;
+            this.ColumnCount = 10;
 
             int col = 0;
             this.Columns[col++].Name = "Id";
@@ -46,6 +48,8 @@ namespace Rent_a_Car.Components.Tables
             this.Columns[col++].Name = "FreeExpect";
             this.Columns[col++].Name = "ValorDia";
             this.Columns[col++].Name = "Type";
+            this.Columns[col++].Name = "Total";
+
             //Details button column
             this.Columns.Add(new DataGridViewButtonColumn());
             this.Columns[col++].HeaderText = "Details";
@@ -62,6 +66,7 @@ namespace Rent_a_Car.Components.Tables
             {
                 this.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+            this.Columns[this.ColumnCount - 3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.Columns[this.ColumnCount - 2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.Columns[this.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
@@ -271,14 +276,14 @@ namespace Rent_a_Car.Components.Tables
         /// It expects a Vehicle List
         /// </summary>
         /// <param name="list"></param>
-        public void FillData(ArrayList list)
+        public void FillData(ArrayList list, int days = 0)
         {
             this.Rows.Clear();
             int length = list.Count;
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name,"Details", "Edit", "Delete");
+                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1), "Details", "Edit", "Delete");
             }
         }
     }
