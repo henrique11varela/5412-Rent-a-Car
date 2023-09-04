@@ -114,11 +114,15 @@ namespace Rent_a_Car.Components.Forms
             quantDoors.Size = new Size(this.Width / 2 - (25 * 2), quantDoors.Height);
             quantDoors.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantDoors.Height) * 3);
 
-            InputBox isManual = new InputBox();
-            isManual.label.Text = "isManual";
+
+            
+            InputCheckBox isManual = new InputCheckBox();
+            isManual.label.Text = "Manual?";
             this.Controls.Add(isManual);
             isManual.Size = new Size(this.Width / 2 - (25 * 2), isManual.Height);
             isManual.Location = new Point(25, 25 + (25 + isManual.Height) * 4);
+            
+            
 
             if (id != -1)
             {
@@ -130,7 +134,7 @@ namespace Rent_a_Car.Components.Forms
                 quantRodas.textBox.Text = carro.QuantRodas.ToString();
                 valorDia.textBox.Text = carro.ValorDia.ToString();
                 quantDoors.textBox.Text = carro.QuantDoors.ToString();
-                isManual.textBox.Text = carro.IsManual.ToString();
+                isManual.checkBox.Text = carro.IsManual.ToString();
             }
 
             FlatButton Submit = new FlatButton();
@@ -155,13 +159,13 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         //validar se é numero e se é um ano valido 
-                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= DateTime.Now.Year)
                         {
                             carro.Ano = Int32.Parse(ano.textBox.Text);
                         }
                         else
                         {
-                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
                         }
 
 
@@ -178,17 +182,16 @@ namespace Rent_a_Car.Components.Forms
                         }
 
 
-                        //fullUri.Any(char.IsUpper); TEST
                         //validar se isManual é um input bool
-                        string isManualString = isManual.textBox.Text;
-                        if (isManualString == "Manual" || isManualString == "Automatico" || isManualString == "Yes" || isManualString == "No" || isManualString == "True" || isManualString == "False")
+                        /*string isManualString = isManual.checkBox.Text.ToLower();
+                        if (isManualString != "true" && isManualString != "false")
                         {
-                            carro.IsManual = Boolean.Parse(isManualString);
+                            throw new Exception("Erro! Este campo deve preenchido com: True/False");
                         }
                         else
                         {
-                            throw new Exception("Erro! Este campo deve preenchido com: Manual/Automatico; Yes/No; True/False");
-                        }
+                            carro.IsManual = Boolean.Parse(isManualString);
+                        }*/
                     }
                     catch (FormatException ex)
                     {
@@ -221,13 +224,13 @@ namespace Rent_a_Car.Components.Forms
                             {
 
                                 //validar se é numero e se é um ano valido 
-                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= DateTime.Now.Year)
                                 {
                                     c.Ano = Int32.Parse(ano.textBox.Text);
                                 }
                                 else
                                 {
-                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
                                 }
 
 
@@ -244,17 +247,16 @@ namespace Rent_a_Car.Components.Forms
                                 }
 
 
-                                //fullUri.Any(char.IsUpper); TEST
                                 //validar se isManual é um input bool
-                                string isManualString = isManual.textBox.Text;
-                                if (isManualString == "Manual" || isManualString == "Automatico" || isManualString == "Yes" || isManualString == "No" || isManualString == "True" || isManualString == "False")
+                                /*string isManualString = isManual.textBox.Text.ToLower();
+                                if (isManualString != "true" && isManualString != "false")
                                 {
-                                    c.IsManual = Boolean.Parse(isManualString);
+                                    throw new Exception("Erro! Este campo deve preenchido com: True/False");
                                 }
                                 else
                                 {
-                                    throw new Exception("Erro! Este campo deve preenchido com: Manual/Automatico; Yes/No; True/False");
-                                }
+                                    c.IsManual = Boolean.Parse(isManualString);
+                                }*/
                             }
                             catch (FormatException ex)
                             {
