@@ -147,15 +147,34 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
+                static void validateEmptyString(string prop, string textBoxText)
+                {
+                    try
+                    {
+                        if(prop.Length > 0)
+                        {
+                            prop = textBoxText;
+                        }
+                        else
+                        {
+                            throw new Exception("string vazia!");
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                }
+
                 MessageBox.Show("Submit logic" + id);
                 //validate inputs
                 if (id == -1)
                 {
                     carro.Id = 500; //to calculate
-                    carro.Marca = marca.textBox.Text;
-                    carro.Modelo = modelo.textBox.Text;
-                    carro.Cor = cor.textBox.Text;
-                    carro.Matricula = matricula.textBox.Text;
+                    validateEmptyString(carro.Marca, matricula.textBox.Text);
+                    validateEmptyString(carro.Modelo, modelo.textBox.Text);
+                    validateEmptyString(carro.Cor, cor.textBox.Text);
+                    validateEmptyString(carro.Matricula, matricula.textBox.Text);
                     try
                     {
                         //validar se é numero e se é um ano valido 
@@ -215,10 +234,10 @@ namespace Rent_a_Car.Components.Forms
                         Carro c = Emp.ConvertObj(Emp.CarrosList[i]);
                         if (c.Id == id)
                         {
-                            c.Marca = marca.textBox.Text;
-                            c.Modelo = modelo.textBox.Text;
-                            c.Cor = cor.textBox.Text;
-                            c.Matricula = matricula.textBox.Text;
+                            validateEmptyString(c.Marca, marca.textBox.Text);
+                            validateEmptyString(c.Modelo, modelo.textBox.Text);
+                            validateEmptyString(c.Cor, cor.textBox.Text);
+                            validateEmptyString(c.Matricula, matricula.textBox.Text);
                             try
                             {
 
@@ -244,6 +263,19 @@ namespace Rent_a_Car.Components.Forms
                                 {
                                     throw new Exception("A quantidade de rodas tem de ser um número inteiro");
                                 }
+
+
+
+                                //validar se é numero inteiro
+                                int quantDoorsParsed = Int32.Parse(quantDoors.textBox.Text);
+                                if (quantDoors.textBox.Text == quantDoorsParsed.ToString())
+                                {
+                                    c.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new Exception("A quantidade de portas tem de ser um número inteiro");
+                                }
                             }
                             catch (FormatException ex)
                             {
@@ -254,7 +286,6 @@ namespace Rent_a_Car.Components.Forms
                                 MessageBox.Show("Erro: " + ex.Message);
                             }
                             c.ValorDia = float.Parse(valorDia.textBox.Text);
-                            c.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
                             //validar se isManual é um input bool
                             if (isManual.checkBox.Checked)
                             {
