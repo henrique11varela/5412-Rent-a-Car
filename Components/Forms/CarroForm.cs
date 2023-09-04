@@ -97,19 +97,19 @@ namespace Rent_a_Car.Components.Forms
             ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
 
             InputBox quantRodas = new InputBox();
-            quantRodas.label.Text = "quantRodas";
+            quantRodas.label.Text = "Quantidade de Rodas";
             this.Controls.Add(quantRodas);
             quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
             quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
 
             InputBox valorDia = new InputBox();
-            valorDia.label.Text = "valorDia";
+            valorDia.label.Text = "Valor Dia";
             this.Controls.Add(valorDia);
             valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
             valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
 
             InputBox quantDoors = new InputBox();
-            quantDoors.label.Text = "quantDoors";
+            quantDoors.label.Text = "Quantidade de Portas";
             this.Controls.Add(quantDoors);
             quantDoors.Size = new Size(this.Width / 2 - (25 * 2), quantDoors.Height);
             quantDoors.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantDoors.Height) * 3);
@@ -134,7 +134,7 @@ namespace Rent_a_Car.Components.Forms
                 quantRodas.textBox.Text = carro.QuantRodas.ToString();
                 valorDia.textBox.Text = carro.ValorDia.ToString();
                 quantDoors.textBox.Text = carro.QuantDoors.ToString();
-                isManual.checkBox.Text = carro.IsManual.ToString();
+                isManual.checkBox.Checked = carro.IsManual;
             }
 
             FlatButton Submit = new FlatButton();
@@ -180,18 +180,6 @@ namespace Rent_a_Car.Components.Forms
                         {
                             throw new Exception("A quantidade de rodas tem de ser um número inteiro");
                         }
-
-
-                        //validar se isManual é um input bool
-                        /*string isManualString = isManual.checkBox.Text.ToLower();
-                        if (isManualString != "true" && isManualString != "false")
-                        {
-                            throw new Exception("Erro! Este campo deve preenchido com: True/False");
-                        }
-                        else
-                        {
-                            carro.IsManual = Boolean.Parse(isManualString);
-                        }*/
                     }
                     catch (FormatException ex)
                     {
@@ -205,6 +193,17 @@ namespace Rent_a_Car.Components.Forms
 
                     carro.ValorDia = float.Parse(valorDia.textBox.Text);
                     carro.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
+
+                    //validar se isManual é um input bool
+                    if (isManual.checkBox.Checked)
+                    {
+                        carro.IsManual = true;
+                    }
+                    else
+                    {
+                        carro.IsManual = false;
+                    }
+
                     Emp.AddCarro(carro);
                 }
                 else
@@ -245,18 +244,6 @@ namespace Rent_a_Car.Components.Forms
                                 {
                                     throw new Exception("A quantidade de rodas tem de ser um número inteiro");
                                 }
-
-
-                                //validar se isManual é um input bool
-                                /*string isManualString = isManual.textBox.Text.ToLower();
-                                if (isManualString != "true" && isManualString != "false")
-                                {
-                                    throw new Exception("Erro! Este campo deve preenchido com: True/False");
-                                }
-                                else
-                                {
-                                    c.IsManual = Boolean.Parse(isManualString);
-                                }*/
                             }
                             catch (FormatException ex)
                             {
@@ -268,6 +255,16 @@ namespace Rent_a_Car.Components.Forms
                             }
                             c.ValorDia = float.Parse(valorDia.textBox.Text);
                             c.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                            //validar se isManual é um input bool
+                            if (isManual.checkBox.Checked)
+                            {
+                                c.IsManual = true;
+                            }
+                            else
+                            {
+                                c.IsManual = false;
+                            }
+                            
                             break;
                         }
                     }
