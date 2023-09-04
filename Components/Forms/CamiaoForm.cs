@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
 using Emp = Rent_a_Car.Classes.Empresa;
+using System.Text.RegularExpressions;
 
 namespace Rent_a_Car.Components.Forms
 {
@@ -144,7 +145,39 @@ namespace Rent_a_Car.Components.Forms
                     camiao.Modelo = modelo.textBox.Text;
                     camiao.Cor = cor.textBox.Text;
                     camiao.Matricula = matricula.textBox.Text;
-                    camiao.Ano = Int32.Parse(ano.textBox.Text);
+                    try
+                    {
+                        //validar formato matricula
+                        /* testing needed
+                        if (Regex.IsMatch(matricula.textBox.Text, @"^\d{2}-[A-Za-z]{2}-\d{2}$"))
+                        {
+                            camiao.Matricula = matricula.textBox.Text;
+                        }
+                        else
+                        {
+                            throw new FormatException("Formato da matricula deve ser: NN-LL-NN (N: numero; L: letra");
+                        }
+                        */
+
+
+                        //validar se é numero e se é um ano valido 
+                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                        {
+                            camiao.Ano = Int32.Parse(ano.textBox.Text);
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                        }
+                    }
+                    catch (FormatException ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
                     camiao.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
                     camiao.ValorDia = float.Parse(valorDia.textBox.Text);
                     camiao.MaxWeight = float.Parse(maxWeight.textBox.Text);
@@ -162,11 +195,56 @@ namespace Rent_a_Car.Components.Forms
                             c.Marca = marca.textBox.Text;
                             c.Modelo = modelo.textBox.Text;
                             c.Cor = cor.textBox.Text;
-                            c.Matricula = matricula.textBox.Text;
-                            c.Ano = Int32.Parse(ano.textBox.Text);
-                            c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                            try
+                            {
+                                //validar formato matricula
+                                if (Regex.IsMatch(matricula.textBox.Text, @"^\d{2}-[A-Za-z]{2}-\d{2}$"))
+                                {
+                                    c.Matricula = matricula.textBox.Text;
+                                }
+                                else
+                                {
+                                    throw new FormatException("Formato da matricula deve ser: NN-LL-NN (N: numero; L: letra");
+                                }
+
+
+
+                                //validar se é numero e se é um ano valido 
+                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                                {
+                                    c.Ano = Int32.Parse(ano.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                                }
+
+
+
+                                //validar se é numero inteiro
+                                int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
+                                if (quantRodas.textBox.Text == quantRodasParsed.ToString())
+                                {
+                                    c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                                }
+                            }
+                            catch (FormatException ex)
+                            {
+                                MessageBox.Show("Erro: " + ex.Message);
+                            }
+                            catch (ArgumentOutOfRangeException ex)
+                            {
+                                MessageBox.Show("Erro: " + ex.Message);
+                            }
+
+
+                            
                             c.ValorDia = float.Parse(valorDia.textBox.Text);
-                            c.MaxWeight = Int32.Parse(maxWeight.textBox.Text);
+                            c.MaxWeight = float.Parse(maxWeight.textBox.Text);
                             break;
                         }
                     }
