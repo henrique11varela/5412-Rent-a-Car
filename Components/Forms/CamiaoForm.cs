@@ -169,12 +169,29 @@ namespace Rent_a_Car.Components.Forms
                         {
                             throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
                         }
+
+
+
+                        //validar se é numero inteiro
+                        int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
+                        if (quantRodas.textBox.Text == quantRodasParsed.ToString())
+                        {
+                            camiao.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                        }
+                        else
+                        {
+                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        }
                     }
                     catch (FormatException ex)
                     {
                         MessageBox.Show("Erro: " + ex.Message);
                     }
                     catch (ArgumentOutOfRangeException ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Erro: " + ex.Message);
                     }
@@ -239,6 +256,10 @@ namespace Rent_a_Car.Components.Forms
                                 MessageBox.Show("Erro: " + ex.Message);
                             }
                             catch (ArgumentOutOfRangeException ex)
+                            {
+                                MessageBox.Show("Erro: " + ex.Message);
+                            }
+                            catch(Exception ex)
                             {
                                 MessageBox.Show("Erro: " + ex.Message);
                             }
