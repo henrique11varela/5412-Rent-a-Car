@@ -144,10 +144,57 @@ namespace Rent_a_Car.Components.Forms
                     mota.Modelo = modelo.textBox.Text;
                     mota.Cor = cor.textBox.Text;
                     mota.Matricula = matricula.textBox.Text;
-                    mota.Ano = Int32.Parse(ano.textBox.Text);
-                    mota.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                    try
+                    {
+                        //validar se é numero e se é um ano valido 
+                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                        {
+                            mota.Ano = Int32.Parse(ano.textBox.Text);
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                        }
+
+
+                        //validar se é numero inteiro
+                        int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
+                        if (quantRodas.textBox.Text == quantRodasParsed.ToString())
+                        {
+                            mota.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                        }
+                        else
+                        {
+                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        }
+
+
+
+                        //validar se é numero inteiro
+                        int CubicCapacityParsed = Int32.Parse(cubicCapacity.textBox.Text);
+                        if (cubicCapacity.textBox.Text == cubicCapacity.ToString())
+                        {
+                            mota.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
+                        }
+                        else
+                        {
+                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        }
+                    }
+                    catch (FormatException ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+
                     mota.ValorDia = float.Parse(valorDia.textBox.Text);
-                    mota.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
                     Emp.AddMota(mota);
                 }
                 else
@@ -156,17 +203,66 @@ namespace Rent_a_Car.Components.Forms
                     int length = Emp.MotasList.Count;
                     for (int i = 0; i < length; i++)
                     {
-                        Mota c = Emp.ConvertObj(Emp.MotasList[i]);
-                        if (c.Id == id)
+                        Mota m = Emp.ConvertObj(Emp.MotasList[i]);
+                        if (m.Id == id)
                         {
-                            c.Marca = marca.textBox.Text;
-                            c.Modelo = modelo.textBox.Text;
-                            c.Cor = cor.textBox.Text;
-                            c.Matricula = matricula.textBox.Text;
-                            c.Ano = Int32.Parse(ano.textBox.Text);
-                            c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                            c.ValorDia = float.Parse(valorDia.textBox.Text);
-                            c.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
+                            m.Marca = marca.textBox.Text;
+                            m.Modelo = modelo.textBox.Text;
+                            m.Cor = cor.textBox.Text;
+                            m.Matricula = matricula.textBox.Text;
+                            try
+                            {
+                                //validar se é numero e se é um ano valido 
+                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                                {
+                                    m.Ano = Int32.Parse(ano.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                                }
+
+
+                                //validar se é numero inteiro
+                                int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
+                                if (quantRodas.textBox.Text == quantRodasParsed.ToString())
+                                {
+                                    m.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                                }
+
+
+
+                                //validar se é numero inteiro
+                                int CubicCapacityParsed = Int32.Parse(cubicCapacity.textBox.Text);
+                                if (cubicCapacity.textBox.Text == cubicCapacity.ToString())
+                                {
+                                    m.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                                }
+                            }
+                            catch (FormatException ex)
+                            {
+                                MessageBox.Show("Erro: " + ex.Message);
+                            }
+                            catch (ArgumentOutOfRangeException ex)
+                            {
+                                MessageBox.Show("Erro: " + ex.Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Erro: " + ex.Message);
+                            }
+                            m.Ano = Int32.Parse(ano.textBox.Text);
+                            m.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                            m.ValorDia = float.Parse(valorDia.textBox.Text);
+                            m.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
                             break;
                         }
                     }
