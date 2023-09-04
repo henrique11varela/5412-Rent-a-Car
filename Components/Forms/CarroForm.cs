@@ -180,9 +180,10 @@ namespace Rent_a_Car.Components.Forms
 
                         //fullUri.Any(char.IsUpper); TEST
                         //validar se isManual é um input bool
-                        if (isManual.textBox.Text == "Manual" || isManual.textBox.Text == "Automatico" || isManual.textBox.Text == "Yes" || isManual.textBox.Text == "No" || isManual.textBox.Text == "True" || isManual.textBox.Text == "False")
+                        string isManualString = isManual.textBox.Text;
+                        if (isManualString == "Manual" || isManualString == "Automatico" || isManualString == "Yes" || isManualString == "No" || isManualString == "True" || isManualString == "False")
                         {
-                            carro.IsManual = Boolean.Parse(isManual.textBox.Text);
+                            carro.IsManual = Boolean.Parse(isManualString);
                         }
                         else
                         {
@@ -245,9 +246,10 @@ namespace Rent_a_Car.Components.Forms
 
                                 //fullUri.Any(char.IsUpper); TEST
                                 //validar se isManual é um input bool
-                                if (isManual.textBox.Text == "Manual" || isManual.textBox.Text == "Automatico" || isManual.textBox.Text == "Yes" || isManual.textBox.Text == "No" || isManual.textBox.Text == "True" || isManual.textBox.Text == "False")
+                                string isManualString = isManual.textBox.Text;
+                                if (isManualString == "Manual" || isManualString == "Automatico" || isManualString == "Yes" || isManualString == "No" || isManualString == "True" || isManualString == "False")
                                 {
-                                    c.IsManual = Boolean.Parse(isManual.textBox.Text);
+                                    c.IsManual = Boolean.Parse(isManualString);
                                 }
                                 else
                                 {
