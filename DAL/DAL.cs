@@ -6,6 +6,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using Rent_a_Car.Classes;
+using static System.Windows.Forms.AxHost;
 
 namespace Rent_a_Car.DAL
 {
@@ -117,9 +118,51 @@ namespace Rent_a_Car.DAL
 
 
 
-        //csvManutencao;
         //csvAlugado;
+        public static List<Alugado> convertAlugado()
+        {
+            List<Alugado> list = new List<Alugado>();
+            if (csvAlugado.Alugado.Count < 1)
+            {
+                return list;
+            }
+            foreach (var item in csvAlugado.Alugado)
+            {
+                list.Add(new Alugado(Int32.Parse(item[0]), item[1], DateTime.ParseExact(item[2], "O", CultureInfo.InvariantCulture), DateTime.ParseExact(item[3], "O", CultureInfo.InvariantCulture), item[4]));
+            }
+            return list;
+        }
+
+        //csvManutencao;
+        public static List<Manutencao> convertManutencao()
+        {
+            List<Manutencao> list = new List<Manutencao>();
+            if (csvManutencao.Manutencao.Count < 1)
+            {
+                return list;
+            }
+            foreach (var item in csvManutencao.Manutencao)
+            {
+                list.Add(new Manutencao(Int32.Parse(item[0]), item[1], DateTime.ParseExact(item[2], "O", CultureInfo.InvariantCulture), DateTime.ParseExact(item[3], "O", CultureInfo.InvariantCulture), item[4]));
+            }
+            return list;
+        }
+
         //csvReservado;
+        public static List<Reservado> convertReservado()
+        {
+            List<Reservado> list = new List<Reservado>();
+            if (csvReservado.Reservado.Count < 1)
+            {
+                return list;
+            }
+            foreach (var item in csvReservado.Reservado)
+            {
+                list.Add(new Reservado(Int32.Parse(item[0]), item[1], item[2]));
+            }
+            return list;
+        }
+
         //csvHistmanutencao;
         //csvHistalugado;
         //string strDate = now1.ToString(FMT);
@@ -209,6 +252,51 @@ namespace Rent_a_Car.DAL
             csvCamioneta.Camioneta = list;
         }
 
+        public static void storeAlugado()
+        {
+            List<List<string>> list = new List<List<string>>();
+            foreach (var item in Empresa.AlugadoList)
+            {
+                List<string> line = new List<string>();
+                line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
+                line.Add(Empresa.ConvertObj(item).DataInicio.ToString(CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).DataPrevistaFim.ToString(CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).Contacto);
+                list.Add(line);
+            }
+            csvAlugado.Alugado = list;
+        }
+
+        public static void storeManutencao()
+        {
+            List<List<string>> list = new List<List<string>>();
+            foreach (var item in Empresa.ManutencaoList)
+            {
+                List<string> line = new List<string>();
+                line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
+                line.Add(Empresa.ConvertObj(item).DataInicio.ToString(CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).DataPrevistaFim.ToString(CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).Problema);
+                list.Add(line);
+            }
+            csvManutencao.Manutencao = list;
+        }
+
+        public static void storeReservado()
+        {
+            List<List<string>> list = new List<List<string>>();
+            foreach (var item in Empresa.ReservadoList)
+            {
+                List<string> line = new List<string>();
+                line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
+                line.Add(Empresa.ConvertObj(item).Contacto);
+                list.Add(line);
+            }
+            csvReservado.Reservado = list;
+        }
+
+
+        //string strDate = now1.ToString(FMT);
         #endregion
 
     }
