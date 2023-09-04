@@ -144,7 +144,7 @@ namespace Rent_a_Car.Components.Forms
                     camiao.Marca = marca.textBox.Text;
                     camiao.Modelo = modelo.textBox.Text;
                     camiao.Cor = cor.textBox.Text;
-                    camiao.Matricula = matricula.textBox.Text;
+                    camiao.Matricula = matricula.textBox.Text; //to be replaced by validation below
                     try
                     {
                         //validar formato matricula
@@ -195,9 +195,11 @@ namespace Rent_a_Car.Components.Forms
                             c.Marca = marca.textBox.Text;
                             c.Modelo = modelo.textBox.Text;
                             c.Cor = cor.textBox.Text;
+                            c.Matricula = matricula.textBox.Text; //to be replaced by validation below
                             try
                             {
                                 //validar formato matricula
+                                /* testing needed
                                 if (Regex.IsMatch(matricula.textBox.Text, @"^\d{2}-[A-Za-z]{2}-\d{2}$"))
                                 {
                                     c.Matricula = matricula.textBox.Text;
@@ -206,7 +208,7 @@ namespace Rent_a_Car.Components.Forms
                                 {
                                     throw new FormatException("Formato da matricula deve ser: NN-LL-NN (N: numero; L: letra");
                                 }
-
+                                */
 
 
                                 //validar se é numero e se é um ano valido 
