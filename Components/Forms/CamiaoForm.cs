@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
 using Emp = Rent_a_Car.Classes.Empresa;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Rent_a_Car.Components.Forms
 {
@@ -136,38 +137,54 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
+                static void validateEmptyString(string prop, string textBoxText)
+                {
+                    try
+                    {
+                        if (prop.Length > 0)
+                        {
+                            prop = textBoxText;
+                        }
+                        else
+                        {
+                            throw new Exception("string vazia!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                }
+
                 MessageBox.Show("Submit logic" + id);
                 //validate inputs
                 if (id == -1)
                 {
                     camiao.Id = 500; //to calculate
-                    camiao.Marca = marca.textBox.Text;
-                    camiao.Modelo = modelo.textBox.Text;
-                    camiao.Cor = cor.textBox.Text;
-                    camiao.Matricula = matricula.textBox.Text; //to be replaced by validation below
+                    validateEmptyString(camiao.Marca, matricula.textBox.Text);
+                    validateEmptyString(camiao.Modelo, modelo.textBox.Text);
+                    validateEmptyString(camiao.Cor, cor.textBox.Text);
+                    validateEmptyString(camiao.Matricula, matricula.textBox.Text);
                     try
                     {
-                        //validar formato matricula
-                        /* testing needed
-                        if (Regex.IsMatch(matricula.textBox.Text, @"^\d{2}-[A-Za-z]{2}-\d{2}$"))
+
+
+                        //validar se é numero e se é um ano valido
+                        int anoParsed = Int32.Parse(ano.textBox.Text);
+                        if (anoParsed.ToString() == ano.textBox.Text)
                         {
-                            camiao.Matricula = matricula.textBox.Text;
+                            if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
+                            {
+                                camiao.Ano = anoParsed;
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                            }
                         }
                         else
                         {
-                            throw new FormatException("Formato da matricula deve ser: NN-LL-NN (N: numero; L: letra");
-                        }
-                        */
-
-
-                        //validar se é numero e se é um ano valido 
-                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
-                        {
-                            camiao.Ano = Int32.Parse(ano.textBox.Text);
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                            throw new Exception("O ano tem de ser um número inteiro!");
                         }
 
 
@@ -195,7 +212,6 @@ namespace Rent_a_Car.Components.Forms
                     {
                         MessageBox.Show("Erro: " + ex.Message);
                     }
-                    camiao.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
                     camiao.ValorDia = float.Parse(valorDia.textBox.Text);
                     camiao.MaxWeight = float.Parse(maxWeight.textBox.Text);
                     Emp.AddCamiao(camiao);
@@ -209,35 +225,29 @@ namespace Rent_a_Car.Components.Forms
                         Camiao c = Emp.ConvertObj(Emp.CamioesList[i]);
                         if (c.Id == id)
                         {
-                            c.Marca = marca.textBox.Text;
-                            c.Modelo = modelo.textBox.Text;
-                            c.Cor = cor.textBox.Text;
-                            c.Matricula = matricula.textBox.Text; //to be replaced by validation below
+                            validateEmptyString(c.Marca, marca.textBox.Text);
+                            validateEmptyString(c.Modelo, modelo.textBox.Text);
+                            validateEmptyString(c.Cor, cor.textBox.Text);
+                            validateEmptyString(c.Matricula, matricula.textBox.Text);
                             try
                             {
-                                //validar formato matricula
-                                /* testing needed
-                                if (Regex.IsMatch(matricula.textBox.Text, @"^\d{2}-[A-Za-z]{2}-\d{2}$"))
-                                {
-                                    c.Matricula = matricula.textBox.Text;
-                                }
-                                else
-                                {
-                                    throw new FormatException("Formato da matricula deve ser: NN-LL-NN (N: numero; L: letra");
-                                }
-                                */
-
-
                                 //validar se é numero e se é um ano valido 
-                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                                int anoParsed = Int32.Parse(ano.textBox.Text);
+                                if (anoParsed.ToString() == ano.textBox.Text)
                                 {
-                                    c.Ano = Int32.Parse(ano.textBox.Text);
+                                    if (anoParsed >= 1980 && anoParsed <= 2023)
+                                    {
+                                        c.Ano = anoParsed;
+                                    }
+                                    else
+                                    {
+                                        throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                                    }
                                 }
                                 else
                                 {
-                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                                    throw new Exception("O ano tem de ser um número inteiro!");
                                 }
-
 
 
                                 //validar se é numero inteiro
