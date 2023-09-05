@@ -28,7 +28,7 @@ namespace Rent_a_Car.DAL
         {
             var sw = new StreamWriter(@"Alugado.csv");
             int listLength = Alugado.Count;
-            sw.WriteLine("idVeiculo,dataInicio,dataPrevistaFim,contacto");
+            sw.WriteLine("idVeiculo,tipoVeiculo,dataInicio,dataPrevistaFim,contacto");
             foreach (var item in Alugado)
             {
                 int itemLength = item.Count;
