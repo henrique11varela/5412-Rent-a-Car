@@ -202,7 +202,7 @@ namespace Rent_a_Car.Components.Forms
                         int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
                         if (quantRodas.textBox.Text == quantRodasParsed.ToString())
                         {
-                            carro.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                            carro.QuantRodas = quantRodasParsed;
                         }
                         else
                         {
@@ -215,7 +215,7 @@ namespace Rent_a_Car.Components.Forms
                         float valorDiaParsed = float.Parse(valorDia.textBox.Text);
                         if(valorDiaParsed.ToString() == valorDia.textBox.Text)
                         {
-                            carro.ValorDia = float.Parse(valorDia.textBox.Text);
+                            carro.ValorDia = valorDiaParsed;
                         }
                         else
                         {
@@ -285,7 +285,7 @@ namespace Rent_a_Car.Components.Forms
                                 int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
                                 if (quantRodas.textBox.Text == quantRodasParsed.ToString())
                                 {
-                                    c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                                    c.QuantRodas = quantRodasParsed;
                                 }
                                 else
                                 {
@@ -298,7 +298,7 @@ namespace Rent_a_Car.Components.Forms
                                 int quantDoorsParsed = Int32.Parse(quantDoors.textBox.Text);
                                 if (quantDoors.textBox.Text == quantDoorsParsed.ToString())
                                 {
-                                    c.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                                    c.QuantDoors = quantDoorsParsed;
                                 }
                                 else
                                 {
@@ -311,7 +311,7 @@ namespace Rent_a_Car.Components.Forms
                                 float valorDiaParsed = float.Parse(valorDia.textBox.Text);
                                 if (valorDiaParsed.ToString() == valorDia.textBox.Text)
                                 {
-                                    c.ValorDia = float.Parse(valorDia.textBox.Text);
+                                    c.ValorDia = valorDiaParsed;
                                 }
                                 else
                                 {
