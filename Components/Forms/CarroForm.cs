@@ -177,7 +177,7 @@ namespace Rent_a_Car.Components.Forms
                     validateEmptyString(carro.Matricula, matricula.textBox.Text);
                     try
                     {
-                        //validar se é numero e se é um ano valido 
+                        //validar se ano é numero e se é um ano valido 
                         int anoParsed = Int32.Parse(ano.textBox.Text);
                         if (anoParsed.ToString() == ano.textBox.Text)
                         {
@@ -198,7 +198,7 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                        //validar se é numero inteiro
+                        //validar se quantRodas é numero inteiro
                         int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
                         if (quantRodas.textBox.Text == quantRodasParsed.ToString())
                         {
@@ -207,6 +207,19 @@ namespace Rent_a_Car.Components.Forms
                         else
                         {
                             throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        }
+
+
+
+                        //validar se valorDia é um valor decimal
+                        float valorDiaParsed = float.Parse(valorDia.textBox.Text);
+                        if(valorDiaParsed.ToString() == valorDia.textBox.Text)
+                        {
+                            carro.ValorDia = float.Parse(valorDia.textBox.Text);
+                        }
+                        else
+                        {
+                            throw new Exception("O valor tem de ser número decimal!");
                         }
                     }
                     catch (FormatException ex)
@@ -219,10 +232,9 @@ namespace Rent_a_Car.Components.Forms
                     }
 
 
-                    carro.ValorDia = float.Parse(valorDia.textBox.Text);
-                    carro.QuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                    
 
-                    //validar se isManual é um input bool
+                    //validar input da checkbox
                     if (isManual.checkBox.Checked)
                     {
                         carro.IsManual = true;
@@ -249,8 +261,7 @@ namespace Rent_a_Car.Components.Forms
                             validateEmptyString(c.Matricula, matricula.textBox.Text);
                             try
                             {
-
-                                //validar se é numero e se é um ano valido 
+                                //validar se ano é numero e se é um ano valido 
                                 int anoParsed = Int32.Parse(ano.textBox.Text);
                                 if (anoParsed.ToString() == ano.textBox.Text)
                                 {
@@ -270,7 +281,7 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                                //validar se é numero inteiro
+                                //validar se quantRodas é numero inteiro
                                 int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
                                 if (quantRodas.textBox.Text == quantRodasParsed.ToString())
                                 {
@@ -283,7 +294,7 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                                //validar se é numero inteiro
+                                //validar se quantDoors é numero inteiro
                                 int quantDoorsParsed = Int32.Parse(quantDoors.textBox.Text);
                                 if (quantDoors.textBox.Text == quantDoorsParsed.ToString())
                                 {
@@ -292,6 +303,19 @@ namespace Rent_a_Car.Components.Forms
                                 else
                                 {
                                     throw new Exception("A quantidade de portas tem de ser um número inteiro");
+                                }
+
+
+
+                                //validar se valorDia é um valor decimal
+                                float valorDiaParsed = float.Parse(valorDia.textBox.Text);
+                                if (valorDiaParsed.ToString() == valorDia.textBox.Text)
+                                {
+                                    c.ValorDia = float.Parse(valorDia.textBox.Text);
+                                }
+                                else
+                                {
+                                    throw new Exception("O valor tem de ser número decimal!");
                                 }
                             }
                             catch (FormatException ex)
@@ -302,7 +326,10 @@ namespace Rent_a_Car.Components.Forms
                             {
                                 MessageBox.Show("Erro: " + ex.Message);
                             }
-                            c.ValorDia = float.Parse(valorDia.textBox.Text);
+
+
+
+
                             //validar se isManual é um input bool
                             if (isManual.checkBox.Checked)
                             {
