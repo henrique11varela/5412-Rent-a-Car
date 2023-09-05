@@ -70,6 +70,10 @@ namespace Rent_a_Car.Classes
             this.nome = nome;
             this.contacto = contacto;
         }
+
+        public Cliente(Cliente c) : this(c.Id, c.Nome, c.Contacto)
+        {
+        }
         #endregion
 
     }

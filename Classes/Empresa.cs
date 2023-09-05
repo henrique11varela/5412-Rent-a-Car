@@ -228,6 +228,21 @@ namespace Rent_a_Car.Classes
         {
             reservados.Remove(r);
         }
+
+        public static void AddCliente(int id, string nome, string contacto)
+        {
+            AddCliente(new Cliente(id, nome, contacto));
+        }
+
+        public static void AddCliente(Cliente c)
+        {
+            clientes.Add(new Cliente(c));
+        }
+
+        public static void RemoveCliente(Cliente c)
+        {
+            clientes.Remove(c);
+        }
         #endregion
 
         #region methods

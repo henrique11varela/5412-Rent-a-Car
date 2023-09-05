@@ -54,18 +54,18 @@ namespace Rent_a_Car
             Views.Add(vehicleListView);
 
             //Page 2
-            Button tab = CreateTabElement("States List", tabWidth * 1, tabWidth, 1);
-            Tabs.Add(tab);
+            Button statesListTab = CreateTabElement("States List", tabWidth * 1, tabWidth, 1);
+            Tabs.Add(statesListTab);
             Panel statesList = CreateViewElement();
             statesList.Controls.Add(new StatesList());
             Views.Add(statesList);
 
             //Page 3
-            Button tab2 = CreateTabElement("button" + Tabs.Count, tabWidth * 2, tabWidth, 2);
-            Tabs.Add(tab2);
-            Panel view2 = CreateViewElement();
-            //view2.Controls.Add(new VehicleList());
-            Views.Add(view2);
+            Button clienteListTab = CreateTabElement("Client List", tabWidth * 2, tabWidth, 2);
+            Tabs.Add(clienteListTab);
+            Panel clienteList = CreateViewElement();
+            clienteList.Controls.Add(new ClienteList());
+            Views.Add(clienteList);
 
             for (int i = 0; i < number_of_views; i++)
             {

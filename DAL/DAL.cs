@@ -326,7 +326,7 @@ namespace Rent_a_Car.DAL
                 line.Add(Empresa.ConvertObj(item).Contacto);
                 list.Add(line);
             }
-            csvReservado.Reservado = list;
+            csvCliente.Clientes = list;
         }
 
 
