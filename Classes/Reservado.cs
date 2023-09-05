@@ -64,6 +64,9 @@ namespace Rent_a_Car.Classes
             this.tipoVeiculo = tipoVeiculo;
             this.contacto = contacto;
         }
+        public Reservado(Reservado r) : this(r.IdVeiculo, r.TipoVeiculo, r.Contacto)
+        {
+        }
         #endregion
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using Rent_a_Car.Views;
 using Rent_a_Car.DAL;
+using System.Diagnostics.Contracts;
 
 namespace Rent_a_Car.Classes
 {
@@ -179,6 +180,53 @@ namespace Rent_a_Car.Classes
         public static void RemoveMota(Mota m)
         {
             motas.Remove(m);
+        }
+
+        //OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        public static void AddAlugado(int idVeiculo, string tipoVeiculo, DateTime dataInicio, DateTime dataPrevistaFim, string contacto)
+        {
+            AddAlugado(new Alugado(idVeiculo, tipoVeiculo, dataInicio, dataPrevistaFim, contacto));
+        }
+
+        public static void AddAlugado(Alugado a)
+        {
+            alugados.Add(new Alugado(a));
+        }
+
+        public static void RemoveAlugado(Alugado a)
+        {
+            alugados.Remove(a);
+        }
+
+        public static void AddManutencao(int idVeiculo, string tipoVeiculo, DateTime dataInicio, DateTime dataPrevistaFim, string problema)
+        {
+            AddManutencao(new Manutencao(idVeiculo, tipoVeiculo, dataInicio, dataPrevistaFim, problema));
+        }
+
+        public static void AddManutencao(Manutencao m)
+        {
+            manutencao.Add(new Manutencao(m));
+        }
+
+        public static void RemoveManutencao(Manutencao m)
+        {
+            manutencao.Remove(m);
+        }
+
+        //OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        public static void AddReservado(int idVeiculo, string tipoVeiculo, string contacto)
+        {
+            AddReservado(new Reservado(idVeiculo, tipoVeiculo, contacto));
+        }
+
+        public static void AddReservado(Reservado r)
+        {
+            reservados.Add(new Reservado(r));
+        }
+
+        public static void RemoveReservado(Reservado r)
+        {
+            reservados.Remove(r);
         }
         #endregion
 

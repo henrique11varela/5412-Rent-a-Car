@@ -92,6 +92,9 @@ namespace Rent_a_Car.Classes
             this.dataPrevistaFim = dataPrevistaFim;
             this.problema = problema;
         }
+        public Manutencao(Manutencao m) : this(m.IdVeiculo, m.TipoVeiculo, m.DataInicio, m.DataPrevistaFim, m.Problema)
+        {
+        }
         #endregion
 
     }

@@ -91,6 +91,9 @@ namespace Rent_a_Car.Classes
             this.dataPrevistaFim = dataPrevistaFim;
             this.contacto = contacto;
         }
+        public Alugado(Alugado a) : this(a.IdVeiculo, a.TipoVeiculo, a.DataInicio, a.DataPrevistaFim, a.Contacto)
+        {
+        }
         #endregion
 
     }

@@ -9,6 +9,7 @@ using Views = Rent_a_Car.Views;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 using CSV = Rent_a_Car.DAL.DAL;
+using Rent_a_Car.Components.Tables;
 
 namespace Rent_a_Car
 {
@@ -53,11 +54,11 @@ namespace Rent_a_Car
             Views.Add(vehicleListView);
 
             //Page 2
-            Button tab = CreateTabElement("button" + Tabs.Count, tabWidth * 1, tabWidth, 1);
+            Button tab = CreateTabElement("States List", tabWidth * 1, tabWidth, 1);
             Tabs.Add(tab);
-            Panel view = CreateViewElement();
-            //view.Controls.Add(new VehicleList());
-            Views.Add(view);
+            Panel statesList = CreateViewElement();
+            statesList.Controls.Add(new StatesList());
+            Views.Add(statesList);
 
             //Page 3
             Button tab2 = CreateTabElement("button" + Tabs.Count, tabWidth * 2, tabWidth, 2);
@@ -75,7 +76,7 @@ namespace Rent_a_Car
             //Example of change of view
             //MaintenanceList.Setup(Tabs[1], Views[1]);
             //HistoryList.Setup(Tabs[2], Views[2]);
-
+            
             InitializeComponent();
         }
 
