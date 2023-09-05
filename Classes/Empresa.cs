@@ -16,6 +16,9 @@ namespace Rent_a_Car.Classes
         private static List<Camioneta> camionetas = new List<Camioneta>();
         private static List<Carro> carros = new List<Carro>();
         private static List<Mota> motas = new List<Mota>();
+        private static List<Alugado> alugados = new List<Alugado>();
+        private static List<Manutencao> manutencao = new List<Manutencao>();
+        private static List<Reservado> reservados = new List<Reservado>();
         #endregion
 
         #region getset
@@ -71,7 +74,36 @@ namespace Rent_a_Car.Classes
                 return arrayList;
             }
         }
-        
+
+        public static ArrayList AlugadoList
+        { 
+            get {
+                ArrayList arrayList = new ArrayList();
+                arrayList.AddRange(alugados);
+                return arrayList;
+            }
+        }
+
+        public static ArrayList ManutencaoList
+        {
+            get
+            {
+                ArrayList arrayList = new ArrayList();
+                arrayList.AddRange(manutencao);
+                return arrayList;
+            }
+        }
+
+        public static ArrayList ReservadoList
+        {
+            get
+            {
+                ArrayList arrayList = new ArrayList();
+                arrayList.AddRange(reservados);
+                return arrayList;
+            }
+        }
+
         //Add Carro
         public static void AddCarro(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantDoors, bool isManual)
         {
@@ -151,6 +183,9 @@ namespace Rent_a_Car.Classes
             motas = DAL.DAL.convertMota();
             camioes = DAL.DAL.convertCamiao();
             camionetas = DAL.DAL.convertCamioneta();
+            alugados = DAL.DAL.convertAlugado();
+            manutencao = DAL.DAL.convertManutencao();
+            reservados = DAL.DAL.convertReservado();
         }
 
         #endregion
