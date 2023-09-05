@@ -178,14 +178,23 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         //validar se é numero e se é um ano valido 
-                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= DateTime.Now.Year)
+                        int anoParsed = Int32.Parse(ano.textBox.Text);
+                        if (anoParsed.ToString() == ano.textBox.Text)
                         {
-                            carro.Ano = Int32.Parse(ano.textBox.Text);
+                            if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
+                            {
+                                carro.Ano = anoParsed;
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                            }
                         }
                         else
                         {
-                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                            throw new Exception("O ano tem de ser um número inteiro!");
                         }
+
 
 
 
@@ -242,13 +251,21 @@ namespace Rent_a_Car.Components.Forms
                             {
 
                                 //validar se é numero e se é um ano valido 
-                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= DateTime.Now.Year)
+                                int anoParsed = Int32.Parse(ano.textBox.Text);
+                                if (anoParsed.ToString() == ano.textBox.Text)
                                 {
-                                    c.Ano = Int32.Parse(ano.textBox.Text);
+                                    if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
+                                    {
+                                        c.Ano = anoParsed;
+                                    }
+                                    else
+                                    {
+                                        throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                                    }
                                 }
                                 else
                                 {
-                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                                    throw new Exception("O ano tem de ser um número inteiro!");
                                 }
 
 
