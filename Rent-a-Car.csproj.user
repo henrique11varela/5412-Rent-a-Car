@@ -7,6 +7,9 @@
     <Compile Update="Components\Cells\DetailBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Cells\InputCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Details\CamiaoDetails.cs">
       <SubType>Component</SubType>
     </Compile>

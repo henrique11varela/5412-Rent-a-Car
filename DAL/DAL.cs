@@ -24,6 +24,7 @@ namespace Rent_a_Car.DAL
             csvReservado.read();
             csvHistmanutencao.read();
             csvHistalugado.read();
+            csvCliente.read();
         }
         public static void writeAll()
         {
@@ -36,6 +37,7 @@ namespace Rent_a_Car.DAL
             csvReservado.write();
             csvHistmanutencao.write();
             csvHistalugado.write();
+            csvCliente.write();
         }
         #endregion
 
@@ -159,6 +161,21 @@ namespace Rent_a_Car.DAL
             foreach (var item in csvReservado.Reservado)
             {
                 list.Add(new Reservado(Int32.Parse(item[0]), item[1], item[2]));
+            }
+            return list;
+        }
+
+        //csvCliente;
+        public static List<Cliente> convertCliente()
+        {
+            List<Cliente> list = new List<Cliente>();
+            if (csvCliente.Clientes.Count < 1)
+            {
+                return list;
+            }
+            foreach (var item in csvCliente.Clientes)
+            {
+                list.Add(new Cliente(Int32.Parse(item[0]), item[1], item[2]));
             }
             return list;
         }
@@ -289,6 +306,20 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
+                line.Add(Empresa.ConvertObj(item).Contacto);
+                list.Add(line);
+            }
+            csvReservado.Reservado = list;
+        }
+
+        public static void storeCliente()
+        {
+            List<List<string>> list = new List<List<string>>();
+            foreach (var item in Empresa.ClienteList)
+            {
+                List<string> line = new List<string>();
+                line.Add(Empresa.ConvertObj(item).Id.ToString());
+                line.Add(Empresa.ConvertObj(item).Nome);
                 line.Add(Empresa.ConvertObj(item).Contacto);
                 list.Add(line);
             }

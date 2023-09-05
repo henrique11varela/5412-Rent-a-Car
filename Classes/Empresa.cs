@@ -19,6 +19,7 @@ namespace Rent_a_Car.Classes
         private static List<Alugado> alugados = new List<Alugado>();
         private static List<Manutencao> manutencao = new List<Manutencao>();
         private static List<Reservado> reservados = new List<Reservado>();
+        private static List<Cliente> clientes = new List<Cliente>();
         #endregion
 
         #region getset
@@ -100,6 +101,16 @@ namespace Rent_a_Car.Classes
             {
                 ArrayList arrayList = new ArrayList();
                 arrayList.AddRange(reservados);
+                return arrayList;
+            }
+        }
+
+        public static ArrayList ClienteList
+        {
+            get
+            {
+                ArrayList arrayList = new ArrayList();
+                arrayList.AddRange(clientes);
                 return arrayList;
             }
         }
@@ -186,6 +197,7 @@ namespace Rent_a_Car.Classes
             alugados = DAL.DAL.convertAlugado();
             manutencao = DAL.DAL.convertManutencao();
             reservados = DAL.DAL.convertReservado();
+            clientes = DAL.DAL.convertCliente();
         }
 
         #endregion
