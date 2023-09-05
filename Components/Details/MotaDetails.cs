@@ -76,17 +76,18 @@ namespace Rent_a_Car.Components.Details
             //isManual.textBox.Text = carro.IsManual.ToString();
 
 
-            FlatButton Select = new FlatButton();
-            Select.Text = "Select";
-            this.Controls.Add(Select);
-            Select.Location = new Point(25, this.Height - Select.Height - 25);
-            Select.Size = new Size(this.Width / 2 - 2 * 25, Select.Height);
-            Select.BGC = ts.dark;
-            Select.BGC_HOVER = ts.dark_emphasis;
-            Select.ForeColor = ts.light;
-            void selectClick(object sender, EventArgs e)
+            //Reservar Button
+            FlatButton Reservar = new FlatButton();
+            Reservar.Text = "Reservar";
+            this.Controls.Add(Reservar);
+            Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
+            Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
+            Reservar.BGC = ts.dark;
+            Reservar.BGC_HOVER = ts.dark_emphasis;
+            Reservar.ForeColor = ts.light;
+            void reservarClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Select logic" + id);
+                MessageBox.Show("Reservar logic" + id);
                 //validate inputs
 
                 //DAL.DAL.storeCarro();
@@ -94,8 +95,51 @@ namespace Rent_a_Car.Components.Details
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }
-            Select.Click += selectClick;
+            Reservar.Click += reservarClick;
 
+            //Alugar Button
+            FlatButton Alugar = new FlatButton();
+            Alugar.Text = "Alugar";
+            this.Controls.Add(Alugar);
+            Alugar.Location = new Point(25, this.Height - Alugar.Height * 2 - 25 * 2);
+            Alugar.Size = new Size(this.Width / 2 - 2 * 25, Alugar.Height);
+            Alugar.BGC = ts.dark;
+            Alugar.BGC_HOVER = ts.dark_emphasis;
+            Alugar.ForeColor = ts.light;
+            void alugarClick(object sender, EventArgs e)
+            {
+                MessageBox.Show("Alugar logic" + id);
+                //validate inputs
+
+                //DAL.DAL.storeCarro();
+                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                var parent = this.Parent;
+                parent.Controls.Remove(this);
+            }
+            Alugar.Click += alugarClick;
+
+            //Manutencao Button
+            FlatButton Manutencao = new FlatButton();
+            Manutencao.Text = "Manutencao";
+            this.Controls.Add(Manutencao);
+            Manutencao.Location = new Point(this.Width / 2 + 25, this.Height - Manutencao.Height * 2 - 25 * 2);
+            Manutencao.Size = new Size(this.Width / 2 - 2 * 25, Manutencao.Height);
+            Manutencao.BGC = ts.dark;
+            Manutencao.BGC_HOVER = ts.dark_emphasis;
+            Manutencao.ForeColor = ts.light;
+            void manutencaoClick(object sender, EventArgs e)
+            {
+                MessageBox.Show("Manutencao logic" + id);
+                //validate inputs
+
+                //DAL.DAL.storeCarro();
+                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                var parent = this.Parent;
+                parent.Controls.Remove(this);
+            }
+            Manutencao.Click += manutencaoClick;
+
+            //Cancel Button
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
             this.Controls.Add(Cancel);
