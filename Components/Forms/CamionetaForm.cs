@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
 using Emp = Rent_a_Car.Classes.Empresa;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Rent_a_Car.Components.Forms
 {
@@ -142,33 +143,96 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
+                static void validateEmptyString(string prop, string textBoxText)
+                {
+                    try
+                    {
+                        if (prop.Length > 0)
+                        {
+                            prop = textBoxText;
+                        }
+                        else
+                        {
+                            throw new Exception("string vazia!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+                }
+
                 MessageBox.Show("Submit logic" + id);
                 //validate inputs
                 if (id == -1)
                 {
-                    camioneta.Id = 500; //to calculate
-                    camioneta.Marca = marca.textBox.Text;
-                    camioneta.Modelo = modelo.textBox.Text;
-                    camioneta.Cor = cor.textBox.Text;
-                    camioneta.Matricula = matricula.textBox.Text;
+                    validateEmptyString(camioneta.Marca, matricula.textBox.Text);
+                    validateEmptyString(camioneta.Modelo, modelo.textBox.Text);
+                    validateEmptyString(camioneta.Cor, cor.textBox.Text);
+                    validateEmptyString(camioneta.Matricula, matricula.textBox.Text);
                     try
                     {
-                        //validar se é numero e se é um ano valido 
-                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                        //validar se ano é numero e se é um ano valido 
+                        int anoParsed = Int32.Parse(ano.textBox.Text);
+                        if (anoParsed.ToString() == ano.textBox.Text)
                         {
-                            camioneta.Ano = Int32.Parse(ano.textBox.Text);
+                            if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
+                            {
+                                camioneta.Ano = anoParsed;
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                            }
                         }
                         else
                         {
-                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                            throw new Exception("O ano tem de ser um número inteiro!");
                         }
 
 
-                        //validar se é numero inteiro
+                        //validar se quantRodas é numero inteiro
                         int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
                         if (quantRodas.textBox.Text == quantRodasParsed.ToString())
                         {
-                            camioneta.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                            camioneta.QuantRodas = quantRodasParsed;
+                        }
+                        else
+                        {
+                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        }
+
+
+
+                        //validar se valorDia é um valor decimal
+                        float valorDiaParsed = float.Parse(valorDia.textBox.Text);
+                        if (valorDiaParsed.ToString() == valorDia.textBox.Text)
+                        {
+                            camioneta.ValorDia = valorDiaParsed;
+                        }
+                        else
+                        {
+                            throw new Exception("O valor tem de ser número decimal!");
+                        }
+
+
+                        //validar se MaxPassengers é numero inteiro
+                        int maxPassengersParsed = Int32.Parse(maxPassengers.textBox.Text);
+                        if (maxPassengers.textBox.Text == maxPassengersParsed.ToString())
+                        {
+                            camioneta.MaxPassengers = maxPassengersParsed;
+                        }
+                        else
+                        {
+                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        }
+
+
+                        //validar se quantAxis é numero inteiro
+                        int quantAxisParsed = Int32.Parse(quantAxis.textBox.Text);
+                        if (quantAxis.textBox.Text == quantAxis.ToString())
+                        {
+                            camioneta.QuantAxis = quantAxisParsed;
                         }
                         else
                         {
@@ -187,10 +251,6 @@ namespace Rent_a_Car.Components.Forms
                     {
                         MessageBox.Show("Erro: " + ex.Message);
                     }
-                    camioneta.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                    camioneta.ValorDia = float.Parse(valorDia.textBox.Text);
-                    camioneta.MaxPassengers = Int32.Parse(maxPassengers.textBox.Text);
-                    camioneta.QuantAxis = Int32.Parse(quantAxis.textBox.Text);
                     Emp.AddCamioneta(camioneta);
                 }
                 else
@@ -202,29 +262,73 @@ namespace Rent_a_Car.Components.Forms
                         Camioneta c = Emp.ConvertObj(Emp.CamionetasList[i]);
                         if (c.Id == id)
                         {
-                            c.Marca = marca.textBox.Text;
-                            c.Modelo = modelo.textBox.Text;
-                            c.Cor = cor.textBox.Text;
-                            c.Matricula = matricula.textBox.Text;
-
+                            validateEmptyString(camioneta.Marca, matricula.textBox.Text);
+                            validateEmptyString(camioneta.Modelo, modelo.textBox.Text);
+                            validateEmptyString(camioneta.Cor, cor.textBox.Text);
+                            validateEmptyString(camioneta.Matricula, matricula.textBox.Text);
                             try
                             {
-                                //validar se é numero e se é um ano valido 
-                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
+                                //validar se ano é numero e se é um ano valido 
+                                int anoParsed = Int32.Parse(ano.textBox.Text);
+                                if (anoParsed.ToString() == ano.textBox.Text)
                                 {
-                                    c.Ano = Int32.Parse(ano.textBox.Text);
+                                    if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
+                                    {
+                                        c.Ano = anoParsed;
+                                    }
+                                    else
+                                    {
+                                        throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                                    }
                                 }
                                 else
                                 {
-                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
+                                    throw new Exception("O ano tem de ser um número inteiro!");
                                 }
 
 
-                                //validar se é numero inteiro
+                                //validar se quantRodas é numero inteiro
                                 int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
                                 if (quantRodas.textBox.Text == quantRodasParsed.ToString())
                                 {
-                                    c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                                    c.QuantRodas = quantRodasParsed;
+                                }
+                                else
+                                {
+                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                                }
+
+
+
+                                //validar se valorDia é um valor decimal
+                                float valorDiaParsed = float.Parse(valorDia.textBox.Text);
+                                if (valorDiaParsed.ToString() == valorDia.textBox.Text)
+                                {
+                                    c.ValorDia = valorDiaParsed;
+                                }
+                                else
+                                {
+                                    throw new Exception("O valor tem de ser número decimal!");
+                                }
+
+
+                                //validar se MaxPassengers é numero inteiro
+                                int maxPassengersParsed = Int32.Parse(maxPassengers.textBox.Text);
+                                if (maxPassengers.textBox.Text == maxPassengersParsed.ToString())
+                                {
+                                    c.MaxPassengers = maxPassengersParsed;
+                                }
+                                else
+                                {
+                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                                }
+
+
+                                //validar se quantAxis é numero inteiro
+                                int quantAxisParsed = Int32.Parse(quantAxis.textBox.Text);
+                                if (quantAxis.textBox.Text == quantAxis.ToString())
+                                {
+                                    c.QuantAxis = quantAxisParsed;
                                 }
                                 else
                                 {
@@ -243,9 +347,6 @@ namespace Rent_a_Car.Components.Forms
                             {
                                 MessageBox.Show("Erro: " + ex.Message);
                             }
-                            c.ValorDia = float.Parse(valorDia.textBox.Text);
-                            c.MaxPassengers = Int32.Parse(maxPassengers.textBox.Text);
-                            c.QuantAxis = Int32.Parse(quantAxis.textBox.Text);
                             break;
                         }
                     }
