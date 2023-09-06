@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
 using Emp = Rent_a_Car.Classes.Empresa;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Rent_a_Car.Components.Forms
 {
@@ -94,13 +95,13 @@ namespace Rent_a_Car.Components.Forms
             ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
 
             InputBox quantRodas = new InputBox();
-            quantRodas.label.Text = "quantRodas";
+            quantRodas.label.Text = "Quantidade de Rodas";
             this.Controls.Add(quantRodas);
             quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
             quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
 
             InputBox valorDia = new InputBox();
-            valorDia.label.Text = "valorDia";
+            valorDia.label.Text = "Valor Dia";
             this.Controls.Add(valorDia);
             valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
             valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
@@ -108,7 +109,7 @@ namespace Rent_a_Car.Components.Forms
             //specific inputs
 
             InputBox cubicCapacity = new InputBox();
-            cubicCapacity.label.Text = "cubicCapacity";
+            cubicCapacity.label.Text = "Capacidade Cúbica";
             this.Controls.Add(cubicCapacity);
             cubicCapacity.Size = new Size(this.Width / 2 - (25 * 2), cubicCapacity.Height);
             cubicCapacity.Location = new Point(this.Width / 2 + 25, 25 + (25 + cubicCapacity.Height) * 3);
@@ -135,66 +136,137 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
+                string tempMarca;
+                string tempModelo;
+                string tempCor;
+                string tempMatricula;
+                int tempAno;
+                int tempQuantRodas;
+                float tempValorDia;
+                int tempCubicCapacity;
+
+                try
+                {
+                    //validar se marca não é string vazia
+                    tempMarca = marca.textBox.Text;
+                    if (tempMarca.Length < 1)
+                    {
+                        throw new Exception("Campo Marca não pode estar vazio!");
+                    }
+
+                    //validar se modelo não é string vazia
+                    tempModelo = modelo.textBox.Text;
+                    if (tempModelo.Length < 1)
+                    {
+                        throw new Exception("Campo Modelo não pode estar vazio!");
+                    }
+
+                    //validar se cor não é string vazia
+                    tempCor = cor.textBox.Text;
+                    if (tempCor.Length < 1)
+                    {
+                        throw new Exception("Campo Cor não pode estar vazio!");
+                    }
+
+                    //validar se matricula não é string vazia
+                    tempMatricula = matricula.textBox.Text;
+                    if (tempMatricula.Length < 1)
+                    {
+                        throw new Exception("Campo Matricula não pode estar vazio!");
+                    }
+
+
+
+
+                    //validar se ano é numero e se é um ano valido
+                    if (ano.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Ano não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempAno = Int32.Parse(ano.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O ano tem de ser um número inteiro!");
+                    }
+
+                    if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
+                    {
+                        throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                    }
+
+
+
+
+                    //validar se quantRodas é numero inteiro
+                    if (quantRodas.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O número de rodas tem de ser um número inteiro!");
+                    }
+
+
+                    //validar se valorDia é um valor decimal
+                    if (valorDia.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Valor Dia não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempValorDia = float.Parse(valorDia.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
+                    }
+
+
+                    //validar se cubicCapacity
+                    if (cubicCapacity.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Capacidade Cúbica não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempCubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("A capacidade cúbica tem de ser um número inteiro!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+                    return;
+                }
+
+
                 MessageBox.Show("Submit logic" + id);
                 //validate inputs
                 if (id == -1)
                 {
                     mota.Id = 500; //to calculate
-                    mota.Marca = marca.textBox.Text;
-                    mota.Modelo = modelo.textBox.Text;
-                    mota.Cor = cor.textBox.Text;
-                    mota.Matricula = matricula.textBox.Text;
-                    try
-                    {
-                        //validar se é numero e se é um ano valido 
-                        if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
-                        {
-                            mota.Ano = Int32.Parse(ano.textBox.Text);
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
-                        }
 
-
-                        //validar se é numero inteiro
-                        int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
-                        if (quantRodas.textBox.Text == quantRodasParsed.ToString())
-                        {
-                            mota.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                        }
-                        else
-                        {
-                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                        }
+                    mota.Marca = tempMarca;
+                    mota.Modelo = tempModelo;
+                    mota.Cor = tempCor;
+                    mota.Matricula = tempMatricula;
+                    mota.Ano = tempAno;
+                    mota.QuantRodas = tempQuantRodas;
+                    mota.ValorDia = tempValorDia;
 
 
 
-                        //validar se é numero inteiro
-                        int CubicCapacityParsed = Int32.Parse(cubicCapacity.textBox.Text);
-                        if (cubicCapacity.textBox.Text == cubicCapacity.ToString())
-                        {
-                            mota.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
-                        }
-                        else
-                        {
-                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                        }
-                    }
-                    catch (FormatException ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-
-                    mota.ValorDia = float.Parse(valorDia.textBox.Text);
                     Emp.AddMota(mota);
                 }
                 else
@@ -206,69 +278,24 @@ namespace Rent_a_Car.Components.Forms
                         Mota m = Emp.ConvertObj(Emp.MotasList[i]);
                         if (m.Id == id)
                         {
-                            m.Marca = marca.textBox.Text;
-                            m.Modelo = modelo.textBox.Text;
-                            m.Cor = cor.textBox.Text;
-                            m.Matricula = matricula.textBox.Text;
-                            try
-                            {
-                                //validar se é numero e se é um ano valido 
-                                if (Int32.Parse(ano.textBox.Text) >= 1980 && Int32.Parse(ano.textBox.Text) <= 2023)
-                                {
-                                    m.Ano = Int32.Parse(ano.textBox.Text);
-                                }
-                                else
-                                {
-                                    throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e 2023");
-                                }
 
-
-                                //validar se é numero inteiro
-                                int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
-                                if (quantRodas.textBox.Text == quantRodasParsed.ToString())
-                                {
-                                    m.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                                }
-                                else
-                                {
-                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                                }
+                            m.Marca = tempMarca;
+                            m.Modelo = tempModelo;
+                            m.Cor = tempCor;
+                            m.Matricula = tempMatricula;
+                            m.Ano = tempAno;
+                            m.QuantRodas = tempQuantRodas;
+                            m.ValorDia = tempValorDia;
+                            m.CubicCapacity = tempCubicCapacity;
 
 
 
-                                //validar se é numero inteiro
-                                int CubicCapacityParsed = Int32.Parse(cubicCapacity.textBox.Text);
-                                if (cubicCapacity.textBox.Text == cubicCapacity.ToString())
-                                {
-                                    m.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
-                                }
-                                else
-                                {
-                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                                }
-                            }
-                            catch (FormatException ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-                            catch (ArgumentOutOfRangeException ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-                            m.Ano = Int32.Parse(ano.textBox.Text);
-                            m.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                            m.ValorDia = float.Parse(valorDia.textBox.Text);
-                            m.CubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
                             break;
                         }
                     }
                 }
                 DAL.DAL.storeMota();
-                Emp.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Emp.VehicleList);
+                Emp.vehicleTable.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).DateRange);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }
