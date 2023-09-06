@@ -204,7 +204,7 @@ namespace Rent_a_Car.Components.Forms
                         throw new Exception("O ano tem de ser um número inteiro!");
                     }
 
-                    if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
+                    if (tempAno < 1980 || tempAno > DateTime.Now.Year)
                     {
                         throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
                     }
@@ -220,6 +220,10 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                        if(tempQuantRodas <= 0)
+                        {
+                            throw new Exception("Campo Quantidade de Rodas tem de ser maior que zero!");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -235,6 +239,10 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         tempValorDia = float.Parse(valorDia.textBox.Text);
+                        if (tempValorDia <= 0)
+                        {
+                            throw new Exception("Campo Valor Dia tem de ser maior que zero!");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -250,6 +258,10 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         tempQuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                        if (tempQuantDoors <= 0)
+                        {
+                            throw new Exception("Campo Quantidade de Portas tem de ser maior que zero!");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -284,14 +296,7 @@ namespace Rent_a_Car.Components.Forms
                     carro.ValorDia = tempValorDia;
                     carro.QuantDoors = tempQuantDoors;
 
-                    if (tempIsManual)
-                    {
-                        carro.IsManual = true;
-                    }
-                    else
-                    {
-                        carro.IsManual = false;
-                    }
+                    carro.IsManual = tempIsManual;
                     Emp.AddCarro(carro);
                 }
                 else
@@ -313,14 +318,7 @@ namespace Rent_a_Car.Components.Forms
                             c.ValorDia = tempValorDia;
                             c.QuantDoors = tempQuantDoors;
 
-                            if (tempIsManual)
-                            {
-                                c.IsManual = true;
-                            }
-                            else
-                            {
-                                c.IsManual = false;
-                            }
+                            c.IsManual = tempIsManual;
                             break;
                         }
                     }
