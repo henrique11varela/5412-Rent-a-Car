@@ -96,13 +96,13 @@ namespace Rent_a_Car.Components.Forms
             ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
 
             InputBox quantRodas = new InputBox();
-            quantRodas.label.Text = "quantRodas";
+            quantRodas.label.Text = "Quantidade de Rodas";
             this.Controls.Add(quantRodas);
             quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
             quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
 
             InputBox valorDia = new InputBox();
-            valorDia.label.Text = "valorDia";
+            valorDia.label.Text = "Valor Dia";
             this.Controls.Add(valorDia);
             valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
             valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
@@ -110,7 +110,7 @@ namespace Rent_a_Car.Components.Forms
             //specific inputs
 
             InputBox maxWeight = new InputBox();
-            maxWeight.label.Text = "maxWeight";
+            maxWeight.label.Text = "Peso Máximo";
             this.Controls.Add(maxWeight);
             maxWeight.Size = new Size(this.Width / 2 - (25 * 2), maxWeight.Height);
             maxWeight.Location = new Point(this.Width / 2 + 25, 25 + (25 + maxWeight.Height) * 3);
@@ -137,83 +137,134 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
-                static void validateEmptyString(string prop, string textBoxText)
+                string tempMarca;
+                string tempModelo;
+                string tempCor;
+                string tempMatricula;
+                int tempAno;
+                int tempQuantRodas;
+                float tempValorDia;
+                float tempMaxWeight;
+
+                try
                 {
+                    //validar se marca não é string vazia
+                    tempMarca = marca.textBox.Text;
+                    if (tempMarca.Length < 1)
+                    {
+                        throw new Exception("Campo Marca não pode estar vazio!");
+                    }
+
+                    //validar se modelo não é string vazia
+                    tempModelo = modelo.textBox.Text;
+                    if (tempModelo.Length < 1)
+                    {
+                        throw new Exception("Campo Modelo não pode estar vazio!");
+                    }
+
+                    //validar se cor não é string vazia
+                    tempCor = cor.textBox.Text;
+                    if (tempCor.Length < 1)
+                    {
+                        throw new Exception("Campo Cor não pode estar vazio!");
+                    }
+
+                    //validar se matricula não é string vazia
+                    tempMatricula = matricula.textBox.Text;
+                    if (tempMatricula.Length < 1)
+                    {
+                        throw new Exception("Campo Matricula não pode estar vazio!");
+                    }
+
+
+
+
+                    //validar se ano é numero e se é um ano valido
+                    if (ano.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Ano não pode estar vazio!");
+                    }
                     try
                     {
-                        if (prop.Length > 0)
-                        {
-                            prop = textBoxText;
-                        }
-                        else
-                        {
-                            throw new Exception("string vazia!");
-                        }
+                        tempAno = Int32.Parse(ano.textBox.Text);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Erro: " + ex.Message);
+                        throw new Exception("O ano tem de ser um número inteiro!");
                     }
+
+                    if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
+                    {
+                        throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
+                    }
+
+
+
+
+                    //validar se quantRodas é numero inteiro
+                    if (quantRodas.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O número de rodas tem de ser um número inteiro!");
+                    }
+
+
+                    //validar se valorDia é um valor decimal
+                    if (valorDia.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Valor Dia não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempValorDia = float.Parse(valorDia.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
+                    }
+
+
+                    //validar se maxWeight é um valor decimal
+                    if (maxWeight.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Peso Máximo não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempMaxWeight = float.Parse(maxWeight.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O Peso Máximo tem de ser um número inteiro ou decimal!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+                    return;
                 }
 
                 MessageBox.Show("Submit logic" + id);
                 //validate inputs
                 if (id == -1)
                 {
-                    camiao.Id = 500; //to calculate
-                    validateEmptyString(camiao.Marca, matricula.textBox.Text);
-                    validateEmptyString(camiao.Modelo, modelo.textBox.Text);
-                    validateEmptyString(camiao.Cor, cor.textBox.Text);
-                    validateEmptyString(camiao.Matricula, matricula.textBox.Text);
-                    try
-                    {
+                    //assign variables
+                    camiao.Marca = tempMarca;
+                    camiao.Modelo = tempModelo;
+                    camiao.Cor = tempCor;
+                    camiao.Matricula = tempMatricula;
+                    camiao.Ano = tempAno;
+                    camiao.QuantRodas = tempQuantRodas;
+                    camiao.ValorDia = tempValorDia;
+                    camiao.MaxWeight = tempMaxWeight;
 
-
-                        //validar se é numero e se é um ano valido
-                        int anoParsed = Int32.Parse(ano.textBox.Text);
-                        if (anoParsed.ToString() == ano.textBox.Text)
-                        {
-                            if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
-                            {
-                                camiao.Ano = anoParsed;
-                            }
-                            else
-                            {
-                                throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception("O ano tem de ser um número inteiro!");
-                        }
-
-
-
-                        //validar se é numero inteiro
-                        int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
-                        if (quantRodas.textBox.Text == quantRodasParsed.ToString())
-                        {
-                            camiao.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                        }
-                        else
-                        {
-                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                        }
-                    }
-                    catch (FormatException ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-                    camiao.ValorDia = float.Parse(valorDia.textBox.Text);
-                    camiao.MaxWeight = float.Parse(maxWeight.textBox.Text);
                     Emp.AddCamiao(camiao);
                 }
                 else
@@ -225,59 +276,16 @@ namespace Rent_a_Car.Components.Forms
                         Camiao c = Emp.ConvertObj(Emp.CamioesList[i]);
                         if (c.Id == id)
                         {
-                            validateEmptyString(c.Marca, marca.textBox.Text);
-                            validateEmptyString(c.Modelo, modelo.textBox.Text);
-                            validateEmptyString(c.Cor, cor.textBox.Text);
-                            validateEmptyString(c.Matricula, matricula.textBox.Text);
-                            try
-                            {
-                                //validar se é numero e se é um ano valido 
-                                int anoParsed = Int32.Parse(ano.textBox.Text);
-                                if (anoParsed.ToString() == ano.textBox.Text)
-                                {
-                                    if (anoParsed >= 1980 && anoParsed <= 2023)
-                                    {
-                                        c.Ano = anoParsed;
-                                    }
-                                    else
-                                    {
-                                        throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
-                                    }
-                                }
-                                else
-                                {
-                                    throw new Exception("O ano tem de ser um número inteiro!");
-                                }
+                            //assign variables
+                            c.Marca = tempMarca;
+                            c.Modelo = tempModelo;
+                            c.Cor = tempCor;
+                            c.Matricula = tempMatricula;
+                            c.Ano = tempAno;
+                            c.QuantRodas = tempQuantRodas;
+                            c.ValorDia = tempValorDia;
+                            c.MaxWeight = tempMaxWeight;
 
-
-                                //validar se é numero inteiro
-                                int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
-                                if (quantRodas.textBox.Text == quantRodasParsed.ToString())
-                                {
-                                    c.QuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                                }
-                                else
-                                {
-                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                                }
-                            }
-                            catch (FormatException ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-                            catch (ArgumentOutOfRangeException ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-                            catch(Exception ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-
-
-                            
-                            c.ValorDia = float.Parse(valorDia.textBox.Text);
-                            c.MaxWeight = float.Parse(maxWeight.textBox.Text);
                             break;
                         }
                     }
