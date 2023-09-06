@@ -234,7 +234,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                     try
                     {
-                        tempValorDia = Int32.Parse(valorDia.textBox.Text);
+                        tempValorDia = float.Parse(valorDia.textBox.Text);
                     }
                     catch (Exception ex)
                     {
