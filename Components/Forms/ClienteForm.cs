@@ -117,6 +117,7 @@ namespace Rent_a_Car.Components.Forms
                 }
                 DAL.DAL.storeCliente();
                 Emp.ConvertObj(this.Parent.Parent).clienteTable.FillData(Emp.ClienteList);
+                Emp.clienteTable.FillData(Emp.ClienteList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }

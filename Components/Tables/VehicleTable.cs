@@ -270,6 +270,7 @@ namespace Rent_a_Car.Components.Tables
                     }
                     DAL.DAL.storeCamioneta();
                 }
+                this.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).vehicleControls.DateRange);
             }
         }
 
