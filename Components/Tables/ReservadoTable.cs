@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Schema;
+using Timer = System.Windows.Forms.Timer;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 
@@ -23,9 +24,19 @@ namespace Rent_a_Car.Components.Tables
     internal class ReservadoTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
+        private Timer _timer = new Timer();
+
 
         public ReservadoTable()
         {
+            void refresh(object sender, EventArgs e)
+            {
+                this.FillData(Emp.ReservadoList);
+            }
+            _timer.Interval = 2000;
+            _timer.Tick += refresh;
+            _timer.Start();
+
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;
 
@@ -117,14 +128,14 @@ namespace Rent_a_Car.Components.Tables
         /// It expects a Vehicle List
         /// </summary>
         /// <param name="list"></param>
-        public void FillData(ArrayList list, int days = 0)
+        public void FillData(ArrayList list)
         {
             this.Rows.Clear();
             int length = list.Count;
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.Contacto, "Details", "Edit", "Delete");
+                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.IdCliente, "Details", "Edit", "Delete");
             }
         }
     }

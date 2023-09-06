@@ -160,7 +160,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvReservado.Reservado)
             {
-                list.Add(new Reservado(Int32.Parse(item[0]), item[1], item[2]));
+                list.Add(new Reservado(Int32.Parse(item[0]), item[1], Int32.Parse(item[2])));
             }
             return list;
         }

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Schema;
+using Timer = System.Windows.Forms.Timer;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 
@@ -23,9 +24,18 @@ namespace Rent_a_Car.Components.Tables
     internal class ManutencaoTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
+        private Timer _timer = new Timer();
 
         public ManutencaoTable()
         {
+            void refresh(object sender, EventArgs e)
+            {
+                this.FillData(Emp.ManutencaoList);
+            }
+            _timer.Interval = 2000;
+            _timer.Tick += refresh;
+            _timer.Start();
+
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;
 
@@ -110,8 +120,8 @@ namespace Rent_a_Car.Components.Tables
             var clickedCamiao = new Camiao();
             var clickedCamioneta = new Camioneta();
 
-          
-              
+
+
         }
 
         /// <summary>

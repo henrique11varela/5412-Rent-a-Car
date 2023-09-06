@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Schema;
+using Timer = System.Windows.Forms.Timer;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 
@@ -23,9 +24,16 @@ namespace Rent_a_Car.Components.Tables
     internal class VehicleTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
+        private Timer _timer = new Timer();
 
         public VehicleTable()
         {
+            void refresh(object sender, EventArgs e) {
+                this.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).vehicleControls.DateRange);
+            }
+            _timer.Interval = 2000;
+            _timer.Tick += refresh;
+            _timer.Start();
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;
 
@@ -203,11 +211,14 @@ namespace Rent_a_Car.Components.Tables
                 {
                     Emp.ConvertObj(this.Parent).vehicleControls.Controls.Add(new CamionetaForm(clickedCamioneta));
                 }
-
-
             }
             else if (e.ColumnIndex == this.ColumnCount - 1)
             {
+                DialogResult dialogResult = MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
                 if (clickedVehicleType == "Carro")
                 {
                     int length = Emp.CarrosList.Count;
@@ -221,7 +232,6 @@ namespace Rent_a_Car.Components.Tables
                         }
                     }
                     DAL.DAL.storeCarro();
-                    this.FillData(Emp.VehicleList);
                 }
                 else if (clickedVehicleType == "Mota")
                 {
@@ -236,7 +246,6 @@ namespace Rent_a_Car.Components.Tables
                         }
                     }
                     DAL.DAL.storeMota();
-                    this.FillData(Emp.VehicleList);
                 }
                 else if (clickedVehicleType == "Camiao")
                 {
@@ -251,7 +260,6 @@ namespace Rent_a_Car.Components.Tables
                         }
                     }
                     DAL.DAL.storeCamiao();
-                    this.FillData(Emp.VehicleList);
                 }
                 else if (clickedVehicleType == "Camioneta")
                 {
@@ -266,8 +274,9 @@ namespace Rent_a_Car.Components.Tables
                         }
                     }
                     DAL.DAL.storeCamioneta();
-                    this.FillData(Emp.VehicleList);
                 }
+                //this.FillData(Emp.VehicleList);
+
             }
         }
 

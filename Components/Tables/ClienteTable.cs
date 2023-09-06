@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Schema;
+using Timer = System.Windows.Forms.Timer;
 using Emp = Rent_a_Car.Classes.Empresa;
 using ts = Rent_a_Car.ThemeScheme;
 
@@ -23,9 +24,18 @@ namespace Rent_a_Car.Components.Tables
     internal class ClienteTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
+        private Timer _timer = new Timer();
 
         public ClienteTable()
         {
+            void refresh(object sender, EventArgs e)
+            {
+                this.FillData(Emp.ClienteList);
+            }
+            _timer.Interval = 2000;
+            _timer.Tick += refresh;
+            _timer.Start();
+
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;
 
@@ -54,7 +64,6 @@ namespace Rent_a_Car.Components.Tables
             {
                 this.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            this.Columns[this.ColumnCount - 3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.Columns[this.ColumnCount - 2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.Columns[this.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
@@ -119,6 +128,11 @@ namespace Rent_a_Car.Components.Tables
             }
             else if (e.ColumnIndex == this.ColumnCount - 1)
             {
+                DialogResult dialogResult = MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
                 int length = Emp.ClienteList.Count;
                 for (int i = 0; i < length; i++)
                 {

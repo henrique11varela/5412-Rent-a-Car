@@ -89,10 +89,11 @@ namespace Rent_a_Car.Components.Details
             void reservarClick(object sender, EventArgs e)
             {
                 MessageBox.Show("Reservar logic" + id);
-                //validate inputs
+                
+                Reservado a = new Reservado(id, "Carro", 1);
 
-                //DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                DAL.DAL.storeReservado();
+                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.ReservadoList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }

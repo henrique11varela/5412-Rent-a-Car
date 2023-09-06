@@ -214,9 +214,9 @@ namespace Rent_a_Car.Classes
         }
 
         //OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-        public static void AddReservado(int idVeiculo, string tipoVeiculo, string contacto)
+        public static void AddReservado(int idVeiculo, string tipoVeiculo, int idCliente)
         {
-            AddReservado(new Reservado(idVeiculo, tipoVeiculo, contacto));
+            AddReservado(new Reservado(idVeiculo, tipoVeiculo, idCliente));
         }
 
         public static void AddReservado(Reservado r)

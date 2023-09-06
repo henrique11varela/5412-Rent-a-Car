@@ -12,7 +12,7 @@ namespace Rent_a_Car.Classes
         //private variables
         private int idVeiculo;
         private string tipoVeiculo;
-        private string contacto;
+        private int idCliente;
         #endregion
 
 
@@ -41,15 +41,15 @@ namespace Rent_a_Car.Classes
             }
         }
 
-        public string Contacto
+        public int IdCliente
         {
             get
             {
-                return contacto;
+                return idCliente;
             }
             set
             {
-                contacto = value;
+                idCliente = value;
             }
         }
         #endregion
@@ -58,13 +58,13 @@ namespace Rent_a_Car.Classes
         #region constructors
         //constructors
 
-        public Reservado(int idVeiculo, string tipoVeiculo, string contacto)
+        public Reservado(int idVeiculo, string tipoVeiculo, int idCliente)
         {
             this.idVeiculo = idVeiculo;
             this.tipoVeiculo = tipoVeiculo;
-            this.contacto = contacto;
+            this.idCliente = idCliente;
         }
-        public Reservado(Reservado r) : this(r.IdVeiculo, r.TipoVeiculo, r.Contacto)
+        public Reservado(Reservado r) : this(r.IdVeiculo, r.TipoVeiculo, r.IdCliente)
         {
         }
         #endregion
