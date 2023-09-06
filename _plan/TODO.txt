@@ -1,0 +1,9 @@
+INPUT ANO ESTÁ A DAR EXCEPTION DIFERENTE QUANDO SE METE CHAR
+
+add confirmation alert to delete vehicle
+
+change validations:
+  tempVariables (ex: quantRodasParsed)
+  mudar validações de string para (if(string.length < 1){throw exception}) - remover validateEmptyString function
+  meter validações mesmo no inicio do submitClick (antes de validar se id já existe)
+  meter returns sempre que dá throw a exceptions
