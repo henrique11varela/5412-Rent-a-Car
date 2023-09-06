@@ -326,7 +326,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                 }
                 DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                Emp.vehicleTable.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).DateRange);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }
