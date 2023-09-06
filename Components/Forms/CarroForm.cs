@@ -191,44 +191,69 @@ namespace Rent_a_Car.Components.Forms
 
 
                     //validar se ano é numero e se é um ano valido
-                    tempAno = Int32.Parse(ano.textBox.Text);
-                    if (tempAno.ToString() != ano.textBox.Text)
+                    if (ano.textBox.Text.Length < 1)
+                    {
+                        throw new Exception("Campo Ano não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempAno = Int32.Parse(ano.textBox.Text);
+                    }
+                    catch(Exception ex)
                     {
                         throw new Exception("O ano tem de ser um número inteiro!");
                     }
-                    else
+
+                    if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
                     {
-                        if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
-                        {
-                            throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
-                        }
+                        throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
                     }
 
 
 
 
                     //validar se quantRodas é numero inteiro
-                    tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                    if (quantRodas.textBox.Text != tempQuantRodas.ToString())
+                    if (quantRodas.textBox.Text.Length < 1)
                     {
-                        throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O número de rodas tem de ser um número inteiro!");
                     }
 
 
                     //validar se valorDia é um valor decimal
-                    tempValorDia = float.Parse(valorDia.textBox.Text);
-                    //tempValorDiaInt = Int32.Parse(valorDia.textBox.Text);
-                    if (tempValorDia.ToString() != valorDia.textBox.Text)
+                    if (valorDia.textBox.Text.Length < 1)
                     {
-                        throw new Exception("O campo Valor Dia tem de ser número inteiro ou decimal!");
+                        throw new Exception("Campo Valor Dia não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempValorDia = Int32.Parse(valorDia.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
                     }
 
 
                     //validar se quantDoors é numero inteiro
-                    tempQuantDoors = Int32.Parse(quantDoors.textBox.Text);
-                    if (quantDoors.textBox.Text != tempQuantDoors.ToString())
+                    if (quantDoors.textBox.Text.Length < 1)
                     {
-                        throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                        throw new Exception("Campo Quantidade de Portas não pode estar vazio!");
+                    }
+                    try
+                    {
+                        tempQuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("O número de portas tem de ser um número inteiro!");
                     }
                 }
                 catch (Exception ex)
