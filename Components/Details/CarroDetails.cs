@@ -10,7 +10,9 @@ using Rent_a_Car.Components.Buttons;
 using Rent_a_Car.Classes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using Rent_a_Car.Components.Tables;
+using Rent_a_Car.Components.Forms;
 using System.Windows.Forms;
+using Rent_a_Car.Components.Menus;
 
 namespace Rent_a_Car.Components.Details
 {
@@ -106,12 +108,10 @@ namespace Rent_a_Car.Components.Details
             Alugar.ForeColor = ts.light;
             void alugarClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Alugar logic" + id);
-                //validate inputs
-
-                //DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                VehicleControls controls = Emp.ConvertObj(this.Parent);
+                Alugado alugado = new Alugado(id, "Carro", controls.StartCalendar.SelectionStart, controls.EndCalendar.SelectionStart, -1);
                 var parent = this.Parent;
+                parent.Controls.Add(new ClienteSelectTable(alugado));
                 parent.Controls.Remove(this);
             }
             Alugar.Click += alugarClick;
@@ -127,12 +127,10 @@ namespace Rent_a_Car.Components.Details
             Manutencao.ForeColor = ts.light;
             void manutencaoClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Manutencao logic" + id);
-                //validate inputs
-
-                //DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                VehicleControls controls = Emp.ConvertObj(this.Parent);
+                Manutencao manutencao = new Manutencao(id, "Carro", controls.StartCalendar.SelectionStart, controls.EndCalendar.SelectionStart, "");
                 var parent = this.Parent;
+                parent.Controls.Add(new ManutencaoForm(manutencao));
                 parent.Controls.Remove(this);
             }
             Manutencao.Click += manutencaoClick;

@@ -245,12 +245,14 @@ namespace Rent_a_Car.Components.Tables
                 {
                     reserva.IdCliente = idClicked;
                     Emp.AddReservado(reserva);
+                    Emp.reservadoTable.FillData(Emp.ReservadoList);
                     DAL.DAL.storeReservado();
                 }
                 else
                 {
                     alugado.IdCliente = idClicked;
                     Emp.AddAlugado(alugado);
+                    Emp.alugadoTable.FillData(Emp.AlugadoList);
                     DAL.DAL.storeAlugado();
                 }
 

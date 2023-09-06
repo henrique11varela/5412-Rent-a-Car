@@ -10,6 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Components\Forms\ManutencaoForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Forms\ClienteForm.cs">
       <SubType>Component</SubType>
     </Compile>
