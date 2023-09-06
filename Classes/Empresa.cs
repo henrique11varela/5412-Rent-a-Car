@@ -7,11 +7,18 @@ using System.Collections;
 using Rent_a_Car.Views;
 using Rent_a_Car.DAL;
 using System.Diagnostics.Contracts;
+using Rent_a_Car.Components.Tables;
 
 namespace Rent_a_Car.Classes
 {
     internal static class Empresa
     {
+        public static VehicleTable vehicleTable;
+        public static AlugadoTable alugadoTable;
+        public static ReservadoTable reservadoTable;
+        public static ManutencaoTable manutencaoTable;
+        public static ClienteTable clienteTable;
+
         #region attributes
         private static List<Camiao> camioes = new List<Camiao>();
         private static List<Camioneta> camionetas = new List<Camioneta>();
@@ -124,7 +131,8 @@ namespace Rent_a_Car.Classes
         
         public static void AddCarro(Carro c)
         {
-            carros.Add(new Carro(c));
+            carros.Add(c);
+            
         }
 
         public static void RemoveCarro(Carro c) { 
@@ -139,8 +147,7 @@ namespace Rent_a_Car.Classes
         
         public static void AddCamiao(Camiao c)
         {
-            camioes.Add(new Camiao(c));
-            DAL.DAL.storeCamiao();
+            camioes.Add(c);
         }
 
         public static void RemoveCamiao(Camiao c)
@@ -156,8 +163,7 @@ namespace Rent_a_Car.Classes
         
         public static void AddCamioneta(Camioneta c)
         {
-            camionetas.Add(new Camioneta(c));
-            DAL.DAL.storeCamioneta();
+            camionetas.Add(c);
         }
 
         public static void RemoveCamioneta(Camioneta c)
@@ -173,8 +179,7 @@ namespace Rent_a_Car.Classes
         
         public static void AddMota(Mota c)
         {
-            motas.Add(new Mota(c));
-            DAL.DAL.storeMota();
+            motas.Add(c);
         }
 
         public static void RemoveMota(Mota m)
@@ -183,14 +188,14 @@ namespace Rent_a_Car.Classes
         }
 
         //OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-        public static void AddAlugado(int idVeiculo, string tipoVeiculo, DateTime dataInicio, DateTime dataPrevistaFim, string contacto)
+        public static void AddAlugado(int idVeiculo, string tipoVeiculo, DateTime dataInicio, DateTime dataPrevistaFim, int idCliente)
         {
-            AddAlugado(new Alugado(idVeiculo, tipoVeiculo, dataInicio, dataPrevistaFim, contacto));
+            AddAlugado(new Alugado(idVeiculo, tipoVeiculo, dataInicio, dataPrevistaFim, idCliente));
         }
 
         public static void AddAlugado(Alugado a)
         {
-            alugados.Add(new Alugado(a));
+            alugados.Add(a);
         }
 
         public static void RemoveAlugado(Alugado a)
@@ -205,7 +210,7 @@ namespace Rent_a_Car.Classes
 
         public static void AddManutencao(Manutencao m)
         {
-            manutencao.Add(new Manutencao(m));
+            manutencao.Add(m);
         }
 
         public static void RemoveManutencao(Manutencao m)
@@ -221,7 +226,7 @@ namespace Rent_a_Car.Classes
 
         public static void AddReservado(Reservado r)
         {
-            reservados.Add(new Reservado(r));
+            reservados.Add(r);
         }
 
         public static void RemoveReservado(Reservado r)
@@ -236,7 +241,7 @@ namespace Rent_a_Car.Classes
 
         public static void AddCliente(Cliente c)
         {
-            clientes.Add(new Cliente(c));
+            clientes.Add(c);
         }
 
         public static void RemoveCliente(Cliente c)

@@ -16,6 +16,9 @@
     <Compile Update="Components\Menus\ClienteControls.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Tables\ClienteSelectTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Tables\ManutencaoTable.cs">
       <SubType>Component</SubType>
     </Compile>

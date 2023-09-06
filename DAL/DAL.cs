@@ -130,7 +130,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvAlugado.Alugado)
             {
-                list.Add(new Alugado(Int32.Parse(item[0]), item[1], DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture), item[4]));
+                list.Add(new Alugado(Int32.Parse(item[0]), item[1], DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture), Int32.Parse(item[4])));
             }
             return list;
         }
@@ -279,7 +279,7 @@ namespace Rent_a_Car.DAL
                 line.Add(Empresa.ConvertObj(item).TipoVeiculo);
                 line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).DataPrevistaFim.ToString("d", CultureInfo.InvariantCulture));
-                line.Add(Empresa.ConvertObj(item).Contacto);
+                line.Add(Empresa.ConvertObj(item).IdCliente.ToString());
                 list.Add(line);
             }
             csvAlugado.Alugado = list;
@@ -309,7 +309,7 @@ namespace Rent_a_Car.DAL
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
                 line.Add(Empresa.ConvertObj(item).TipoVeiculo);
-                line.Add(Empresa.ConvertObj(item).Contacto);
+                line.Add(Empresa.ConvertObj(item).IdCliente.ToString());
                 list.Add(line);
             }
             csvReservado.Reservado = list;

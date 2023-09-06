@@ -24,17 +24,10 @@ namespace Rent_a_Car.Components.Tables
     internal class ManutencaoTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
-        private Timer _timer = new Timer();
 
         public ManutencaoTable()
         {
-            void refresh(object sender, EventArgs e)
-            {
-                this.FillData(Emp.ManutencaoList);
-            }
-            _timer.Interval = 2000;
-            _timer.Tick += refresh;
-            _timer.Start();
+            Emp.manutencaoTable = this;
 
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;

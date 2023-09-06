@@ -24,16 +24,11 @@ namespace Rent_a_Car.Components.Tables
     internal class VehicleTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
-        private Timer _timer = new Timer();
 
         public VehicleTable()
         {
-            void refresh(object sender, EventArgs e) {
-                this.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).vehicleControls.DateRange);
-            }
-            _timer.Interval = 2000;
-            _timer.Tick += refresh;
-            _timer.Start();
+            Emp.vehicleTable = this;
+
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;
 
@@ -275,8 +270,6 @@ namespace Rent_a_Car.Components.Tables
                     }
                     DAL.DAL.storeCamioneta();
                 }
-                //this.FillData(Emp.VehicleList);
-
             }
         }
 

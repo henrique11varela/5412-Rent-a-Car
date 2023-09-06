@@ -256,6 +256,7 @@ namespace Rent_a_Car.Components.Forms
                 if (id == -1)
                 {
                     //assign variables
+                    camiao.Id = 500;
                     camiao.Marca = tempMarca;
                     camiao.Modelo = tempModelo;
                     camiao.Cor = tempCor;
@@ -291,7 +292,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                 }
                 DAL.DAL.storeCamiao();
-                Emp.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Emp.VehicleList);
+                Emp.vehicleTable.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).DateRange);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }

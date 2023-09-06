@@ -24,17 +24,10 @@ namespace Rent_a_Car.Components.Tables
     internal class AlugadoTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
-        private Timer _timer = new Timer();
 
         public AlugadoTable()
         {
-            void refresh(object sender, EventArgs e)
-            {
-                this.FillData(Emp.AlugadoList);
-            }
-            _timer.Interval = 2000;
-            _timer.Tick += refresh;
-            _timer.Start();
+            Emp.alugadoTable = this;
 
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;
@@ -136,7 +129,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.DataInicio.Date.ToShortDateString(), convertedItem.DataPrevistaFim.Date.ToShortDateString(), convertedItem.Contacto, "Details", "Edit", "Delete");
+                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.DataInicio.Date.ToShortDateString(), convertedItem.DataPrevistaFim.Date.ToShortDateString(), convertedItem.IdCliente, "Details", "Edit", "Delete");
             }
         }
     }

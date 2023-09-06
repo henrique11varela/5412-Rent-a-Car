@@ -24,17 +24,10 @@ namespace Rent_a_Car.Components.Tables
     internal class ClienteTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
-        private Timer _timer = new Timer();
 
         public ClienteTable()
         {
-            void refresh(object sender, EventArgs e)
-            {
-                this.FillData(Emp.ClienteList);
-            }
-            _timer.Interval = 2000;
-            _timer.Tick += refresh;
-            _timer.Start();
+            Emp.clienteTable = this;
 
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;

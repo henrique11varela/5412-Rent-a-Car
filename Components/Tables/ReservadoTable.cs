@@ -24,18 +24,11 @@ namespace Rent_a_Car.Components.Tables
     internal class ReservadoTable : DataGridView
     {
         private int[] _margin = { 0, 0, 0, 0 };
-        private Timer _timer = new Timer();
 
 
         public ReservadoTable()
         {
-            void refresh(object sender, EventArgs e)
-            {
-                this.FillData(Emp.ReservadoList);
-            }
-            _timer.Interval = 2000;
-            _timer.Tick += refresh;
-            _timer.Start();
+            Emp.reservadoTable = this;
 
             this.ParentChanged += Setup;
             this.CellContentClick += onCellClick;

@@ -87,12 +87,9 @@ namespace Rent_a_Car.Components.Details
             Reservar.ForeColor = ts.light;
             void reservarClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Reservar logic" + id);
-                //validate inputs
-
-                //DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                Reservado reserva = new Reservado(id, "Mota", -1);
                 var parent = this.Parent;
+                parent.Controls.Add(new ClienteSelectTable(reserva));
                 parent.Controls.Remove(this);
             }
             Reservar.Click += reservarClick;
