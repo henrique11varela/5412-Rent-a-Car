@@ -284,14 +284,8 @@ namespace Rent_a_Car.Components.Forms
                     carro.ValorDia = tempValorDia;
                     carro.QuantDoors = tempQuantDoors;
 
-                    if (tempIsManual)
-                    {
-                        carro.IsManual = true;
-                    }
-                    else
-                    {
-                        carro.IsManual = false;
-                    }
+                    
+                    carro.IsManual = tempIsManual;
                     Emp.AddCarro(carro);
                 }
                 else
@@ -313,20 +307,13 @@ namespace Rent_a_Car.Components.Forms
                             c.ValorDia = tempValorDia;
                             c.QuantDoors = tempQuantDoors;
 
-                            if (tempIsManual)
-                            {
-                                c.IsManual = true;
-                            }
-                            else
-                            {
-                                c.IsManual = false;
-                            }
+                            c.IsManual = tempIsManual;
                             break;
                         }
                     }
                 }
                 DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                Emp.vehicleTable.FillData(Emp.VehicleList, Emp.ConvertObj(this.Parent).DateRange);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }
