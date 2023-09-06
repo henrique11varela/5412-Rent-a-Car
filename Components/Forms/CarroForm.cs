@@ -147,95 +147,119 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
-                static void validateEmptyString(string prop, string textBoxText)
+                string tempMarca;
+                string tempModelo;
+                string tempCor;
+                string tempMatricula;
+                int tempAno;
+                int tempQuantRodas;
+                float tempValorDia;
+                int tempQuantDoors;
+                bool tempIsManual;
+
+                try
                 {
-                    try
+                    //validar se marca não é string vazia
+                    tempMarca = marca.textBox.Text;
+                    if(tempMarca.Length < 1)
                     {
-                        if(prop.Length > 0)
+                        throw new Exception("Campo Marca não pode estar vazio!");
+                    }
+
+                    //validar se modelo não é string vazia
+                    tempModelo = modelo.textBox.Text;
+                    if (tempModelo.Length < 1)
+                    {
+                        throw new Exception("Campo Modelo não pode estar vazio!");
+                    }
+
+                    //validar se cor não é string vazia
+                    tempCor = cor.textBox.Text;
+                    if (tempCor.Length < 1)
+                    {
+                        throw new Exception("Campo Cor não pode estar vazio!");
+                    }
+
+                    //validar se matricula não é string vazia
+                    tempMatricula = matricula.textBox.Text;
+                    if (tempMatricula.Length < 1)
+                    {
+                        throw new Exception("Campo Matricula não pode estar vazio!");
+                    }
+
+
+
+
+                    //validar se ano é numero e se é um ano valido
+                    tempAno = Int32.Parse(ano.textBox.Text);
+                    if (tempAno.ToString() != ano.textBox.Text)
+                    {
+                        throw new Exception("O ano tem de ser um número inteiro!");
+                    }
+                    else
+                    {
+                        if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
                         {
-                            prop = textBoxText;
-                        }
-                        else
-                        {
-                            throw new Exception("string vazia!");
+                            throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
                         }
                     }
-                    catch(Exception ex)
+
+
+
+
+                    //validar se quantRodas é numero inteiro
+                    tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                    if (quantRodas.textBox.Text != tempQuantRodas.ToString())
                     {
-                        MessageBox.Show("Erro: " + ex.Message);
+                        throw new Exception("A quantidade de rodas tem de ser um número inteiro");
+                    }
+
+
+                    //validar se valorDia é um valor decimal
+                    tempValorDia = float.Parse(valorDia.textBox.Text);
+                    //tempValorDiaInt = Int32.Parse(valorDia.textBox.Text);
+                    if (tempValorDia.ToString() != valorDia.textBox.Text)
+                    {
+                        throw new Exception("O campo Valor Dia tem de ser número inteiro ou decimal!");
+                    }
+
+
+                    //validar se quantDoors é numero inteiro
+                    tempQuantDoors = Int32.Parse(quantDoors.textBox.Text);
+                    if (quantDoors.textBox.Text != tempQuantDoors.ToString())
+                    {
+                        throw new Exception("A quantidade de rodas tem de ser um número inteiro");
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+                    return;
+                }
+
+
+
+                //validar input da checkbox
+                tempIsManual = isManual.checkBox.Checked;
+                
+
 
                 MessageBox.Show("Submit logic" + id);
                 //validate inputs
                 if (id == -1)
                 {
                     carro.Id = 500; //to calculate
-                    validateEmptyString(carro.Marca, matricula.textBox.Text);
-                    validateEmptyString(carro.Modelo, modelo.textBox.Text);
-                    validateEmptyString(carro.Cor, cor.textBox.Text);
-                    validateEmptyString(carro.Matricula, matricula.textBox.Text);
-                    try
-                    {
-                        //validar se ano é numero e se é um ano valido 
-                        int anoParsed = Int32.Parse(ano.textBox.Text);
-                        if (anoParsed.ToString() == ano.textBox.Text)
-                        {
-                            if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
-                            {
-                                carro.Ano = anoParsed;
-                            }
-                            else
-                            {
-                                throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception("O ano tem de ser um número inteiro!");
-                        }
 
+                    carro.Marca = tempMarca;
+                    carro.Modelo = tempModelo;
+                    carro.Cor = tempCor;
+                    carro.Matricula = tempMatricula;
+                    carro.Ano = tempAno;
+                    carro.QuantRodas = tempQuantRodas;
+                    carro.ValorDia = tempValorDia;
+                    carro.QuantDoors = tempQuantDoors;
 
-
-
-                        //validar se quantRodas é numero inteiro
-                        int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
-                        if (quantRodas.textBox.Text == quantRodasParsed.ToString())
-                        {
-                            carro.QuantRodas = quantRodasParsed;
-                        }
-                        else
-                        {
-                            throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                        }
-
-
-
-                        //validar se valorDia é um valor decimal
-                        float valorDiaParsed = float.Parse(valorDia.textBox.Text);
-                        if(valorDiaParsed.ToString() == valorDia.textBox.Text)
-                        {
-                            carro.ValorDia = valorDiaParsed;
-                        }
-                        else
-                        {
-                            throw new Exception("O valor tem de ser número decimal!");
-                        }
-                    }
-                    catch (FormatException ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        MessageBox.Show("Erro: " + ex.Message);
-                    }
-
-
-                    
-
-                    //validar input da checkbox
-                    if (isManual.checkBox.Checked)
+                    if (tempIsManual)
                     {
                         carro.IsManual = true;
                     }
@@ -243,7 +267,6 @@ namespace Rent_a_Car.Components.Forms
                     {
                         carro.IsManual = false;
                     }
-
                     Emp.AddCarro(carro);
                 }
                 else
@@ -255,83 +278,17 @@ namespace Rent_a_Car.Components.Forms
                         Carro c = Emp.ConvertObj(Emp.CarrosList[i]);
                         if (c.Id == id)
                         {
-                            validateEmptyString(c.Marca, marca.textBox.Text);
-                            validateEmptyString(c.Modelo, modelo.textBox.Text);
-                            validateEmptyString(c.Cor, cor.textBox.Text);
-                            validateEmptyString(c.Matricula, matricula.textBox.Text);
-                            try
-                            {
-                                //validar se ano é numero e se é um ano valido 
-                                int anoParsed = Int32.Parse(ano.textBox.Text);
-                                if (anoParsed.ToString() == ano.textBox.Text)
-                                {
-                                    if (anoParsed >= 1980 && anoParsed <= DateTime.Now.Year)
-                                    {
-                                        c.Ano = anoParsed;
-                                    }
-                                    else
-                                    {
-                                        throw new ArgumentOutOfRangeException("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
-                                    }
-                                }
-                                else
-                                {
-                                    throw new Exception("O ano tem de ser um número inteiro!");
-                                }
+                            //assign variables
+                            c.Marca = tempMarca;
+                            c.Modelo = tempModelo;
+                            c.Cor = tempCor;
+                            c.Matricula = tempMatricula;
+                            c.Ano = tempAno;
+                            c.QuantRodas = tempQuantRodas;
+                            c.ValorDia = tempValorDia;
+                            c.QuantDoors = tempQuantDoors;
 
-
-
-                                //validar se quantRodas é numero inteiro
-                                int quantRodasParsed = Int32.Parse(quantRodas.textBox.Text);
-                                if (quantRodas.textBox.Text == quantRodasParsed.ToString())
-                                {
-                                    c.QuantRodas = quantRodasParsed;
-                                }
-                                else
-                                {
-                                    throw new Exception("A quantidade de rodas tem de ser um número inteiro");
-                                }
-
-
-
-                                //validar se quantDoors é numero inteiro
-                                int quantDoorsParsed = Int32.Parse(quantDoors.textBox.Text);
-                                if (quantDoors.textBox.Text == quantDoorsParsed.ToString())
-                                {
-                                    c.QuantDoors = quantDoorsParsed;
-                                }
-                                else
-                                {
-                                    throw new Exception("A quantidade de portas tem de ser um número inteiro");
-                                }
-
-
-
-                                //validar se valorDia é um valor decimal
-                                float valorDiaParsed = float.Parse(valorDia.textBox.Text);
-                                if (valorDiaParsed.ToString() == valorDia.textBox.Text)
-                                {
-                                    c.ValorDia = valorDiaParsed;
-                                }
-                                else
-                                {
-                                    throw new Exception("O valor tem de ser número decimal!");
-                                }
-                            }
-                            catch (FormatException ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-                            catch (ArgumentOutOfRangeException ex)
-                            {
-                                MessageBox.Show("Erro: " + ex.Message);
-                            }
-
-
-
-
-                            //validar se isManual é um input bool
-                            if (isManual.checkBox.Checked)
+                            if (tempIsManual)
                             {
                                 c.IsManual = true;
                             }
@@ -339,7 +296,6 @@ namespace Rent_a_Car.Components.Forms
                             {
                                 c.IsManual = false;
                             }
-                            
                             break;
                         }
                     }
