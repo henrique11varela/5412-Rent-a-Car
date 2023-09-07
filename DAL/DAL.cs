@@ -145,7 +145,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvManutencao.Manutencao)
             {
-                list.Add(new Manutencao(Int32.Parse(item[0]), item[1], DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture), item[4]));
+                list.Add(new Manutencao(Int32.Parse(item[0]), item[1], DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture), item[4].Replace(" || ", "\n")));
             }
             return list;
         }
@@ -295,7 +295,7 @@ namespace Rent_a_Car.DAL
                 line.Add(Empresa.ConvertObj(item).TipoVeiculo);
                 line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).DataPrevistaFim.ToString("d", CultureInfo.InvariantCulture));
-                line.Add(Empresa.ConvertObj(item).Problema);
+                line.Add(Empresa.ConvertObj(item).Problema.Replace("\n", " || ").Replace("\r", " || "));
                 list.Add(line);
             }
             csvManutencao.Manutencao = list;
