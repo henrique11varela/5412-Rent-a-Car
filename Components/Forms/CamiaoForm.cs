@@ -179,11 +179,12 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                    //validar se ano é numero e se é um ano valido
+                    //validar se campo Ano está preenchido
                     if (ano.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Ano não pode estar vazio!");
                     }
+                    //validar se ano é numero inteiro
                     try
                     {
                         tempAno = Int32.Parse(ano.textBox.Text);
@@ -192,7 +193,7 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O ano tem de ser um número inteiro!");
                     }
-
+                    //validar se ano é numero valido
                     if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
                     {
                         throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
@@ -201,60 +202,66 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                    //validar se quantRodas é numero inteiro
+                    //validar se campo quantRodas está preenchido
                     if (quantRodas.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
                     }
+                    //validar se quantRodas é numero inteiro
                     try
                     {
                         tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                        if (tempQuantRodas <= 0)
-                        {
-                            throw new Exception("Campo Quantidade de Rodas tem de ser maior que zero!");
-                        }
                     }
                     catch (Exception ex)
                     {
                         throw new Exception("O número de rodas tem de ser um número inteiro!");
                     }
+                    //validar se quantRodas é superior a zero
+                    if (tempQuantRodas <= 0)
+                    {
+                        throw new Exception("O número de rodas tem de ser maior que zero!");
+                    }
 
 
-                    //validar se valorDia é um valor decimal
+                    //validar se campo valorDia está preenchido
                     if (valorDia.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Valor Dia não pode estar vazio!");
                     }
+                    //validar se valorDia é um valor decimal
                     try
                     {
                         tempValorDia = float.Parse(valorDia.textBox.Text);
-                        if (tempValorDia <= 0)
-                        {
-                            throw new Exception("Campo Valor Dia tem de ser maior que zero!");
-                        }
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
+                        throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal maior que zero!");
+                    }
+                    //validar se valorDia é superior a zero
+                    if (tempValorDia <= 0)
+                    {
+                        throw new Exception("O campo Valor Dia tem de ser maior que zero!");
                     }
 
 
-                    //validar se maxWeight é um valor decimal
+                    //validar se campo maxWeight está preenchido
                     if (maxWeight.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Peso Máximo não pode estar vazio!");
                     }
+                    //validar se maxWeight é um valor decimal
                     try
                     {
                         tempMaxWeight = float.Parse(maxWeight.textBox.Text);
-                        if (tempMaxWeight <= 0)
-                        {
-                            throw new Exception("Campo Peso Máximo tem de ser maior que zero!");
-                        }
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O Peso Máximo tem de ser um número inteiro ou decimal!");
+                        throw new Exception("O Peso Máximo tem de ser um número inteiro ou decimal maior que zero!");
+                    }
+                    //validar se maxWeight é superior a zero
+                    if (tempMaxWeight <= 0)
+                    {
+                        throw new Exception("O Peso Máximo tem de ser maior que zero!");
                     }
                 }
                 catch (Exception ex)
