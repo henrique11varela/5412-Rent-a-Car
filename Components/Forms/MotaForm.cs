@@ -200,11 +200,12 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                    //validar se quantRodas é numero inteiro
+                    //validar se campo quantRodas está preenchido
                     if (quantRodas.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
                     }
+                    //validar se quantRodas é numero inteiro
                     try
                     {
                         tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
@@ -213,13 +214,19 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O número de rodas tem de ser um número inteiro!");
                     }
+                    //validar se quantRodas é superior a zero
+                    if (tempQuantRodas <= 0)
+                    {
+                        throw new Exception("O número de rodas tem de ser maior que zero!");
+                    }
 
 
-                    //validar se valorDia é um valor decimal
+                    //validar se campo valorDia está preenchido
                     if (valorDia.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Valor Dia não pode estar vazio!");
                     }
+                    //validar se valorDia é um valor decimal
                     try
                     {
                         tempValorDia = float.Parse(valorDia.textBox.Text);
@@ -228,6 +235,11 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
                     }
+                    //validar se valorDia é superior a zero
+                    if (tempValorDia <= 0)
+                    {
+                        throw new Exception("O campo Valor Dia tem de ser maior que zero!");
+                    }
 
 
                     //validar se cubicCapacity
@@ -235,6 +247,7 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("Campo Capacidade Cúbica não pode estar vazio!");
                     }
+                    //validar se cubicCapacity é um valor inteiro
                     try
                     {
                         tempCubicCapacity = Int32.Parse(cubicCapacity.textBox.Text);
@@ -242,6 +255,11 @@ namespace Rent_a_Car.Components.Forms
                     catch (Exception ex)
                     {
                         throw new Exception("A capacidade cúbica tem de ser um número inteiro!");
+                    }
+                    //validar se cubicCapacity é superior a zero
+                    if (tempCubicCapacity <= 0)
+                    {
+                        throw new Exception("O campo Capacidade Cúbica tem de ser maior que zero!");
                     }
                 }
                 catch (Exception ex)
