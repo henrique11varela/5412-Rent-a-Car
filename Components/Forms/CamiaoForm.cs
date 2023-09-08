@@ -209,6 +209,10 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
+                        if (tempQuantRodas <= 0)
+                        {
+                            throw new Exception("Campo Quantidade de Rodas tem de ser maior que zero!");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -224,6 +228,10 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         tempValorDia = float.Parse(valorDia.textBox.Text);
+                        if (tempValorDia <= 0)
+                        {
+                            throw new Exception("Campo Valor Dia tem de ser maior que zero!");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -239,6 +247,10 @@ namespace Rent_a_Car.Components.Forms
                     try
                     {
                         tempMaxWeight = float.Parse(maxWeight.textBox.Text);
+                        if (tempMaxWeight <= 0)
+                        {
+                            throw new Exception("Campo Peso Máximo tem de ser maior que zero!");
+                        }
                     }
                     catch (Exception ex)
                     {
