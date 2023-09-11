@@ -8,6 +8,7 @@ using Rent_a_Car.Views;
 using Rent_a_Car.DAL;
 using System.Diagnostics.Contracts;
 using Rent_a_Car.Components.Tables;
+using Rent_a_Car.Components.Menus;
 
 namespace Rent_a_Car.Classes
 {
@@ -18,6 +19,7 @@ namespace Rent_a_Car.Classes
         public static ReservadoTable reservadoTable;
         public static ManutencaoTable manutencaoTable;
         public static ClienteTable clienteTable;
+        public static StateListControls stateListControls;
 
         #region attributes
         private static List<Camiao> camioes = new List<Camiao>();

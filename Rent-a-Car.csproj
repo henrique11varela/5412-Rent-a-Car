@@ -10,6 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Components\Details\AlugadoDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Details\ManutencaoDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Details\ReservadoDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Forms\ManutencaoForm.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -17,6 +26,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Menus\ClienteControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Menus\StateListControls.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Tables\ClienteSelectTable.cs">

@@ -48,13 +48,7 @@ namespace Rent_a_Car.Components.Tables
 
             //Details button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col++].HeaderText = "Details";
-            //Edit button column
-            this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col++].HeaderText = "Edit";
-            //Delete button column
-            this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col].HeaderText = "Delete";
+            this.Columns[col].HeaderText = "Details";
 
 
             int colCount = this.Columns.Count;
@@ -62,8 +56,6 @@ namespace Rent_a_Car.Components.Tables
             {
                 this.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            this.Columns[this.ColumnCount - 3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.Columns[this.ColumnCount - 2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.Columns[this.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             this.RowHeadersVisible = false;
@@ -108,12 +100,31 @@ namespace Rent_a_Car.Components.Tables
                 return;
             }
             int idClicked = Int32.Parse(this.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var clickedCarro = new Carro();
-            var clickedMota = new Mota();
-            var clickedCamiao = new Camiao();
-            var clickedCamioneta = new Camioneta();
+            string tipoClicked = this.Rows[e.RowIndex].Cells[1].Value.ToString();
 
+            Manutencao clickedManutencao = new Manutencao(-1, "", DateTime.Now, DateTime.Now, "");
 
+            int length = Emp.ManutencaoList.Count;
+            for (int i = 0; i < length; i++)
+            {
+                Manutencao r = Emp.ConvertObj(Emp.ManutencaoList[i]);
+                if (r.IdVeiculo == idClicked && r.TipoVeiculo == tipoClicked)
+                {
+
+                    clickedManutencao = r;
+                    break;
+                }
+            }
+            if (clickedManutencao.IdVeiculo == -1)
+            {
+                return;
+            }
+
+            //Details
+            if (e.ColumnIndex == this.ColumnCount - 1)
+            {
+                Emp.stateListControls.Controls.Add(new ManutencaoDetails(clickedManutencao));
+            }
 
         }
 
@@ -129,7 +140,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.DataInicio.Date.ToShortDateString(), convertedItem.DataPrevistaFim.Date.ToShortDateString(), convertedItem.Problema, "Details", "Edit", "Delete");
+                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.DataInicio.Date.ToShortDateString(), convertedItem.DataPrevistaFim.Date.ToShortDateString(), convertedItem.Problema, "Details");
             }
         }
     }
