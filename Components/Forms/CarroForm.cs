@@ -212,60 +212,66 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                    //validar se quantRodas é numero inteiro
+                    //validar se campo quantRodas está preenchido
                     if (quantRodas.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
                     }
+                    //validar se quantRodas é numero inteiro
                     try
                     {
                         tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
-                        if(tempQuantRodas <= 0)
-                        {
-                            throw new Exception("Campo Quantidade de Rodas tem de ser maior que zero!");
-                        }
                     }
                     catch (Exception ex)
                     {
                         throw new Exception("O número de rodas tem de ser um número inteiro!");
                     }
+                    //validar se quantRodas é superior a zero
+                    if (tempQuantRodas <= 0)
+                    {
+                        throw new Exception("Campo Quantidade de Rodas tem de ser maior que zero!");
+                    }
 
 
-                    //validar se valorDia é um valor decimal
+                    //validar se campo valorDia está preenchido
                     if (valorDia.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Valor Dia não pode estar vazio!");
                     }
+                    //validar se valorDia é um valor decimal
                     try
                     {
                         tempValorDia = float.Parse(valorDia.textBox.Text);
-                        if (tempValorDia <= 0)
-                        {
-                            throw new Exception("Campo Valor Dia tem de ser maior que zero!");
-                        }
                     }
                     catch (Exception ex)
                     {
                         throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
                     }
+                    //validar se valorDia é superior a zero
+                    if (tempValorDia <= 0)
+                    {
+                        throw new Exception("O campo Valor Dia tem de ser maior que zero!");
+                    }
 
 
-                    //validar se quantDoors é numero inteiro
+                    //validar se campo quantDoors está preenchido
                     if (quantDoors.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Quantidade de Portas não pode estar vazio!");
                     }
+                    //validar se quantDoors é numero inteiro
                     try
                     {
                         tempQuantDoors = Int32.Parse(quantDoors.textBox.Text);
-                        if (tempQuantDoors <= 0)
-                        {
-                            throw new Exception("Campo Quantidade de Portas tem de ser maior que zero!");
-                        }
                     }
                     catch (Exception ex)
                     {
                         throw new Exception("O número de portas tem de ser um número inteiro!");
+                    }
+                    //validar se quantDoors é superior a zero
+                    if (tempQuantDoors <= 0)
+                    {
+                        throw new Exception("Campo Quantidade de Portas tem de ser maior que zero!");
                     }
                 }
                 catch (Exception ex)

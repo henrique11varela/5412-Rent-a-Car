@@ -208,11 +208,12 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                    //validar se quantRodas é numero inteiro
+                    //validar se campo quantRodas está preenchido
                     if (quantRodas.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
                     }
+                    //validar se quantRodas é numero inteiro
                     try
                     {
                         tempQuantRodas = Int32.Parse(quantRodas.textBox.Text);
@@ -221,13 +222,19 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O número de rodas tem de ser um número inteiro!");
                     }
+                    //validar se quantRodas é superior a zero
+                    if (tempQuantRodas <= 0)
+                    {
+                        throw new Exception("Campo Quantidade de Rodas tem de ser maior que zero!");
+                    }
 
 
-                    //validar se valorDia é um valor decimal
+                    //validar se campo valorDia está preenchido
                     if (valorDia.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Valor Dia não pode estar vazio!");
                     }
+                    //validar se valorDia é um valor decimal
                     try
                     {
                         tempValorDia = float.Parse(valorDia.textBox.Text);
@@ -236,13 +243,19 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
                     }
+                    //validar se valorDia é superior a zero
+                    if (tempValorDia <= 0)
+                    {
+                        throw new Exception("Campo Valor Dia tem de ser maior que zero!");
+                    }
 
 
-                    //validar se quantDoors é numero inteiro
+                    //validar se campo maxPassengers está preenchido
                     if (maxPassengers.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Máximo de Passageiros não pode estar vazio!");
                     }
+                    //validar se maxPassengers é um valor inteiro
                     try
                     {
                         tempMaxPassengers = Int32.Parse(maxPassengers.textBox.Text);
@@ -251,13 +264,19 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O número de passangeiros tem de ser um número inteiro!");
                     }
+                    //validar se maxPassengers é superior a zero
+                    if (tempMaxPassengers <= 0)
+                    {
+                        throw new Exception("Campo Máximo de Passageiros tem de ser maior que zero!");
+                    }
 
 
-                    //validar se quantDoors é numero inteiro
+                    //validar se campo quantAxis está preenchido
                     if (quantAxis.textBox.Text.Length < 1)
                     {
                         throw new Exception("Campo Quantidade de Eixos não pode estar vazio!");
                     }
+                    //validar se quantAxis é numero inteiro
                     try
                     {
                         tempQuantAxis = Int32.Parse(quantAxis.textBox.Text);
@@ -265,6 +284,11 @@ namespace Rent_a_Car.Components.Forms
                     catch (Exception ex)
                     {
                         throw new Exception("O número de eixos tem de ser um número inteiro!");
+                    }
+                    //validar se quantAxis é superior a zero
+                    if (tempQuantAxis <= 0)
+                    {
+                        throw new Exception("Campo Quantidade de Eixos tem de ser maior que zero!");
                     }
                 }
                 catch (Exception ex)
