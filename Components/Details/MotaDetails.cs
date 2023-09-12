@@ -65,15 +65,63 @@ namespace Rent_a_Car.Components.Details
             int id = mota.Id;
 
 
-            //marca.textBox.Text = carro.Marca;
-            //modelo.textBox.Text = carro.Modelo;
-            //cor.textBox.Text = carro.Cor;
-            //matricula.textBox.Text = carro.Matricula;
-            //ano.textBox.Text = carro.Ano.ToString();
-            //quantRodas.textBox.Text = carro.QuantRodas.ToString();
-            //valorDia.textBox.Text = carro.ValorDia.ToString();
-            //quantDoors.textBox.Text = carro.QuantDoors.ToString();
-            //isManual.textBox.Text = carro.IsManual.ToString();
+            DetailBox marca = new DetailBox();
+            marca.label.Text = "Marca";
+            marca.textBox.Text = mota.Marca;
+            this.Controls.Add(marca);
+            marca.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
+            marca.Location = new Point(25, 25);
+
+            DetailBox modelo = new DetailBox();
+            modelo.label.Text = "Modelo";
+            modelo.textBox.Text = mota.Modelo;
+            this.Controls.Add(modelo);
+            modelo.Size = new Size(this.Width / 2 - (25 * 2), modelo.Height);
+            modelo.Location = new Point(this.Width / 2 + 25, 25);
+
+            DetailBox cor = new DetailBox();
+            cor.label.Text = "Cor";
+            cor.textBox.Text = mota.Cor;
+            this.Controls.Add(cor);
+            cor.Size = new Size(this.Width / 2 - (25 * 2), cor.Height);
+            cor.Location = new Point(25, 25 + (25 + cor.Height) * 1);
+
+            DetailBox matricula = new DetailBox();
+            matricula.label.Text = "Matrícula";
+            matricula.textBox.Text = mota.Matricula.ToString();
+            this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + matricula.Height) * 1);
+
+            DetailBox ano = new DetailBox();
+            ano.label.Text = "Ano";
+            ano.textBox.Text = mota.Ano.ToString();
+            this.Controls.Add(ano);
+            ano.Size = new Size(this.Width / 2 - (25 * 2), ano.Height);
+            ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
+
+            DetailBox quantRodas = new DetailBox();
+            quantRodas.label.Text = "Quantidade de Rodas";
+            quantRodas.textBox.Text = mota.QuantRodas.ToString();
+            this.Controls.Add(quantRodas);
+            quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
+            quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
+
+            DetailBox valorDia = new DetailBox();
+            valorDia.label.Text = "Valor Dia";
+            valorDia.textBox.Text = mota.ValorDia.ToString();
+            this.Controls.Add(valorDia);
+            valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
+            valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
+
+            DetailBox cubicCapacity = new DetailBox();
+            cubicCapacity.label.Text = "Capacidade Cúbica";
+            cubicCapacity.textBox.Text = mota.CubicCapacity.ToString();
+            this.Controls.Add(cubicCapacity);
+            cubicCapacity.Size = new Size(this.Width / 2 - (25 * 2), cubicCapacity.Height);
+            cubicCapacity.Location = new Point(this.Width / 2 + 25, 25 + (25 + cubicCapacity.Height) * 3);
+
+
 
 
             //Reservar Button
