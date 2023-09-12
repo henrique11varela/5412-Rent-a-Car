@@ -79,6 +79,46 @@ namespace Rent_a_Car.Components.Details
             //quantDoors.textBox.Text = carro.QuantDoors.ToString();
             //isManual.textBox.Text = carro.IsManual.ToString();
 
+
+            DetailBox marca = new DetailBox();
+            marca.label.Text = "Marca";
+            marca.textBox.Text = carro.Marca;
+            this.Controls.Add(marca);
+            marca.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
+            marca.Location = new Point(25, 25);
+
+            DetailBox modelo = new DetailBox();
+            marca.label.Text = "Modelo";
+            marca.textBox.Text = carro.Modelo;
+            this.Controls.Add(modelo);
+            marca.Size = new Size(this.Width / 2 - (25 * 2), modelo.Height);
+            marca.Location = new Point(25, 25);
+
+            DetailBox cor = new DetailBox();
+            cor.label.Text = "Cor";
+            cor.textBox.Text = carro.Cor;
+            this.Controls.Add(cor);
+            cor.Size = new Size(this.Width / 2 - (25 * 2), cor.Height);
+            cor.Location = new Point(25, 25);
+
+            DetailBox quantRodas = new DetailBox();
+            quantRodas.label.Text = "Quantidade de Rodas";
+            quantRodas.textBox.Text = carro.QuantRodas.ToString();
+            this.Controls.Add(quantRodas);
+            quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
+            quantRodas.Location = new Point(25, 25);
+
+            DetailBox matricula = new DetailBox();
+            matricula.label.Text = "matricula";
+            matricula.textBox.Text = carro.QuantRodas.ToString();
+            this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(25, 25);
+
+
+
+
+
             //Reservar Button
             FlatButton Reservar = new FlatButton();
             Reservar.Text = "Reservar";
