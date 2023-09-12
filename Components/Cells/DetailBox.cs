@@ -10,7 +10,7 @@ namespace Rent_a_Car.Components.Input
     internal class DetailBox : Panel
     {
         public Label label = new Label();
-        public Label textBox = new Label();
+        public TextBox textBox = new TextBox();
         public DetailBox() : base()
         {
             Font font = ts.mediumFont;
@@ -24,8 +24,9 @@ namespace Rent_a_Car.Components.Input
             //textbox
             textBox.Font = font;
             textBox.Location = new Point(0, label.Height + gap);
-            textBox.TextAlign = ContentAlignment.MiddleLeft;
             textBox.Text = "Placeholder";
+            textBox.ReadOnly = true;
+            textBox.Enabled = false;
 
             this.Size = new Size(this.Width, label.Height + gap + textBox.Height);
             updateSize(new object(), new EventArgs());
