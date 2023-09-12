@@ -23,6 +23,7 @@ namespace Rent_a_Car.Views
         public ReservadoTable reservadoTable;
         public AlugadoTable alugadoTable;
         public ManutencaoTable manutencaoTable;
+        public StateListControls stateListControls;
         #endregion
 
         public StatesList()
@@ -31,7 +32,7 @@ namespace Rent_a_Car.Views
             this.BackColor = ts.light;
 
             //Emp.AddAlugado(new Alugado(1, "Carro", DateTime.Now, DateTime.Now, "000009"));
-            DAL.DAL.storeAlugado();
+            //DAL.DAL.storeAlugado();
         }
 
         /// <summary>
@@ -88,7 +89,9 @@ namespace Rent_a_Car.Views
             manutencaoTable = new ManutencaoTable(alugadoTitle.Font.Height * 3 + reservadoTitle.Font.Height * 3 + manutencaoTitle.Font.Height * 3 + alugadoTable.Height + reservadoTable.Height, this.Width / 2 + 25, 25, 25);
             manutencaoTable.FillData(Emp.ManutencaoList);
             this.Controls.Add(manutencaoTable);
-            
+
+            stateListControls = new StateListControls(reservadoTitle.Font.Height * 3, 25, 25, this.Width / 2 + 25);
+            this.Controls.Add(stateListControls);
 
             #region Preset setup
             this.BringToFront();

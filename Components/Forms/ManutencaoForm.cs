@@ -61,7 +61,17 @@ namespace Rent_a_Car.Components.Forms
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
             #endregion
 
+            Label label = new Label();
+            label.Font = ts.largeFont;
+            label.Text = "Problema";
+            label.Size = new Size(TextRenderer.MeasureText(label.Text, label.Font).Width, label.Font.Height) ;
+            label.Location = new Point((this.Width - label.Width) / 2, label.Font.Height);
+            this.Controls.Add(label);
+
             TextBox textBox = new TextBox();
+            textBox.Multiline = true;
+            textBox.Location = new Point(25, label.Height * 3);
+            textBox.Size = new Size(this.Width - 2 * 25, this.Height - 25 - label.Height * 3 - ts.mediumFont.Height * 3);
             this.Controls.Add(textBox);
 
             FlatButton Submit = new FlatButton();
@@ -74,8 +84,16 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.light;
             void submitClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Manutencao logic");
-                
+                try {
+                    if (textBox.Text.Length < 1) {
+                        throw new Exception("Preencha o campo vazio.");
+                    }
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("Error: " + ex.Message);
+                    return;
+                }
+
                 manutencao.Problema = textBox.Text;
 
                 Emp.AddManutencao(manutencao);
