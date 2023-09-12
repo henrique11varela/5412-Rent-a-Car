@@ -67,15 +67,70 @@ namespace Rent_a_Car.Components.Details
             int id = camioneta.Id;
 
 
-            //marca.textBox.Text = camioneta.Marca;
-            //modelo.textBox.Text = camioneta.Modelo;
-            //cor.textBox.Text = camioneta.Cor;
-            //matricula.textBox.Text = camioneta.Matricula;
-            //ano.textBox.Text = camioneta.Ano.ToString();
-            //quantRodas.textBox.Text = camioneta.QuantRodas.ToString();
-            //valorDia.textBox.Text = camioneta.ValorDia.ToString();
-            //quantDoors.textBox.Text = camioneta.QuantDoors.ToString();
-            //isManual.textBox.Text = camioneta.IsManual.ToString();
+            DetailBox marca = new DetailBox();
+            marca.label.Text = "Marca";
+            marca.textBox.Text = camioneta.Marca;
+            this.Controls.Add(marca);
+            marca.Size = new Size(this.Width / 2 - (25 * 2), marca.Height);
+            marca.Location = new Point(25, 25);
+
+            DetailBox modelo = new DetailBox();
+            modelo.label.Text = "Modelo";
+            modelo.textBox.Text = camioneta.Modelo;
+            this.Controls.Add(modelo);
+            modelo.Size = new Size(this.Width / 2 - (25 * 2), modelo.Height);
+            modelo.Location = new Point(this.Width / 2 + 25, 25);
+
+            DetailBox cor = new DetailBox();
+            cor.label.Text = "Cor";
+            cor.textBox.Text = camioneta.Cor;
+            this.Controls.Add(cor);
+            cor.Size = new Size(this.Width / 2 - (25 * 2), cor.Height);
+            cor.Location = new Point(25, 25 + (25 + cor.Height) * 1);
+
+            DetailBox matricula = new DetailBox();
+            matricula.label.Text = "Matrícula";
+            matricula.textBox.Text = camioneta.Matricula.ToString();
+            this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + matricula.Height) * 1);
+
+            DetailBox ano = new DetailBox();
+            ano.label.Text = "Ano";
+            ano.textBox.Text = camioneta.Ano.ToString();
+            this.Controls.Add(ano);
+            ano.Size = new Size(this.Width / 2 - (25 * 2), ano.Height);
+            ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
+
+            DetailBox quantRodas = new DetailBox();
+            quantRodas.label.Text = "Quantidade de Rodas";
+            quantRodas.textBox.Text = camioneta.QuantRodas.ToString();
+            this.Controls.Add(quantRodas);
+            quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
+            quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
+
+            DetailBox valorDia = new DetailBox();
+            valorDia.label.Text = "Valor Dia";
+            valorDia.textBox.Text = camioneta.ValorDia.ToString();
+            this.Controls.Add(valorDia);
+            valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
+            valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
+
+            DetailBox maxPassengers = new DetailBox();
+            maxPassengers.label.Text = "Máximo Passageiros";
+            maxPassengers.textBox.Text = camioneta.MaxPassengers.ToString();
+            this.Controls.Add(maxPassengers);
+            maxPassengers.Size = new Size(this.Width / 2 - (25 * 2), maxPassengers.Height);
+            maxPassengers.Location = new Point(this.Width / 2 + 25, 25 + (25 + maxPassengers.Height) * 3);
+
+            DetailBox quantAxis = new DetailBox();
+            quantAxis.label.Text = "Quantidade de Eixos";
+            quantAxis.textBox.Text = camioneta.QuantAxis.ToString();
+            this.Controls.Add(quantAxis);
+            quantAxis.Size = new Size(this.Width / 2 - (25 * 2), quantAxis.Height);
+            quantAxis.Location = new Point(25, 25 + (25 + quantAxis.Height) * 4);
+
+
 
 
             //Reservar Button

@@ -69,17 +69,6 @@ namespace Rent_a_Car.Components.Details
             int id = carro.Id;
 
 
-            //marca.textBox.Text = carro.Marca;
-            //modelo.textBox.Text = carro.Modelo;
-            //cor.textBox.Text = carro.Cor;
-            //matricula.textBox.Text = carro.Matricula;
-            //ano.textBox.Text = carro.Ano.ToString();
-            //quantRodas.textBox.Text = carro.QuantRodas.ToString();
-            //valorDia.textBox.Text = carro.ValorDia.ToString();
-            //quantDoors.textBox.Text = carro.QuantDoors.ToString();
-            //isManual.textBox.Text = carro.IsManual.ToString();
-
-
             DetailBox marca = new DetailBox();
             marca.label.Text = "Marca";
             marca.textBox.Text = carro.Marca;
