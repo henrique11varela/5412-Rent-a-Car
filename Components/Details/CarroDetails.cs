@@ -88,32 +88,67 @@ namespace Rent_a_Car.Components.Details
             marca.Location = new Point(25, 25);
 
             DetailBox modelo = new DetailBox();
-            marca.label.Text = "Modelo";
-            marca.textBox.Text = carro.Modelo;
+            modelo.label.Text = "Modelo";
+            modelo.textBox.Text = carro.Modelo;
             this.Controls.Add(modelo);
-            marca.Size = new Size(this.Width / 2 - (25 * 2), modelo.Height);
-            marca.Location = new Point(25, 25);
+            modelo.Size = new Size(this.Width / 2 - (25 * 2), modelo.Height);
+            modelo.Location = new Point(this.Width / 2 + 25, 25);
 
             DetailBox cor = new DetailBox();
             cor.label.Text = "Cor";
             cor.textBox.Text = carro.Cor;
             this.Controls.Add(cor);
             cor.Size = new Size(this.Width / 2 - (25 * 2), cor.Height);
-            cor.Location = new Point(25, 25);
+            cor.Location = new Point(25, 25 + (25 + cor.Height) * 1);
+
+            DetailBox matricula = new DetailBox();
+            matricula.label.Text = "Matrícula";
+            matricula.textBox.Text = carro.Matricula.ToString();
+            this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + matricula.Height) * 1);
+
+            DetailBox ano = new DetailBox();
+            ano.label.Text = "Ano";
+            ano.textBox.Text = carro.Ano.ToString();
+            this.Controls.Add(ano);
+            ano.Size = new Size(this.Width / 2 - (25 * 2), ano.Height);
+            ano.Location = new Point(25, 25 + (25 + ano.Height) * 2);
 
             DetailBox quantRodas = new DetailBox();
             quantRodas.label.Text = "Quantidade de Rodas";
             quantRodas.textBox.Text = carro.QuantRodas.ToString();
             this.Controls.Add(quantRodas);
             quantRodas.Size = new Size(this.Width / 2 - (25 * 2), quantRodas.Height);
-            quantRodas.Location = new Point(25, 25);
+            quantRodas.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantRodas.Height) * 2);
 
-            DetailBox matricula = new DetailBox();
-            matricula.label.Text = "matricula";
-            matricula.textBox.Text = carro.QuantRodas.ToString();
-            this.Controls.Add(matricula);
-            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
-            matricula.Location = new Point(25, 25);
+            DetailBox valorDia = new DetailBox();
+            valorDia.label.Text = "Valor Dia";
+            valorDia.textBox.Text = carro.ValorDia.ToString();
+            this.Controls.Add(valorDia);
+            valorDia.Size = new Size(this.Width / 2 - (25 * 2), valorDia.Height);
+            valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
+
+            DetailBox quantDoors = new DetailBox();
+            quantDoors.label.Text = "Quantidade de Doors";
+            quantDoors.textBox.Text = carro.QuantDoors.ToString();
+            this.Controls.Add(quantDoors);
+            quantDoors.Size = new Size(this.Width / 2 - (25 * 2), quantDoors.Height);
+            quantDoors.Location = new Point(this.Width / 2 + 25, 25 + (25 + quantDoors.Height) * 3);
+
+            DetailBox isManual = new DetailBox();
+            isManual.label.Text = "Manual?";
+            if (carro.IsManual)
+            {
+                isManual.textBox.Text = "SIM";
+            }
+            else
+            {
+                isManual.textBox.Text = "NAO";
+            }
+            this.Controls.Add(isManual);
+            isManual.Size = new Size(this.Width / 2 - (25 * 2), isManual.Height);
+            isManual.Location = new Point(25, 25 + (25 + isManual.Height) * 4);
 
 
 
