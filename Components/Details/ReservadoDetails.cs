@@ -97,7 +97,9 @@ namespace Rent_a_Car.Components.Details
 
                 Emp.RemoveReservado(reservado);
                 DAL.DAL.storeReservado();
+                DAL.DAL.convertReservado();
                 Emp.reservadoTable.FillData(Emp.ReservadoList);
+                Emp.vehicleTable.FillData(Emp.VehicleList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }

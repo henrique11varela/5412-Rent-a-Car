@@ -98,6 +98,7 @@ namespace Rent_a_Car.Components.Forms
 
                 Emp.AddManutencao(manutencao);
                 DAL.DAL.storeManutencao();
+                DAL.DAL.convertManutencao();
                 Emp.manutencaoTable.FillData(Emp.ManutencaoList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);

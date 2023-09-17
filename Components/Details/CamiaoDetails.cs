@@ -134,6 +134,11 @@ namespace Rent_a_Car.Components.Details
             Reservar.ForeColor = ts.light;
             void reservarClick(object sender, EventArgs e)
             {
+                if (camiao.Status != "Free")
+                {
+                    MessageBox.Show($"Este Camião está com o estado {camiao.Status}");
+                    return;
+                }
                 Reservado reserva = new Reservado(id, "Camiao", -1);
                 var parent = this.Parent;
                 parent.Controls.Add(new ClienteSelectTable(reserva));

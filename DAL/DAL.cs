@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rent_a_Car.Classes;
 using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Rent_a_Car.DAL
 {
@@ -137,32 +138,44 @@ namespace Rent_a_Car.DAL
                 {
                     foreach (Carro carro in Empresa.CarrosList)
                     {
-                        carro.Status = "Alugado";
-                        carro.FreeExpect = freeExpect;
+                        if (carro.Id == Int32.Parse(item[0]))
+                        {
+                            carro.Status = "Alugado";
+                            carro.FreeExpect = freeExpect;
+                        }
                     }
                 }
                 else if (tipo == "Camiao")
                 {
                     foreach (Camiao camiao in Empresa.CamioesList)
                     {
-                        camiao.Status = "Alugado";
-                        camiao.FreeExpect = freeExpect;
+                        if (camiao.Id == Int32.Parse(item[0]))
+                        {
+                            camiao.Status = "Alugado";
+                            camiao.FreeExpect = freeExpect;
+                        }
                     }
                 }
                 else if (tipo == "Camioneta")
                 {
                     foreach (Camioneta camioneta in Empresa.CamionetasList)
                     {
-                        camioneta.Status = "Alugado";
-                        camioneta.FreeExpect = freeExpect;
+                        if (camioneta.Id == Int32.Parse(item[0]))
+                        {
+                            camioneta.Status = "Alugado";
+                            camioneta.FreeExpect = freeExpect;
+                        }
                     }
                 }
                 else if (tipo == "Mota")
                 {
                     foreach (Mota mota in Empresa.MotasList)
                     {
-                        mota.Status = "Alugado";
-                        mota.FreeExpect = freeExpect;
+                        if (mota.Id == Int32.Parse(item[0]))
+                        {
+                            mota.Status = "Alugado";
+                            mota.FreeExpect = freeExpect;
+                        }
                     }
                 }
             }
@@ -186,32 +199,44 @@ namespace Rent_a_Car.DAL
                 {
                     foreach (Carro carro in Empresa.CarrosList)
                     {
-                        carro.Status = "Manutenção";
-                        carro.FreeExpect = freeExpect;
+                        if (carro.Id == Int32.Parse(item[0]))
+                        {
+                            carro.Status = "Manutenção";
+                            carro.FreeExpect = freeExpect;
+                        }
                     }
                 }
                 else if (tipo == "Camiao")
                 {
                     foreach (Camiao camiao in Empresa.CamioesList)
                     {
-                        camiao.Status = "Manutenção";
-                        camiao.FreeExpect = freeExpect;
+                        if (camiao.Id == Int32.Parse(item[0]))
+                        {
+                            camiao.Status = "Manutenção";
+                            camiao.FreeExpect = freeExpect;
+                        }
                     }
                 }
                 else if (tipo == "Camioneta")
                 {
                     foreach (Camioneta camioneta in Empresa.CamionetasList)
                     {
-                        camioneta.Status = "Manutenção";
-                        camioneta.FreeExpect = freeExpect;
+                        if (camioneta.Id == Int32.Parse(item[0]))
+                        {
+                            camioneta.Status = "Manutenção";
+                            camioneta.FreeExpect = freeExpect;
+                        }
                     }
                 }
                 else if (tipo == "Mota")
                 {
                     foreach (Mota mota in Empresa.MotasList)
                     {
-                        mota.Status = "Manutenção";
+                        if (mota.Id == Int32.Parse(item[0]))
+                        {
+                            mota.Status = "Manutenção";
                         mota.FreeExpect = freeExpect;
+                        }
                     }
                 }
             }
@@ -234,28 +259,40 @@ namespace Rent_a_Car.DAL
                 {
                     foreach (Carro carro in Empresa.CarrosList)
                     {
-                        carro.Status = "Reservado";
+                        if (carro.Id == Int32.Parse(item[0]))
+                        {
+                            carro.Status = "Reservado";
+                        }
                     }
                 }
                 else if (tipo == "Camiao")
                 {
                     foreach (Camiao camiao in Empresa.CamioesList)
                     {
-                        camiao.Status = "Reservado";
+                        if (camiao.Id == Int32.Parse(item[0]))
+                        {
+                            camiao.Status = "Reservado";
+                        }
                     }
                 }
                 else if (tipo == "Camioneta")
                 {
                     foreach (Camioneta camioneta in Empresa.CamionetasList)
                     {
-                        camioneta.Status = "Reservado";
+                        if (camioneta.Id == Int32.Parse(item[0]))
+                        {
+                            camioneta.Status = "Reservado";
+                        }
                     }
                 }
                 else if (tipo == "Mota")
                 {
                     foreach (Mota mota in Empresa.MotasList)
                     {
-                        mota.Status = "Reservado";
+                        if (mota.Id == Int32.Parse(item[0]))
+                        {
+                            mota.Status = "Reservado";
+                        }
                     }
                 }
             }

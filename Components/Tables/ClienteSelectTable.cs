@@ -247,13 +247,34 @@ namespace Rent_a_Car.Components.Tables
                     Emp.AddReservado(reserva);
                     Emp.reservadoTable.FillData(Emp.ReservadoList);
                     DAL.DAL.storeReservado();
+                    DAL.DAL.convertReservado();
                 }
                 else
                 {
+                    int length = Emp.ReservadoList.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        Reservado reservaTemp = Emp.ConvertObj(Emp.ReservadoList[i]);
+                        if (reservaTemp.IdVeiculo == acontecimento.IdVeiculo && reservaTemp.IdCliente == idClicked)
+                        {
+                            Emp.RemoveReservado(reservaTemp);
+                            Emp.reservadoTable.FillData(Emp.ReservadoList);
+                            DAL.DAL.storeReservado();
+                            DAL.DAL.convertReservado();
+                        }
+                        else if (reservaTemp.IdVeiculo == acontecimento.IdVeiculo && reservaTemp.IdCliente != idClicked)
+                        {
+                            MessageBox.Show("Veiculo reservado para outro cliente.");
+                            this.Parent.Controls.Remove(this);
+                            return;
+                        }
+                    }
                     alugado.IdCliente = idClicked;
                     Emp.AddAlugado(alugado);
                     Emp.alugadoTable.FillData(Emp.AlugadoList);
                     DAL.DAL.storeAlugado();
+                    DAL.DAL.convertAlugado();
+                    Emp.vehicleTable.FillData(Emp.VehicleList);
                 }
 
 
