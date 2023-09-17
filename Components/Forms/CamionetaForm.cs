@@ -304,7 +304,7 @@ namespace Rent_a_Car.Components.Forms
                 //validate inputs
                 if (id == -1)
                 {
-                    camioneta.Id = 500;
+                    camioneta.Id = Emp.LastCamionetaId++;
                     camioneta.Marca = tempMarca;
                     camioneta.Modelo = tempModelo;
                     camioneta.Cor = tempCor;

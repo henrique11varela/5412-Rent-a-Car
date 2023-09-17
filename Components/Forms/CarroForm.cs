@@ -291,7 +291,7 @@ namespace Rent_a_Car.Components.Forms
                 //validate inputs
                 if (id == -1)
                 {
-                    carro.Id = 500; //to calculate
+                    carro.Id = Emp.LastCarroId++;
 
                     carro.Marca = tempMarca;
                     carro.Modelo = tempModelo;

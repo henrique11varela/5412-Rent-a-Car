@@ -26,6 +26,7 @@ namespace Rent_a_Car.DAL
             csvHistmanutencao.read();
             csvHistalugado.read();
             csvCliente.read();
+            csvIds.read();
         }
         public static void writeAll()
         {
@@ -39,6 +40,7 @@ namespace Rent_a_Car.DAL
             csvHistmanutencao.write();
             csvHistalugado.write();
             csvCliente.write();
+            csvIds.write();
         }
         #endregion
 

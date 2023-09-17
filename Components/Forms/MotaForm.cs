@@ -273,7 +273,7 @@ namespace Rent_a_Car.Components.Forms
                 //validate inputs
                 if (id == -1)
                 {
-                    mota.Id = 500; //to calculate
+                    mota.Id = Emp.LastMotaId++;
 
                     mota.Marca = tempMarca;
                     mota.Modelo = tempModelo;

@@ -275,7 +275,7 @@ namespace Rent_a_Car.Components.Forms
                 if (id == -1)
                 {
                     //assign variables
-                    camiao.Id = 500;
+                    camiao.Id = Emp.LastCamiaoId++;
                     camiao.Marca = tempMarca;
                     camiao.Modelo = tempModelo;
                     camiao.Cor = tempCor;

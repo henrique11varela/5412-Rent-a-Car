@@ -95,7 +95,7 @@ namespace Rent_a_Car.Components.Forms
                 //validate inputs
                 if (id == -1)
                 {
-                    cliente.Id = 500; //to calculate
+                    cliente.Id = Emp.LastClienteId++;
                     cliente.Nome = nome.textBox.Text;
                     cliente.Contacto = contacto.textBox.Text;
                     Emp.AddCliente(cliente);
