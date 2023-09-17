@@ -248,6 +248,7 @@ namespace Rent_a_Car.Components.Tables
                     Emp.reservadoTable.FillData(Emp.ReservadoList);
                     DAL.DAL.storeReservado();
                     DAL.DAL.convertReservado();
+                    Emp.vehicleTable.FillData(Emp.VehicleList);
                 }
                 else
                 {
