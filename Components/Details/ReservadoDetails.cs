@@ -99,6 +99,15 @@ namespace Rent_a_Car.Components.Details
                 DAL.DAL.storeReservado();
                 DAL.DAL.convertReservado();
                 Emp.reservadoTable.FillData(Emp.ReservadoList);
+                foreach (var veiculo in Emp.VehicleList)
+                {
+                    var veiculoTemp = Emp.ConvertObj(veiculo);
+                    if (veiculoTemp.Id == reservado.IdVeiculo && veiculoTemp.GetType().Name == reservado.TipoVeiculo)
+                    {
+                        veiculoTemp.Status = "Free";
+                        break;
+                    }
+                }
                 Emp.vehicleTable.FillData(Emp.VehicleList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);

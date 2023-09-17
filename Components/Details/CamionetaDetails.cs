@@ -11,6 +11,8 @@ using Rent_a_Car.Classes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using Rent_a_Car.Components.Tables;
 using System.Windows.Forms;
+using Rent_a_Car.Components.Menus;
+using Rent_a_Car.Components.Forms;
 
 namespace Rent_a_Car.Components.Details
 {
@@ -144,6 +146,11 @@ namespace Rent_a_Car.Components.Details
             Reservar.ForeColor = ts.light;
             void reservarClick(object sender, EventArgs e)
             {
+                if (camioneta.Status != "Free")
+                {
+                    MessageBox.Show($"Este Camioneta está com o estado {camioneta.Status}");
+                    return;
+                }
                 Reservado reserva = new Reservado(id, "Camioneta", -1);
                 var parent = this.Parent;
                 parent.Controls.Add(new ClienteSelectTable(reserva));
@@ -162,12 +169,15 @@ namespace Rent_a_Car.Components.Details
             Alugar.ForeColor = ts.light;
             void alugarClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Alugar logic" + id);
-                //validate inputs
-
-                //DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                if (camioneta.Status != "Free" && camioneta.Status != "Reservado")
+                {
+                    MessageBox.Show($"Este Camioneta está com o estado {camioneta.Status}");
+                    return;
+                }
+                VehicleControls controls = Emp.ConvertObj(this.Parent);
+                Alugado alugado = new Alugado(id, "Camioneta", controls.StartCalendar.SelectionStart, controls.EndCalendar.SelectionStart, -1);
                 var parent = this.Parent;
+                parent.Controls.Add(new ClienteSelectTable(alugado));
                 parent.Controls.Remove(this);
             }
             Alugar.Click += alugarClick;
@@ -183,12 +193,15 @@ namespace Rent_a_Car.Components.Details
             Manutencao.ForeColor = ts.light;
             void manutencaoClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Manutencao logic" + id);
-                //validate inputs
-
-                //DAL.DAL.storeCarro();
-                Empresa.ConvertObj(this.Parent.Parent).vehicleTable.FillData(Empresa.VehicleList);
+                if (camioneta.Status != "Free")
+                {
+                    MessageBox.Show($"Este Camioneta está com o estado {camioneta.Status}");
+                    return;
+                }
+                VehicleControls controls = Emp.ConvertObj(this.Parent);
+                Manutencao manutencao = new Manutencao(id, "Camioneta", controls.StartCalendar.SelectionStart, controls.EndCalendar.SelectionStart, "");
                 var parent = this.Parent;
+                parent.Controls.Add(new ManutencaoForm(manutencao));
                 parent.Controls.Remove(this);
             }
             Manutencao.Click += manutencaoClick;
