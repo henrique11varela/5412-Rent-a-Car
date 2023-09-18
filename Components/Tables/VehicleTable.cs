@@ -117,9 +117,19 @@ namespace Rent_a_Car.Components.Tables
         {
             foreach (DataGridViewRow dgvRow in this.Rows)
             {
-                if (dgvRow.Cells[5].ToString() == "Free")
+                if (dgvRow.Cells[5].Value.ToString() == "Free")
                 {
                     dgvRow.Cells[5].Style.BackColor = ts.success_emphasis;
+                }else if(dgvRow.Cells[5].Value.ToString() == "Reservado")
+                {
+                    dgvRow.Cells[5].Style.BackColor = ts.danger_emphasis;
+                }
+                else if(dgvRow.Cells[5].Value.ToString() == "Manutenção")
+                {
+                    dgvRow.Cells[5].Style.BackColor = ts.brown_emphasis;
+                }
+                else if(dgvRow.Cells[5].Value.ToString() == "Alugado"){
+                    dgvRow.Cells[5].Style.BackColor = ts.warning_emphasis;
                 }
             }
         }
