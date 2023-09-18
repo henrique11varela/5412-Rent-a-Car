@@ -203,7 +203,7 @@ namespace Rent_a_Car.Components.Details
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
             this.Controls.Add(Cancel);
-            Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
+            Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25); 
             Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
             Cancel.BGC = ts.dark;
             Cancel.BGC_HOVER = ts.dark_emphasis;
