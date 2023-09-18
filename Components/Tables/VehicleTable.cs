@@ -79,6 +79,9 @@ namespace Rent_a_Car.Components.Tables
             this.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             this.Columns[0].Visible = false;
+
+            
+            
         }
 
         public VehicleTable(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
@@ -108,6 +111,17 @@ namespace Rent_a_Car.Components.Tables
             #region Preset setup
             this.BringToFront();
             #endregion
+        }
+
+        public void statusColor()
+        {
+            foreach (DataGridViewRow dgvRow in this.Rows)
+            {
+                if (dgvRow.Cells[5].ToString() == "Free")
+                {
+                    dgvRow.Cells[5].Style.BackColor = ts.success_emphasis;
+                }
+            }
         }
 
         private void onCellClick(object sender, DataGridViewCellEventArgs e)
@@ -286,8 +300,9 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1), "Details", "Edit", "Delete");
+                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1), "Details", "Edit", "Delete"); 
             }
+            statusColor();
         }
     }
 }
