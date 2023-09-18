@@ -26,6 +26,9 @@ namespace Rent_a_Car
         public static Color warning_emphasis = Color.FromArgb(255, 218, 106);
         public static Color info_emphasis = Color.FromArgb(110, 223, 246);
         public static Color dark_emphasis = Color.FromArgb(222, 226, 230);
+
+
+        public static Color brown_emphasis = Color.FromArgb(131, 105, 83);
         //Fonts
         public static Font mediumFont = new Font("Segoe UI", 10);
         public static Font largeFont = new Font("Segoe UI", 16);
