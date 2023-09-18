@@ -97,7 +97,18 @@ namespace Rent_a_Car.Components.Details
 
                 Emp.RemoveManutencao(manutencao);
                 DAL.DAL.storeManutencao();
+                DAL.DAL.convertManutencao();
                 Emp.manutencaoTable.FillData(Emp.ManutencaoList);
+                foreach (var veiculo in Emp.VehicleList)
+                {
+                    var veiculoTemp = Emp.ConvertObj(veiculo);
+                    if (veiculoTemp.Id == manutencao.IdVeiculo && veiculoTemp.GetType().Name == manutencao.TipoVeiculo)
+                    {
+                        veiculoTemp.Status = "Free";
+                        break;
+                    }
+                }
+                Emp.vehicleTable.FillData(Emp.VehicleList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }

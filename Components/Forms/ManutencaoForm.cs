@@ -98,7 +98,9 @@ namespace Rent_a_Car.Components.Forms
 
                 Emp.AddManutencao(manutencao);
                 DAL.DAL.storeManutencao();
+                DAL.DAL.convertManutencao();
                 Emp.manutencaoTable.FillData(Emp.ManutencaoList);
+                Emp.vehicleTable.FillData(Emp.VehicleList);
                 var parent = this.Parent;
                 parent.Controls.Remove(this);
             }

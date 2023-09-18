@@ -11,6 +11,7 @@ using Rent_a_Car.Classes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using Rent_a_Car.Components.Tables;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Rent_a_Car.Components.Forms
 {
@@ -186,6 +187,12 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("Campo Matricula não pode estar vazio!");
                     }
+                    Regex reg = new Regex("(^\\d{2}-[A-Za-z]{2}-\\d{2}$)|(^[A-Za-z]{2}-\\d{2}-\\d{2}$)|(^\\d{2}-\\d{2}-[A-Za-z]{2}$)|(^\\d{2}-[A-Za-z]{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-\\d{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-[A-Za-z]{2}-\\d{2}$)");
+                    tempMatricula = reg.Match(tempMatricula).ToString();
+                    if (tempMatricula.Length < 1)
+                    {
+                        throw new Exception("Campo Matricula não é válido!");
+                    }
 
 
 
@@ -291,7 +298,7 @@ namespace Rent_a_Car.Components.Forms
                 //validate inputs
                 if (id == -1)
                 {
-                    carro.Id = 500; //to calculate
+                    carro.Id = Emp.LastCarroId++;
 
                     carro.Marca = tempMarca;
                     carro.Modelo = tempModelo;

@@ -22,6 +22,7 @@ namespace Rent_a_Car.Classes
         public static StateListControls stateListControls;
 
         #region attributes
+        private static int[] ids = new int[5];
         private static List<Camiao> camioes = new List<Camiao>();
         private static List<Camioneta> camionetas = new List<Camioneta>();
         private static List<Carro> carros = new List<Carro>();
@@ -45,7 +46,7 @@ namespace Rent_a_Car.Classes
                 return arrayList;
             }
         }
-        
+
         public static ArrayList CamioesList
         {
             get
@@ -55,7 +56,7 @@ namespace Rent_a_Car.Classes
                 return arrayList;
             }
         }
-        
+
         public static ArrayList CamionetasList
         {
             get
@@ -65,7 +66,7 @@ namespace Rent_a_Car.Classes
                 return arrayList;
             }
         }
-        
+
         public static ArrayList CarrosList
         {
             get
@@ -75,7 +76,7 @@ namespace Rent_a_Car.Classes
                 return arrayList;
             }
         }
-        
+
         public static ArrayList MotasList
         {
             get
@@ -87,8 +88,9 @@ namespace Rent_a_Car.Classes
         }
 
         public static ArrayList AlugadoList
-        { 
-            get {
+        {
+            get
+            {
                 ArrayList arrayList = new ArrayList();
                 arrayList.AddRange(alugados);
                 return arrayList;
@@ -125,28 +127,90 @@ namespace Rent_a_Car.Classes
             }
         }
 
+        public static int LastCarroId
+        {
+            get
+            {
+                return ids[0];
+            }
+            set
+            {
+                ids[0] = value;
+            }
+        }
+
+        public static int LastCamiaoId
+        {
+            get
+            {
+                return ids[1];
+            }
+            set
+            {
+                ids[1] = value;
+            }
+        }
+
+        public static int LastCamionetaId
+        {
+            get
+            {
+                return ids[2];
+            }
+            set
+            {
+                ids[2] = value;
+            }
+        }
+
+        public static int LastMotaId
+        {
+            get
+            {
+                return ids[3];
+            }
+            set
+            {
+                ids[3] = value;
+            }
+        }
+
+        public static int LastClienteId
+        {
+            get
+            {
+                return ids[4];
+            }
+            set
+            {
+                ids[4] = value;
+            }
+        }
+
+
         //Add Carro
         public static void AddCarro(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, int quantDoors, bool isManual)
         {
             AddCarro(new Carro(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia, quantDoors, isManual));
         }
-        
+
         public static void AddCarro(Carro c)
         {
             carros.Add(c);
-            
+
         }
 
-        public static void RemoveCarro(Carro c) { 
+        public static void RemoveCarro(Carro c)
+        {
             carros.Remove(c);
         }
-        
+
         //Add Camiao
         public static void AddCamiao(int id, string marca, string modelo, string cor, int quantRodas, string matricula, int ano, string status, DateTime freeExpect, float valorDia, float maxWeight)
         {
             AddCamiao(new Camiao(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia, maxWeight));
         }
-        
+
         public static void AddCamiao(Camiao c)
         {
             camioes.Add(c);
@@ -162,7 +226,7 @@ namespace Rent_a_Car.Classes
         {
             AddCamioneta(new Camioneta(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia, quantAxis, maxPassengers));
         }
-        
+
         public static void AddCamioneta(Camioneta c)
         {
             camionetas.Add(c);
@@ -178,7 +242,7 @@ namespace Rent_a_Car.Classes
         {
             AddMota(new Mota(id, marca, modelo, cor, quantRodas, matricula, ano, status, freeExpect, valorDia, cubicCapacity));
         }
-        
+
         public static void AddMota(Mota c)
         {
             motas.Add(c);
@@ -259,7 +323,8 @@ namespace Rent_a_Car.Classes
             return Convert.ChangeType(source, source.GetType());
         }
 
-        public static void InicialSetup() {
+        public static void InicialSetup()
+        {
             carros = DAL.DAL.convertCarro();
             motas = DAL.DAL.convertMota();
             camioes = DAL.DAL.convertCamiao();

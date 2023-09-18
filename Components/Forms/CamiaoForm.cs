@@ -175,7 +175,12 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("Campo Matricula não pode estar vazio!");
                     }
-
+                    Regex reg = new Regex("(^\\d{2}-[A-Za-z]{2}-\\d{2}$)|(^[A-Za-z]{2}-\\d{2}-\\d{2}$)|(^\\d{2}-\\d{2}-[A-Za-z]{2}$)|(^\\d{2}-[A-Za-z]{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-\\d{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-[A-Za-z]{2}-\\d{2}$)");
+                    tempMatricula = reg.Match(tempMatricula).ToString();
+                    if (tempMatricula.Length < 1)
+                    {
+                        throw new Exception("Campo Matricula não é válido!");
+                    }
 
 
 
@@ -275,7 +280,7 @@ namespace Rent_a_Car.Components.Forms
                 if (id == -1)
                 {
                     //assign variables
-                    camiao.Id = 500;
+                    camiao.Id = Emp.LastCamiaoId++;
                     camiao.Marca = tempMarca;
                     camiao.Modelo = tempModelo;
                     camiao.Cor = tempCor;

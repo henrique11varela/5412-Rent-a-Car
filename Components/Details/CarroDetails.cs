@@ -154,6 +154,11 @@ namespace Rent_a_Car.Components.Details
             Reservar.ForeColor = ts.light;
             void reservarClick(object sender, EventArgs e)
             {
+                if (carro.Status != "Free")
+                {
+                    MessageBox.Show($"Este Carro está com o estado {carro.Status}");
+                    return;
+                }
                 Reservado reserva = new Reservado(id, "Carro", -1);
                 var parent = this.Parent;
                 parent.Controls.Add(new ClienteSelectTable(reserva));
@@ -172,6 +177,11 @@ namespace Rent_a_Car.Components.Details
             Alugar.ForeColor = ts.light;
             void alugarClick(object sender, EventArgs e)
             {
+                if (carro.Status != "Free" && carro.Status != "Reservado")
+                {
+                    MessageBox.Show($"Este Carro está com o estado {carro.Status}");
+                    return;
+                }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);
                 Alugado alugado = new Alugado(id, "Carro", controls.StartCalendar.SelectionStart, controls.EndCalendar.SelectionStart, -1);
                 var parent = this.Parent;
@@ -191,6 +201,11 @@ namespace Rent_a_Car.Components.Details
             Manutencao.ForeColor = ts.light;
             void manutencaoClick(object sender, EventArgs e)
             {
+                if (carro.Status != "Free")
+                {
+                    MessageBox.Show($"Este Carro está com o estado {carro.Status}");
+                    return;
+                }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);
                 Manutencao manutencao = new Manutencao(id, "Carro", controls.StartCalendar.SelectionStart, controls.EndCalendar.SelectionStart, "");
                 var parent = this.Parent;
