@@ -67,15 +67,43 @@ namespace Rent_a_Car.Components.Details
             #endregion
 
 
-            //marca.textBox.Text = carro.Marca;
-            //modelo.textBox.Text = carro.Modelo;
-            //cor.textBox.Text = carro.Cor;
-            //matricula.textBox.Text = carro.Matricula;
-            //ano.textBox.Text = carro.Ano.ToString();
-            //quantRodas.textBox.Text = carro.QuantRodas.ToString();
-            //valorDia.textBox.Text = carro.ValorDia.ToString();
-            //quantDoors.textBox.Text = carro.QuantDoors.ToString();
-            //isManual.textBox.Text = carro.IsManual.ToString();
+
+
+            DetailBox vehicleID = new DetailBox();
+            vehicleID.label.Text = "ID Veiculo";
+            vehicleID.textBox.Text = alugado.IdVeiculo.ToString();
+            this.Controls.Add(vehicleID);
+            vehicleID.Size = new Size(this.Width / 2 - (25 * 2), vehicleID.Height);
+            vehicleID.Location = new Point(25, 25);
+
+            DetailBox vehicleType = new DetailBox();
+            vehicleType.label.Text = "Tipo de Veiculo";
+            vehicleType.textBox.Text = alugado.TipoVeiculo;
+            this.Controls.Add(vehicleType);
+            vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
+            vehicleType.Location = new Point(this.Width / 2 + 25, 25);
+
+            DetailBox client = new DetailBox();
+            client.label.Text = "ID Cliente";
+            client.textBox.Text = alugado.IdCliente.ToString();
+            this.Controls.Add(client);
+            client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
+            client.Location = new Point(25, 25 + (25 + client.Height) * 1);
+
+            DetailBox startDate = new DetailBox();
+            startDate.label.Text = "Data Inicio";
+            startDate.textBox.Text = alugado.DataInicio.ToString();
+            this.Controls.Add(startDate);
+            startDate.Size = new Size(this.Width / 2 - (25 * 2), startDate.Height);
+            startDate.Location = new Point(25, 25 + (25 + startDate.Height) * 2);
+
+            DetailBox endDate = new DetailBox();
+            endDate.label.Text = "Data Fim";
+            endDate.textBox.Text = alugado.DataInicio.ToString();
+            this.Controls.Add(endDate);
+            endDate.Size = new Size(this.Width / 2 - (25 * 2), endDate.Height);
+            endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 2);
+
 
 
             //Terminar Button
