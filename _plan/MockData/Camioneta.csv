@@ -1,3 +1,6 @@
 id,marca,modelo,cor,quantRodas,matricula,ano,valorDia,quantAxis,maxPassengers
-2,Lamborghini,Taurus,Yellow,8,AH-13-EL,2023,4.50,3,70
+2,Lamborghini,Taurus,Yellow,8,AH-13-EL,2023,4.5,3,70
 5,Ferrari,Cavalus,Red,10,03-07-AM,1704,8,4,200
+3,Volkswagen,Golf,Blue,12,HI-98-LO,2012,6,5,120
+1,Seat,Ibiza,Gray,8,87-HY-78,2010,8,4,100
+4,Tesla,Model S,Blue,10,56-56-PO,2018,12.5,4,80
