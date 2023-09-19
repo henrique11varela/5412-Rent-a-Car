@@ -66,16 +66,28 @@ namespace Rent_a_Car.Components.Details
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
             #endregion
 
+            DetailBox vehicleID = new DetailBox();
+            vehicleID.label.Text = "ID Veiculo";
+            vehicleID.textBox.Text = reservado.IdVeiculo.ToString();
+            this.Controls.Add(vehicleID);
+            vehicleID.Size = new Size(this.Width / 2 - (25 * 2), vehicleID.Height);
+            vehicleID.Location = new Point(25, 25);
 
-            //marca.textBox.Text = carro.Marca;
-            //modelo.textBox.Text = carro.Modelo;
-            //cor.textBox.Text = carro.Cor;
-            //matricula.textBox.Text = carro.Matricula;
-            //ano.textBox.Text = carro.Ano.ToString();
-            //quantRodas.textBox.Text = carro.QuantRodas.ToString();
-            //valorDia.textBox.Text = carro.ValorDia.ToString();
-            //quantDoors.textBox.Text = carro.QuantDoors.ToString();
-            //isManual.textBox.Text = carro.IsManual.ToString();
+            DetailBox vehicleType = new DetailBox();
+            vehicleType.label.Text = "Tipo de Veiculo";
+            vehicleType.textBox.Text = reservado.TipoVeiculo;
+            this.Controls.Add(vehicleType);
+            vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
+            vehicleType.Location = new Point(this.Width / 2 + 25, 25);
+
+            DetailBox client = new DetailBox();
+            client.label.Text = "ID Cliente";
+            client.textBox.Text = reservado.IdCliente.ToString();
+            this.Controls.Add(client);
+            client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
+            client.Location = new Point(25, 25 + (25 + client.Height) * 1);
+
+
 
 
             //Terminar Button
