@@ -1,9 +1,5 @@
-INPUT ANO ESTÁ A DAR EXCEPTION DIFERENTE QUANDO SE METE CHAR
+add mockdata
 
-add confirmation alert to delete vehicle
+add vehicle details to "details" button in Status list tab
 
-change validations:
-  tempVariables (ex: quantRodasParsed)
-  mudar validações de string para (if(string.length < 1){throw exception}) - remover validateEmptyString function
-  meter validações mesmo no inicio do submitClick (antes de validar se id já existe)
-  meter returns sempre que dá throw a exceptions
+improve frontend
