@@ -1,4 +1,11 @@
-add mockdata
+Priority:
+-copy paste mock data from _plan
+-insert new data from the program itself
+
+
+Vehicle List tab:
+-calendars only calculate total price (add buttons "Reservar", "Alugar", "Manutenção")
+-add checkboxes to filter list by "Free" etc
 
 add vehicle details to "details" button in Status list tab
 
