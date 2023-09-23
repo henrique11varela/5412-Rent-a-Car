@@ -117,26 +117,8 @@ namespace Rent_a_Car.Components.Details
             Terminar.ForeColor = ts.light;
             void terminarClick(object sender, EventArgs e)
             {
-                DialogResult dialogResult = MessageBox.Show("Terminar aluguer?", "Terminar aluguer?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-
-                Emp.RemoveAlugado(alugado);
-                DAL.DAL.storeAlugado();
-                DAL.DAL.convertAlugado();
-                Emp.alugadoTable.FillData(Emp.AlugadoList);
-                foreach (var veiculo in Emp.VehicleList) {
-                    var veiculoTemp = Emp.ConvertObj(veiculo);
-                    if (veiculoTemp.Id == alugado.IdVeiculo && veiculoTemp.GetType().Name == alugado.TipoVeiculo)
-                    {
-                        veiculoTemp.Status = "Free";
-                        break;
-                    }
-                }
-                Emp.vehicleTable.FillData(Emp.VehicleList);
                 var parent = this.Parent;
+                parent.Controls.Add(new AlugadoValorForm(alugado));
                 parent.Controls.Remove(this);
             }
             Terminar.Click += terminarClick;

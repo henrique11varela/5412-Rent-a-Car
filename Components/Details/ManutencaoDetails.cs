@@ -116,27 +116,8 @@ namespace Rent_a_Car.Components.Details
             Terminar.ForeColor = ts.light;
             void terminarClick(object sender, EventArgs e)
             {
-                DialogResult dialogResult = MessageBox.Show("Terminar manutenção?", "Terminar manutenção?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-
-                Emp.RemoveManutencao(manutencao);
-                DAL.DAL.storeManutencao();
-                DAL.DAL.convertManutencao();
-                Emp.manutencaoTable.FillData(Emp.ManutencaoList);
-                foreach (var veiculo in Emp.VehicleList)
-                {
-                    var veiculoTemp = Emp.ConvertObj(veiculo);
-                    if (veiculoTemp.Id == manutencao.IdVeiculo && veiculoTemp.GetType().Name == manutencao.TipoVeiculo)
-                    {
-                        veiculoTemp.Status = "Free";
-                        break;
-                    }
-                }
-                Emp.vehicleTable.FillData(Emp.VehicleList);
                 var parent = this.Parent;
+                parent.Controls.Add(new ManutencaoValorForm(manutencao));
                 parent.Controls.Remove(this);
             }
             Terminar.Click += terminarClick;

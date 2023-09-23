@@ -317,11 +317,43 @@ namespace Rent_a_Car.DAL
         }
 
         //csvHistmanutencao;
-        //csvHistalugado;
-        //string strDate = now1.ToString(FMT);
-        #endregion
+        public static List<ManutencaoHist> convertManutencaoHist()
+        {
+            List<ManutencaoHist> list = new List<ManutencaoHist>();
+            if (csvHistmanutencao.Histmanutencao.Count < 1)
+            {
+                return list;
+            }
+            foreach (var item in csvHistmanutencao.Histmanutencao)
+            {
+                string tipo = item[1].Replace(" || ", "\n");
+                DateTime free = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
+                list.Add(new ManutencaoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, item[4].Replace(" || ", "\n"), float.Parse(item[5])));
+            }
+            return list;
+        }
 
-        #region From obj list to matrix
+        //csvHistalugado;
+        public static List<AlugadoHist> convertAlugadoHist()
+        {
+            List<AlugadoHist> list = new List<AlugadoHist>();
+            if (csvHistalugado.Histalugado.Count < 1)
+            {
+                return list;
+            }
+            foreach (var item in csvHistalugado.Histalugado)
+            {
+                string tipo = item[1].Replace(" || ", "\n");
+                DateTime free = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
+                list.Add(new AlugadoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, Int32.Parse(item[4]), float.Parse(item[5])));
+            }
+            return list;
+        }
+
+        //string strDate = now1.ToString(FMT);
+            #endregion
+
+            #region From obj list to matrix
 
         public static void storeCarro()
         {
@@ -463,6 +495,40 @@ namespace Rent_a_Car.DAL
                 list.Add(line);
             }
             csvCliente.Clientes = list;
+        }
+
+        public static void storeManutencaoHist()
+        {
+            List<List<string>> list = new List<List<string>>();
+            foreach (var item in Empresa.ManutencaoHistList)
+            {
+                List<string> line = new List<string>();
+                line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).DataFim.ToString("d", CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).Problema.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Valor.ToString());
+                list.Add(line);
+            }
+            csvHistmanutencao.Histmanutencao = list;
+        }
+
+        public static void storeAlugadoHist()
+        {
+            List<List<string>> list = new List<List<string>>();
+            foreach (var item in Empresa.AlugadoHistList)
+            {
+                List<string> line = new List<string>();
+                line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).DataFim.ToString("d", CultureInfo.InvariantCulture));
+                line.Add(Empresa.ConvertObj(item).IdCliente.ToString());
+                line.Add(Empresa.ConvertObj(item).Valor.ToString());
+                list.Add(line);
+            }
+            csvHistalugado.Histalugado = list;
         }
 
 

@@ -18,6 +18,8 @@ namespace Rent_a_Car.Classes
         public static AlugadoTable alugadoTable;
         public static ReservadoTable reservadoTable;
         public static ManutencaoTable manutencaoTable;
+        public static ManutencaoHistTable manutencaoHistTable;
+        public static AlugadoHistTable alugadoHistTable;
         public static ClienteTable clienteTable;
         public static StateListControls stateListControls;
 
@@ -28,7 +30,9 @@ namespace Rent_a_Car.Classes
         private static List<Carro> carros = new List<Carro>();
         private static List<Mota> motas = new List<Mota>();
         private static List<Alugado> alugados = new List<Alugado>();
+        private static List<AlugadoHist> alugadosHist = new List<AlugadoHist>();
         private static List<Manutencao> manutencao = new List<Manutencao>();
+        private static List<ManutencaoHist> manutencaoHist = new List<ManutencaoHist>();
         private static List<Reservado> reservados = new List<Reservado>();
         private static List<Cliente> clientes = new List<Cliente>();
         #endregion
@@ -123,6 +127,26 @@ namespace Rent_a_Car.Classes
             {
                 ArrayList arrayList = new ArrayList();
                 arrayList.AddRange(clientes);
+                return arrayList;
+            }
+        }
+
+        public static ArrayList ManutencaoHistList
+        {
+            get
+            {
+                ArrayList arrayList = new ArrayList();
+                arrayList.AddRange(manutencaoHist);
+                return arrayList;
+            }
+        }
+
+        public static ArrayList AlugadoHistList
+        {
+            get
+            {
+                ArrayList arrayList = new ArrayList();
+                arrayList.AddRange(alugadosHist);
                 return arrayList;
             }
         }
@@ -314,6 +338,36 @@ namespace Rent_a_Car.Classes
         {
             clientes.Remove(c);
         }
+
+        public static void AddManutencaoHist(int idVeiculo, string tipoVeiculo, DateTime dataInicio, DateTime dataPrevistaFim, string problema, float valor)
+        {
+            AddManutencaoHist(new ManutencaoHist(idVeiculo, tipoVeiculo, dataInicio, dataPrevistaFim, problema, valor));
+        }
+
+        public static void AddManutencaoHist(ManutencaoHist m)
+        {
+            manutencaoHist.Add(m);
+        }
+
+        public static void RemoveManutencaoHist(ManutencaoHist m)
+        {
+            manutencaoHist.Remove(m);
+        }
+
+        public static void AddAlugadoHist(int idVeiculo, string tipoVeiculo, DateTime dataInicio, DateTime dataPrevistaFim, int cliente, float valor)
+        {
+            AddAlugadoHist(new AlugadoHist(idVeiculo, tipoVeiculo, dataInicio, dataPrevistaFim, cliente, valor));
+        }
+
+        public static void AddAlugadoHist(AlugadoHist m)
+        {
+            alugadosHist.Add(m);
+        }
+
+        public static void RemoveAlugadoHist(AlugadoHist m)
+        {
+            alugadosHist.Remove(m);
+        }
         #endregion
 
         #region methods
@@ -331,6 +385,8 @@ namespace Rent_a_Car.Classes
             camionetas = DAL.DAL.convertCamioneta();
             alugados = DAL.DAL.convertAlugado();
             manutencao = DAL.DAL.convertManutencao();
+            manutencaoHist = DAL.DAL.convertManutencaoHist();
+            alugadosHist = DAL.DAL.convertAlugadoHist();
             reservados = DAL.DAL.convertReservado();
             clientes = DAL.DAL.convertCliente();
         }

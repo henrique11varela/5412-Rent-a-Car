@@ -19,6 +19,12 @@
     <Compile Update="Components\Details\ReservadoDetails.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Forms\AlugadoValorForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Forms\ManutencaoValorForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Forms\ManutencaoForm.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -31,7 +37,13 @@
     <Compile Update="Components\Menus\StateListControls.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Tables\AlugadoHistTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Tables\ClienteSelectTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Tables\ManutencaoHistTable.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Tables\ManutencaoTable.cs">
@@ -44,6 +56,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Tables\ClienteTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Views\HistoryList.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Views\ClienteList.cs">
