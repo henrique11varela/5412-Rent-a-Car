@@ -310,7 +310,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia, convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1), "Details", "Edit", "Delete"); 
+                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia + "€", convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1) + "€", "Details", "Edit", "Delete"); 
             }
             statusColor();
         }

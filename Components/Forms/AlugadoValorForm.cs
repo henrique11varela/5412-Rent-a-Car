@@ -61,6 +61,16 @@ namespace Rent_a_Car.Components.Forms
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
             #endregion
 
+            float valor = 0;
+            foreach (dynamic item in Emp.VehicleList)
+            {
+                if (item.Id == alugado.IdVeiculo && item.GetType().Name == alugado.TipoVeiculo)
+                {
+                    valor = ((alugado.DataInicio - DateTime.Now).Days + 1) * item.ValorDia;
+                    break;
+                }
+            }
+
             Label label = new Label();
             label.Font = ts.largeFont;
             label.Text = "Valor";
@@ -68,8 +78,17 @@ namespace Rent_a_Car.Components.Forms
             label.Location = new Point((this.Width - label.Width) / 2, label.Font.Height);
             this.Controls.Add(label);
 
+            TextBox valorPagar = new TextBox();
+            valorPagar.Text = valor.ToString() + "€";
+            valorPagar.ReadOnly = true;
+            valorPagar.Location = new Point(25, label.Height * 3);
+            valorPagar.Size = new Size(this.Width - 2 * 25, ts.mediumFont.Height);
+            this.Controls.Add(valorPagar);
+
+
+
             TextBox textBox = new TextBox();
-            textBox.Location = new Point(25, label.Height * 3);
+            textBox.Location = new Point(25, label.Height * 3 + 25 + valorPagar.Height);
             textBox.Size = new Size(this.Width - 2 * 25, ts.mediumFont.Height);
             this.Controls.Add(textBox);
 
@@ -91,19 +110,23 @@ namespace Rent_a_Car.Components.Forms
                     {
                         throw new Exception("O valor tem de ser numerico.");
                     }
+                    if (float.Parse(textBox.Text) < valor)
+                    {
+                        throw new Exception("O valor inserido não é suficiente.");
+                    }
                 }
                 catch (Exception ex) {
                     MessageBox.Show("Error: " + ex.Message);
                     return;
                 }
 
-                DialogResult dialogResult = MessageBox.Show("Terminar aluguer?", "Terminar aluguer?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Terminar aluguer?\nO troco é {float.Parse(textBox.Text) - valor}€", "Terminar aluguer?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                 {
                     return;
                 }
 
-                Emp.AddAlugadoHist(new AlugadoHist(alugado.IdVeiculo, alugado.TipoVeiculo, alugado.DataInicio, DateTime.Now, alugado.IdCliente, float.Parse(textBox.Text)));
+                Emp.AddAlugadoHist(new AlugadoHist(alugado.IdVeiculo, alugado.TipoVeiculo, alugado.DataInicio, DateTime.Now, alugado.IdCliente, valor));
                 DAL.DAL.storeAlugadoHist();
                 Emp.alugadoHistTable.FillData(Emp.AlugadoHistList);
 
