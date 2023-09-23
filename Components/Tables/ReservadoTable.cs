@@ -38,9 +38,10 @@ namespace Rent_a_Car.Components.Tables
 
             //columns:
             //id, marca, modelo, matricula, status (icon), tipo, details, edit
-            this.ColumnCount = 3;
+            this.ColumnCount = 4;
 
             int col = 0;
+            this.Columns[col++].Name = "IdCarro";
             this.Columns[col++].Name = "Carro";
             this.Columns[col++].Name = "Tipo Carro";
             this.Columns[col++].Name = "Cliente";
@@ -49,7 +50,7 @@ namespace Rent_a_Car.Components.Tables
             this.Columns.Add(new DataGridViewButtonColumn());
             this.Columns[col++].HeaderText = "Details";
 
-
+            this.Columns[0].Visible = false;
 
             int colCount = this.Columns.Count;
             for (int i = 0; i < colCount; i++)
@@ -100,7 +101,7 @@ namespace Rent_a_Car.Components.Tables
                 return;
             }
             int idClicked = Int32.Parse(this.Rows[e.RowIndex].Cells[0].Value.ToString());
-            string tipoClicked = this.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string tipoClicked = this.Rows[e.RowIndex].Cells[2].Value.ToString();
 
             Reservado clickedReserva = new Reservado(-1, "", -1);
 
@@ -139,7 +140,27 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.IdVeiculo, convertedItem.TipoVeiculo, convertedItem.IdCliente, "Details");
+                string matricula = "";
+                foreach (var veiculo in Emp.VehicleList)
+                {
+                    var v = Emp.ConvertObj(veiculo);
+                    if (v.Id == convertedItem.IdVeiculo && v.GetType().Name == convertedItem.TipoVeiculo)
+                    {
+                        matricula = v.Matricula;
+                        break;
+                    }
+                }
+                string nome = "";
+                foreach (var cliente in Emp.ClienteList)
+                {
+                    Cliente c = Emp.ConvertObj(cliente);
+                    if (c.Id == convertedItem.IdCliente)
+                    {
+                        nome = c.Nome;
+                        break;
+                    }
+                }
+                this.Rows.Add(convertedItem.IdVeiculo, matricula, convertedItem.TipoVeiculo, nome, "Details");
             }
         }
     }
