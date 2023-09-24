@@ -67,26 +67,31 @@ namespace Rent_a_Car.Components.Details
             #endregion
 
 
-            DetailBox vehicleID = new DetailBox();
-            vehicleID.label.Text = "ID Veiculo";
-            vehicleID.textBox.Text = manutencao.IdVeiculo.ToString();
-            this.Controls.Add(vehicleID);
-            vehicleID.Size = new Size(this.Width / 2 - (25 * 2), vehicleID.Height);
-            vehicleID.Location = new Point(25, 25);
+            DetailBox vehicleBrand = new DetailBox();
+            vehicleBrand.label.Text = "Marca Veiculo";
+            this.Controls.Add(vehicleBrand);
+            vehicleBrand.Size = new Size(this.Width / 2 - (25 * 2), vehicleBrand.Height);
+            vehicleBrand.Location = new Point(25, 25);
+
+            DetailBox vehicleModel = new DetailBox();
+            vehicleModel.label.Text = "Modelo Veiculo";
+            this.Controls.Add(vehicleModel);
+            vehicleModel.Size = new Size(this.Width / 2 - (25 * 2), vehicleModel.Height);
+            vehicleModel.Location = new Point(this.Width / 2 + 25, 25);
 
             DetailBox vehicleType = new DetailBox();
-            vehicleType.label.Text = "Tipo de Veiculo";
+            vehicleType.label.Text = "Marca Veiculo";
             vehicleType.textBox.Text = manutencao.TipoVeiculo;
             this.Controls.Add(vehicleType);
             vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
-            vehicleType.Location = new Point(this.Width / 2 + 25, 25);
+            vehicleType.Location = new Point(25, 25 + (25 + vehicleType.Height) * 1);
 
             DetailBox client = new DetailBox();
             client.label.Text = "Descrição Problema";
             client.textBox.Text = manutencao.Problema;
             this.Controls.Add(client);
             client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
-            client.Location = new Point(25, 25 + (25 + client.Height) * 1);
+            client.Location = new Point(this.Width / 2 + 25, 25 + (25 + client.Height) * 1);
 
             DetailBox startDate = new DetailBox();
             startDate.label.Text = "Data Inicio";
@@ -101,6 +106,63 @@ namespace Rent_a_Car.Components.Details
             this.Controls.Add(endDate);
             endDate.Size = new Size(this.Width / 2 - (25 * 2), endDate.Height);
             endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 2);
+
+
+
+            if (manutencao.TipoVeiculo.ToString() == "Carro")
+            {
+                foreach (Carro car in Emp.CarrosList)
+                {
+                    if (manutencao.IdVeiculo == car.Id)
+                    {
+                        vehicleBrand.textBox.Text = car.Marca;
+                        vehicleModel.textBox.Text = car.Modelo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                    }
+                }
+            }
+            else if (manutencao.TipoVeiculo.ToString() == "Camiao")
+            {
+                foreach (Camiao camO in Emp.CamioesList)
+                {
+                    if (manutencao.IdVeiculo == camO.Id)
+                    {
+                        vehicleBrand.textBox.Text = camO.Marca;
+                        vehicleModel.textBox.Text = camO.Modelo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                    }
+                }
+            }
+            else if (manutencao.TipoVeiculo.ToString() == "Camioneta")
+            {
+                foreach (Camioneta camA in Emp.CamionetasList)
+                {
+                    if (manutencao.IdVeiculo == camA.Id)
+                    {
+                        vehicleBrand.textBox.Text = camA.Marca;
+                        vehicleModel.textBox.Text = camA.Modelo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                    }
+                }
+            }
+            else if (manutencao.TipoVeiculo.ToString() == "Mota")
+            {
+                foreach (Mota mot in Emp.MotasList)
+                {
+                    if (manutencao.IdVeiculo == mot.Id)
+                    {
+                        vehicleBrand.textBox.Text = mot.Marca;
+                        vehicleModel.textBox.Text = mot.Modelo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                    }
+                }
+            }
+
+
+
+
+
+
 
 
 
