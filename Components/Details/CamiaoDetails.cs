@@ -163,6 +163,7 @@ namespace Rent_a_Car.Components.Details
             Alugar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\aluguer.png");
             Alugar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Alugar);
+
             //size/location before
             //Alugar.Location = new Point(25, this.Height - Alugar.Height * 2 - 25 * 2);
             //Alugar.Size = new Size(this.Width / 2 - 2 * 25, Alugar.Height);
@@ -172,11 +173,9 @@ namespace Rent_a_Car.Components.Details
             Alugar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
 
 
-
             Alugar.BGC = Color.White;
             Alugar.BGC_HOVER = ts.dark_emphasis;
             Alugar.ForeColor = ts.dark;
-            //Alugar.Image = 
             void alugarClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Free" && camiao.Status != "Reservado")
@@ -195,18 +194,21 @@ namespace Rent_a_Car.Components.Details
             //Manutencao Button
             FlatButton Manutencao = new FlatButton();
             Manutencao.Text = "Manutencao";
-            Manutencao.ForeColor = ts.dark;
-            Manutencao.TextAlign = ContentAlignment.BottomCenter;
             Manutencao.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\manutencao.png");
+            Manutencao.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Manutencao);
+
             //size/location before
             //Manutencao.Location = new Point(this.Width / 2 + 25, this.Height - Manutencao.Height * 2 - 25 * 2);
             //Manutencao.Size = new Size(this.Width / 2 - 2 * 25, Manutencao.Height);
 
+            //size/location after
             Manutencao.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
             Manutencao.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + 25);
+            
             Manutencao.BGC = ts.white;
             Manutencao.BGC_HOVER = ts.dark_emphasis;
+            Manutencao.ForeColor = ts.dark;
             void manutencaoClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Free")
@@ -230,10 +232,14 @@ namespace Rent_a_Car.Components.Details
             this.Controls.Add(Cancel);
 
             //size/location before
+            //Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
+            //Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
+
+            //size/location after
             Cancel.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
             Cancel.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
 
-            //size/location after
+            
             Cancel.BGC = ts.white;
             Cancel.BGC_HOVER = ts.dark_emphasis;
             Cancel.ForeColor = ts.dark;
