@@ -66,26 +66,94 @@ namespace Rent_a_Car.Components.Details
             this.Size = new Size(this.Parent.Width - _margin[1] - _margin[3], this.Parent.Height - _margin[0] - _margin[2]);
             #endregion
 
-            DetailBox vehicleID = new DetailBox();
-            vehicleID.label.Text = "ID Veiculo";
-            vehicleID.textBox.Text = reservado.IdVeiculo.ToString();
-            this.Controls.Add(vehicleID);
-            vehicleID.Size = new Size(this.Width / 2 - (25 * 2), vehicleID.Height);
-            vehicleID.Location = new Point(25, 25);
+            DetailBox vehicleBrand = new DetailBox();
+            vehicleBrand.label.Text = "Marca Veiculo";
+            this.Controls.Add(vehicleBrand);
+            vehicleBrand.Size = new Size(this.Width / 2 - (25 * 2), vehicleBrand.Height);
+            vehicleBrand.Location = new Point(25, 25);
+
+            DetailBox vehicleModel = new DetailBox();
+            vehicleModel.label.Text = "Tipo de Veiculo";
+            this.Controls.Add(vehicleModel);
+            vehicleModel.Size = new Size(this.Width / 2 - (25 * 2), vehicleModel.Height);
+            vehicleModel.Location = new Point(this.Width / 2 + 25, 25);
+
+
+
 
             DetailBox vehicleType = new DetailBox();
             vehicleType.label.Text = "Tipo de Veiculo";
-            vehicleType.textBox.Text = reservado.TipoVeiculo;
             this.Controls.Add(vehicleType);
             vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
-            vehicleType.Location = new Point(this.Width / 2 + 25, 25);
+            vehicleType.Location = new Point(25, 25 + (25 + vehicleType.Height) * 1);
 
             DetailBox client = new DetailBox();
-            client.label.Text = "ID Cliente";
-            client.textBox.Text = reservado.IdCliente.ToString();
+            client.label.Text = "Cliente";
             this.Controls.Add(client);
             client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
-            client.Location = new Point(25, 25 + (25 + client.Height) * 1);
+            client.Location = new Point(this.Width / 2 + 25, 25 + (25 + client.Height) * 1);
+
+
+
+
+
+
+            if (reservado.TipoVeiculo.ToString() == "Carro")
+            {
+                foreach (Carro car in Emp.CarrosList)
+                {
+                    if (reservado.IdVeiculo == car.Id)
+                    {
+                        vehicleBrand.textBox.Text = car.Marca;
+                        vehicleModel.textBox.Text = car.Modelo;
+                        vehicleType.textBox.Text = reservado.TipoVeiculo;
+                    }
+                }
+            }else if(reservado.TipoVeiculo.ToString() == "Camiao")
+            {
+                foreach (Camiao camO in Emp.CamioesList)
+                {
+                    if (reservado.IdVeiculo == camO.Id)
+                    {
+                        vehicleBrand.textBox.Text = camO.Marca;
+                        vehicleModel.textBox.Text = camO.Modelo;
+                        vehicleType.textBox.Text = reservado.TipoVeiculo;
+                    }
+                }
+            }
+            else if (reservado.TipoVeiculo.ToString() == "Camioneta")
+            {
+                foreach (Camioneta camA in Emp.CamionetasList)
+                {
+                    if (reservado.IdVeiculo == camA.Id)
+                    {
+                        vehicleBrand.textBox.Text = camA.Marca;
+                        vehicleModel.textBox.Text = camA.Modelo;
+                        vehicleType.textBox.Text = reservado.TipoVeiculo;
+                    }
+                }
+            }
+            else if (reservado.TipoVeiculo.ToString() == "Mota")
+            {
+                foreach (Mota mot in Emp.MotasList)
+                {
+                    if (reservado.IdVeiculo == mot.Id)
+                    {
+                        vehicleBrand.textBox.Text = mot.Marca;
+                        vehicleModel.textBox.Text = mot.Modelo;
+                        vehicleType.textBox.Text = reservado.TipoVeiculo;
+                    }
+                }
+            }
+
+
+            foreach (Cliente cli in Emp.ClienteList)
+            {
+                if (reservado.IdCliente == cli.Id)
+                {
+                    client.textBox.Text = cli.Nome;
+                }
+            }
 
 
 
