@@ -73,7 +73,7 @@ namespace Rent_a_Car.Components.Details
             vehicleBrand.Location = new Point(25, 25);
 
             DetailBox vehicleModel = new DetailBox();
-            vehicleModel.label.Text = "Tipo de Veiculo";
+            vehicleModel.label.Text = "Modelo Veiculo";
             this.Controls.Add(vehicleModel);
             vehicleModel.Size = new Size(this.Width / 2 - (25 * 2), vehicleModel.Height);
             vehicleModel.Location = new Point(this.Width / 2 + 25, 25);
