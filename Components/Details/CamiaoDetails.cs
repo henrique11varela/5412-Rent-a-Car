@@ -128,12 +128,21 @@ namespace Rent_a_Car.Components.Details
             //Reservar Button
             FlatButton Reservar = new FlatButton();
             Reservar.Text = "Reservar";
+            Reservar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\reserva.png");
+            Reservar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Reservar);
-            Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
-            Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
-            Reservar.BGC = ts.dark;
+
+            //size/location before
+            //Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
+            //Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
+
+            //size/location after
+            Reservar.Location = new Point(this.Width / 2 - this.Width / 4, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
+            Reservar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            Reservar.BGC = ts.white;
             Reservar.BGC_HOVER = ts.dark_emphasis;
-            Reservar.ForeColor = ts.light;
+            Reservar.ForeColor = ts.dark;
             void reservarClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Free")
@@ -151,12 +160,23 @@ namespace Rent_a_Car.Components.Details
             //Alugar Button
             FlatButton Alugar = new FlatButton();
             Alugar.Text = "Alugar";
+            Alugar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\aluguer.png");
+            Alugar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Alugar);
-            Alugar.Location = new Point(25, this.Height - Alugar.Height * 2 - 25 * 2);
-            Alugar.Size = new Size(this.Width / 2 - 2 * 25, Alugar.Height);
-            Alugar.BGC = ts.dark;
+            //size/location before
+            //Alugar.Location = new Point(25, this.Height - Alugar.Height * 2 - 25 * 2);
+            //Alugar.Size = new Size(this.Width / 2 - 2 * 25, Alugar.Height);
+
+            //size/location after
+            Alugar.Location = new Point(this.Width / 2 - this.Width / 4, this.Height / 2 + 25);
+            Alugar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+
+
+            Alugar.BGC = Color.White;
             Alugar.BGC_HOVER = ts.dark_emphasis;
-            Alugar.ForeColor = ts.light;
+            Alugar.ForeColor = ts.dark;
+            //Alugar.Image = 
             void alugarClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Free" && camiao.Status != "Reservado")
@@ -175,17 +195,23 @@ namespace Rent_a_Car.Components.Details
             //Manutencao Button
             FlatButton Manutencao = new FlatButton();
             Manutencao.Text = "Manutencao";
+            Manutencao.ForeColor = ts.dark;
+            Manutencao.TextAlign = ContentAlignment.BottomCenter;
+            Manutencao.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\manutencao.png");
             this.Controls.Add(Manutencao);
-            Manutencao.Location = new Point(this.Width / 2 + 25, this.Height - Manutencao.Height * 2 - 25 * 2);
-            Manutencao.Size = new Size(this.Width / 2 - 2 * 25, Manutencao.Height);
-            Manutencao.BGC = ts.dark;
+            //size/location before
+            //Manutencao.Location = new Point(this.Width / 2 + 25, this.Height - Manutencao.Height * 2 - 25 * 2);
+            //Manutencao.Size = new Size(this.Width / 2 - 2 * 25, Manutencao.Height);
+
+            Manutencao.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+            Manutencao.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + 25);
+            Manutencao.BGC = ts.white;
             Manutencao.BGC_HOVER = ts.dark_emphasis;
-            Manutencao.ForeColor = ts.light;
             void manutencaoClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Free")
                 {
-                    MessageBox.Show($"Este Camião está com o estado {camiao.Status}");
+                    MessageBox.Show($"Este Camião está com o estado {camiao.Status}");  
                     return;
                 }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);
@@ -199,12 +225,18 @@ namespace Rent_a_Car.Components.Details
             //Cancel Button
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
+            Cancel.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
-            Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
-            Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
-            Cancel.BGC = ts.dark;
+
+            //size/location before
+            Cancel.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
+            Cancel.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            //size/location after
+            Cancel.BGC = ts.white;
             Cancel.BGC_HOVER = ts.dark_emphasis;
-            Cancel.ForeColor = ts.light;
+            Cancel.ForeColor = ts.dark;
             void cancelClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;
