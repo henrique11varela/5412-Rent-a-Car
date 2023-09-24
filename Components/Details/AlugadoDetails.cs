@@ -13,6 +13,7 @@ using Rent_a_Car.Components.Tables;
 using Rent_a_Car.Components.Forms;
 using System.Windows.Forms;
 using Rent_a_Car.Components.Menus;
+using System.Threading.Channels;
 
 namespace Rent_a_Car.Components.Details
 {
@@ -175,12 +176,21 @@ namespace Rent_a_Car.Components.Details
             //Terminar Button
             FlatButton Terminar = new FlatButton();
             Terminar.Text = "Terminar Aluguer";
+            Terminar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\terminar.png");
+            Terminar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Terminar);
-            Terminar.Location = new Point(25, this.Height - Terminar.Height - 25);
-            Terminar.Size = new Size(this.Width / 2 - 2 * 25, Terminar.Height);
-            Terminar.BGC = ts.dark;
+
+            //size/location before
+            //Terminar.Location = new Point(25, this.Height - Terminar.Height - 25);
+            //Terminar.Size = new Size(this.Width / 2 - 2 * 25, Terminar.Height);
+
+            //size/location after
+            Terminar.Location = new Point(this.Width / 2 - this.Width / 4, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
+            Terminar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+            
+            Terminar.BGC = ts.white;
             Terminar.BGC_HOVER = ts.dark_emphasis;
-            Terminar.ForeColor = ts.light;
+            Terminar.ForeColor = ts.dark;
             void terminarClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;
@@ -192,12 +202,21 @@ namespace Rent_a_Car.Components.Details
             //Cancel Button
             FlatButton Fechar = new FlatButton();
             Fechar.Text = "Fechar";
+            Fechar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            Fechar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Fechar);
-            Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
-            Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
-            Fechar.BGC = ts.dark;
+
+            //size/location before
+            //Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
+            //Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
+
+            //size/location after
+            Fechar.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
+            Fechar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            Fechar.BGC = ts.white;
             Fechar.BGC_HOVER = ts.dark_emphasis;
-            Fechar.ForeColor = ts.light;
+            Fechar.ForeColor = ts.dark;
             void fecharClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;
