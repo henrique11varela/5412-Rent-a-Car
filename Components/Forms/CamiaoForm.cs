@@ -129,21 +129,12 @@ namespace Rent_a_Car.Components.Forms
 
             FlatButton Submit = new FlatButton();
             Submit.Text = "Submeter";
-            Submit.Image = Image.FromFile("..\\..\\..\\assets\\icons\\submit.png");
-            Submit.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Submit);
-
-            //size/location before
-            //Submit.Location = new Point(25, this.Height - Submit.Height - 25);
-            //Submit.Size = new Size(this.Width / 2 - 2 * 25, Submit.Height);
-
-            //size/location after
-            Submit.Location = new Point(this.Width / 2 - this.Width / 4, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
-            Submit.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-            Submit.BGC = ts.white;
+            Submit.Location = new Point(25, this.Height - Submit.Height - 25);
+            Submit.Size = new Size(this.Width / 2 - 2 * 25, Submit.Height);
+            Submit.BGC = ts.dark;
             Submit.BGC_HOVER = ts.dark_emphasis;
-            Submit.ForeColor = ts.dark;
+            Submit.ForeColor = ts.white;
             void submitClick(object sender, EventArgs e)
             {
                 string tempMarca;
@@ -333,21 +324,12 @@ namespace Rent_a_Car.Components.Forms
 
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancelar";
-            Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
-            Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
-
-            //size/location before
-            //Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
-            //Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
-
-            //size/location after
-            Cancel.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
-            Cancel.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-            Cancel.BGC = ts.white;
+            Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
+            Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
+            Cancel.BGC = ts.dark;
             Cancel.BGC_HOVER = ts.dark_emphasis;
-            Cancel.ForeColor = ts.dark;
+            Cancel.ForeColor = ts.white;
             void cancelClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;
