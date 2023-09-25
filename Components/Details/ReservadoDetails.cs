@@ -178,7 +178,7 @@ namespace Rent_a_Car.Components.Details
             Terminar.ForeColor = ts.dark;
             void terminarClick(object sender, EventArgs e)
             {
-                DialogResult dialogResult = MessageBox.Show("Terminar reserva?", "Terminar reserva?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Terminar reserva?", "Confirmacao", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                 {
                     return;
@@ -193,7 +193,7 @@ namespace Rent_a_Car.Components.Details
                     var veiculoTemp = Emp.ConvertObj(veiculo);
                     if (veiculoTemp.Id == reservado.IdVeiculo && veiculoTemp.GetType().Name == reservado.TipoVeiculo)
                     {
-                        veiculoTemp.Status = "Free";
+                        veiculoTemp.Status = "Livre";
                         break;
                     }
                 }

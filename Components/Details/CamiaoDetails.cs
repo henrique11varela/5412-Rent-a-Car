@@ -118,7 +118,7 @@ namespace Rent_a_Car.Components.Details
             valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
 
             DetailBox maxWeight = new DetailBox();
-            maxWeight.label.Text = "Peso Máximo";
+            maxWeight.label.Text = "Peso Maximo";
             maxWeight.textBox.Text = camiao.MaxWeight.ToString();
             this.Controls.Add(maxWeight);
             maxWeight.Size = new Size(this.Width / 2 - (25 * 2), maxWeight.Height);
@@ -145,9 +145,9 @@ namespace Rent_a_Car.Components.Details
             Reservar.ForeColor = ts.dark;
             void reservarClick(object sender, EventArgs e)
             {
-                if (camiao.Status != "Free")
+                if (camiao.Status != "Livre")
                 {
-                    MessageBox.Show($"Este Camião está com o estado {camiao.Status}");
+                    MessageBox.Show($"Este Camiao esta com o estado {camiao.Status}");
                     return;
                 }
                 Reservado reserva = new Reservado(id, "Camiao", -1);
@@ -178,9 +178,9 @@ namespace Rent_a_Car.Components.Details
             Alugar.ForeColor = ts.dark;
             void alugarClick(object sender, EventArgs e)
             {
-                if (camiao.Status != "Free" && camiao.Status != "Reservado")
+                if (camiao.Status != "Livre" && camiao.Status != "Reservado")
                 {
-                    MessageBox.Show($"Este Camião está com o estado {camiao.Status}");
+                    MessageBox.Show($"Este Camiao esta com o estado {camiao.Status}");
                     return;
                 }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);
@@ -211,9 +211,9 @@ namespace Rent_a_Car.Components.Details
             Manutencao.ForeColor = ts.dark;
             void manutencaoClick(object sender, EventArgs e)
             {
-                if (camiao.Status != "Free")
+                if (camiao.Status != "Livre")
                 {
-                    MessageBox.Show($"Este Camião está com o estado {camiao.Status}");  
+                    MessageBox.Show($"Este Camiao esta com o estado {camiao.Status}");  
                     return;
                 }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);

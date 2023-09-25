@@ -82,7 +82,7 @@ namespace Rent_a_Car.Components.Forms
             }
 
             FlatButton Submit = new FlatButton();
-            Submit.Text = "Submit";
+            Submit.Text = "Submeter";
             Submit.Image = Image.FromFile("..\\..\\..\\assets\\icons\\submit.png");
             Submit.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Submit);
@@ -100,7 +100,7 @@ namespace Rent_a_Car.Components.Forms
             Submit.ForeColor = ts.dark;
             void submitClick(object sender, EventArgs e)
             {
-                MessageBox.Show("Submit logic" + id);
+                MessageBox.Show("Cliente adicionado!", "Sucesso");
                 //validate inputs
                 if (id == -1)
                 {
@@ -133,7 +133,7 @@ namespace Rent_a_Car.Components.Forms
             Submit.Click += submitClick;
 
             FlatButton Cancel = new FlatButton();
-            Cancel.Text = "Cancel";
+            Cancel.Text = "Cancelar";
             Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);

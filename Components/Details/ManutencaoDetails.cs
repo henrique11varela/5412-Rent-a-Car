@@ -87,7 +87,7 @@ namespace Rent_a_Car.Components.Details
             vehicleType.Location = new Point(25, 25 + (25 + vehicleType.Height) * 1);
 
             DetailBox client = new DetailBox();
-            client.label.Text = "Descrição Problema";
+            client.label.Text = "Descricao Problema";
             client.textBox.Text = manutencao.Problema;
             this.Controls.Add(client);
             client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
@@ -169,7 +169,7 @@ namespace Rent_a_Car.Components.Details
 
             //Terminar Button
             FlatButton Terminar = new FlatButton();
-            Terminar.Text = "Terminar Manutenção";
+            Terminar.Text = "Terminar Manutencao";
             Terminar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\terminar.png");
             Terminar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Terminar);

@@ -110,7 +110,7 @@ namespace Rent_a_Car.Components.Forms
             //specific inputs
 
             InputBox maxPassengers = new InputBox();
-            maxPassengers.label.Text = "Máximo Passageiros";
+            maxPassengers.label.Text = "Maximo Passageiros";
             this.Controls.Add(maxPassengers);
             maxPassengers.Size = new Size(this.Width / 2 - (25 * 2), maxPassengers.Height);
             maxPassengers.Location = new Point(this.Width / 2 + 25, 25 + (25 + maxPassengers.Height) * 3);
@@ -135,7 +135,7 @@ namespace Rent_a_Car.Components.Forms
             }
 
             FlatButton Submit = new FlatButton();
-            Submit.Text = "Submit";
+            Submit.Text = "Submeter";
             Submit.Image = Image.FromFile("..\\..\\..\\assets\\icons\\submit.png");
             Submit.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Submit);
@@ -169,34 +169,34 @@ namespace Rent_a_Car.Components.Forms
                     tempMarca = marca.textBox.Text;
                     if (tempMarca.Length < 1)
                     {
-                        throw new Exception("Campo Marca não pode estar vazio!");
+                        throw new Exception("Campo Marca nao pode estar vazio!");
                     }
 
                     //validar se modelo não é string vazia
                     tempModelo = modelo.textBox.Text;
                     if (tempModelo.Length < 1)
                     {
-                        throw new Exception("Campo Modelo não pode estar vazio!");
+                        throw new Exception("Campo Modelo nao pode estar vazio!");
                     }
 
                     //validar se cor não é string vazia
                     tempCor = cor.textBox.Text;
                     if (tempCor.Length < 1)
                     {
-                        throw new Exception("Campo Cor não pode estar vazio!");
+                        throw new Exception("Campo Cor nao pode estar vazio!");
                     }
 
                     //validar se matricula não é string vazia
                     tempMatricula = matricula.textBox.Text;
                     if (tempMatricula.Length < 1)
                     {
-                        throw new Exception("Campo Matricula não pode estar vazio!");
+                        throw new Exception("Campo Matricula nao pode estar vazio!");
                     }
                     Regex reg = new Regex("(^\\d{2}-[A-Za-z]{2}-\\d{2}$)|(^[A-Za-z]{2}-\\d{2}-\\d{2}$)|(^\\d{2}-\\d{2}-[A-Za-z]{2}$)|(^\\d{2}-[A-Za-z]{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-\\d{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-[A-Za-z]{2}-\\d{2}$)");
                     tempMatricula = reg.Match(tempMatricula).ToString();
                     if (tempMatricula.Length < 1)
                     {
-                        throw new Exception("Campo Matricula não é válido!");
+                        throw new Exception("Campo Matricula nao e valido!");
                     }
 
 
@@ -204,7 +204,7 @@ namespace Rent_a_Car.Components.Forms
                     //validar se ano é numero e se é um ano valido
                     if (ano.textBox.Text.Length < 1)
                     {
-                        throw new Exception("Campo Ano não pode estar vazio!");
+                        throw new Exception("Campo Ano nao pode estar vazio!");
                     }
                     try
                     {
@@ -212,7 +212,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O ano tem de ser um número inteiro!");
+                        throw new Exception("O ano tem de ser um numero inteiro!");
                     }
 
                     if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
@@ -226,7 +226,7 @@ namespace Rent_a_Car.Components.Forms
                     //validar se campo quantRodas está preenchido
                     if (quantRodas.textBox.Text.Length < 1)
                     {
-                        throw new Exception("Campo Quantidade de Rodas não pode estar vazio!");
+                        throw new Exception("Campo Quantidade de Rodas nao pode estar vazio!");
                     }
                     //validar se quantRodas é numero inteiro
                     try
@@ -235,7 +235,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O número de rodas tem de ser um número inteiro!");
+                        throw new Exception("O numero de rodas tem de ser um numero inteiro!");
                     }
                     //validar se quantRodas é superior a zero
                     if (tempQuantRodas <= 0)
@@ -247,7 +247,7 @@ namespace Rent_a_Car.Components.Forms
                     //validar se campo valorDia está preenchido
                     if (valorDia.textBox.Text.Length < 1)
                     {
-                        throw new Exception("Campo Valor Dia não pode estar vazio!");
+                        throw new Exception("Campo Valor Dia nao pode estar vazio!");
                     }
                     //validar se valorDia é um valor decimal
                     try
@@ -256,7 +256,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O Valor Dia tem de ser um número inteiro ou decimal!");
+                        throw new Exception("O Valor Dia tem de ser um numero inteiro ou decimal!");
                     }
                     //validar se valorDia é superior a zero
                     if (tempValorDia <= 0)
@@ -268,7 +268,7 @@ namespace Rent_a_Car.Components.Forms
                     //validar se campo maxPassengers está preenchido
                     if (maxPassengers.textBox.Text.Length < 1)
                     {
-                        throw new Exception("Campo Máximo de Passageiros não pode estar vazio!");
+                        throw new Exception("Campo Maximo de Passageiros nao pode estar vazio!");
                     }
                     //validar se maxPassengers é um valor inteiro
                     try
@@ -277,19 +277,19 @@ namespace Rent_a_Car.Components.Forms
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O número de passangeiros tem de ser um número inteiro!");
+                        throw new Exception("O numero de passangeiros tem de ser um numero inteiro!");
                     }
                     //validar se maxPassengers é superior a zero
                     if (tempMaxPassengers <= 0)
                     {
-                        throw new Exception("Campo Máximo de Passageiros tem de ser maior que zero!");
+                        throw new Exception("Campo Maximo de Passageiros tem de ser maior que zero!");
                     }
 
 
                     //validar se campo quantAxis está preenchido
                     if (quantAxis.textBox.Text.Length < 1)
                     {
-                        throw new Exception("Campo Quantidade de Eixos não pode estar vazio!");
+                        throw new Exception("Campo Quantidade de Eixos nao pode estar vazio!");
                     }
                     //validar se quantAxis é numero inteiro
                     try
@@ -298,7 +298,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("O número de eixos tem de ser um número inteiro!");
+                        throw new Exception("O numero de eixos tem de ser um numero inteiro!");
                     }
                     //validar se quantAxis é superior a zero
                     if (tempQuantAxis <= 0)
@@ -315,7 +315,7 @@ namespace Rent_a_Car.Components.Forms
 
 
 
-                MessageBox.Show("Submit logic" + id);
+                MessageBox.Show("Veiculo adicionado!", "Sucesso");
                 //validate inputs
                 if (id == -1)
                 {
@@ -364,7 +364,7 @@ namespace Rent_a_Car.Components.Forms
             Submit.Click += submitClick;
 
             FlatButton Cancel = new FlatButton();
-            Cancel.Text = "Cancel";
+            Cancel.Text = "Cancelar";
             Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
