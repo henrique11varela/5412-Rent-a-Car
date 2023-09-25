@@ -80,7 +80,7 @@ namespace Rent_a_Car.Components.Menus
 
             //Create vehicle button
             FlatButton createVehicle = new FlatButton();
-            createVehicle.Text = "Create Vehicle";
+            createVehicle.Text = "Criar Veiculo";
             createVehicle.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\icons\\create.png"), createVehicle.Font.Height * 5, createVehicle.Font.Height * 5);
             createVehicle.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createVehicle);
