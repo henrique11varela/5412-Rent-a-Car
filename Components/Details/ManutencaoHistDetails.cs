@@ -170,8 +170,8 @@ namespace Rent_a_Car.Components.Details
             FlatButton Fechar = new FlatButton();
             Fechar.Text = "Fechar";
             this.Controls.Add(Fechar);
-            Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
-            Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
+            Fechar.Location = new Point(25, this.Height - Fechar.Height - 25);
+            Fechar.Size = new Size(this.Width - 2 * 25, Fechar.Height);
             Fechar.BGC = ts.dark;
             Fechar.BGC_HOVER = ts.dark_emphasis;
             Fechar.ForeColor = ts.white;
