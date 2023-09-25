@@ -59,7 +59,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Carro(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Boolean.Parse(item[9])));
+                list.Add(new Carro(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Boolean.Parse(item[9])));
             }
             return list;
         }
@@ -78,7 +78,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Mota(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5], Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8])));
+                list.Add(new Mota(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5], Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8])));
             }
             return list;
         }
@@ -97,7 +97,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Camiao(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), float.Parse(item[8])));
+                list.Add(new Camiao(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), float.Parse(item[8])));
             }
             return list;
         }
@@ -116,7 +116,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Camioneta(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Int32.Parse(item[9])));
+                list.Add(new Camioneta(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Int32.Parse(item[9])));
             }
             return list;
         }
@@ -133,7 +133,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvAlugado.Alugado)
             {
-                string tipo = item[1].Replace(" || ", "\n");
+                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime freeExpect = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
                 list.Add(new Alugado(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), freeExpect, Int32.Parse(item[4])));
                 if (tipo == "Carro")
@@ -194,9 +194,9 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvManutencao.Manutencao)
             {
-                string tipo = item[1].Replace(" || ", "\n");
+                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime freeExpect = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
-                list.Add(new Manutencao(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), freeExpect, item[4].Replace(" || ", "\n")));
+                list.Add(new Manutencao(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), freeExpect, item[4].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";")));
                 if (tipo == "Carro")
                 {
                     foreach (Carro carro in Empresa.CarrosList)
@@ -255,7 +255,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvReservado.Reservado)
             {
-                string tipo = item[1].Replace(" || ", "\n");
+                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
                 list.Add(new Reservado(Int32.Parse(item[0]), tipo, Int32.Parse(item[2])));
                 if (tipo == "Carro")
                 {
@@ -326,9 +326,9 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvHistmanutencao.Histmanutencao)
             {
-                string tipo = item[1].Replace(" || ", "\n");
+                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime free = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
-                list.Add(new ManutencaoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, item[4].Replace(" || ", "\n"), float.Parse(item[5])));
+                list.Add(new ManutencaoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, item[4].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), float.Parse(item[5])));
             }
             return list;
         }
@@ -343,7 +343,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvHistalugado.Histalugado)
             {
-                string tipo = item[1].Replace(" || ", "\n");
+                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime free = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
                 list.Add(new AlugadoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, Int32.Parse(item[4]), float.Parse(item[5])));
             }
@@ -353,7 +353,7 @@ namespace Rent_a_Car.DAL
         //string strDate = now1.ToString(FMT);
             #endregion
 
-            #region From obj list to matrix
+        #region From obj list to matrix
 
         public static void storeCarro()
         {
@@ -362,11 +362,11 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).Id.ToString());
-                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).QuantRodas.ToString());
-                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).Ano.ToString());
                 line.Add(Empresa.ConvertObj(item).ValorDia.ToString());
                 line.Add(Empresa.ConvertObj(item).QuantDoors.ToString());
@@ -383,11 +383,11 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).Id.ToString());
-                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).QuantRodas.ToString());
-                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).Ano.ToString());
                 line.Add(Empresa.ConvertObj(item).ValorDia.ToString());
                 line.Add(Empresa.ConvertObj(item).CubicCapacity.ToString());
@@ -403,11 +403,11 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).Id.ToString());
-                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).QuantRodas.ToString());
-                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).Ano.ToString());
                 line.Add(Empresa.ConvertObj(item).ValorDia.ToString());
                 line.Add(Empresa.ConvertObj(item).MaxWeight.ToString());
@@ -423,11 +423,11 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).Id.ToString());
-                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Marca.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Modelo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Cor.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).QuantRodas.ToString());
-                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Matricula.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).Ano.ToString());
                 line.Add(Empresa.ConvertObj(item).ValorDia.ToString());
                 line.Add(Empresa.ConvertObj(item).QuantAxis.ToString());
@@ -444,7 +444,7 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
-                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).DataPrevistaFim.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).IdCliente.ToString());
@@ -460,10 +460,10 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
-                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).DataPrevistaFim.ToString("d", CultureInfo.InvariantCulture));
-                line.Add(Empresa.ConvertObj(item).Problema.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Problema.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 list.Add(line);
             }
             csvManutencao.Manutencao = list;
@@ -476,7 +476,7 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
-                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).IdCliente.ToString());
                 list.Add(line);
             }
@@ -490,8 +490,8 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).Id.ToString());
-                line.Add(Empresa.ConvertObj(item).Nome.Replace("\n", " || ").Replace("\r", " || "));
-                line.Add(Empresa.ConvertObj(item).Contacto.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Nome.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Contacto.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 list.Add(line);
             }
             csvCliente.Clientes = list;
@@ -504,10 +504,10 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
-                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).DataFim.ToString("d", CultureInfo.InvariantCulture));
-                line.Add(Empresa.ConvertObj(item).Problema.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).Problema.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).Valor.ToString());
                 list.Add(line);
             }
@@ -521,7 +521,7 @@ namespace Rent_a_Car.DAL
             {
                 List<string> line = new List<string>();
                 line.Add(Empresa.ConvertObj(item).IdVeiculo.ToString());
-                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace("\r", " || "));
+                line.Add(Empresa.ConvertObj(item).TipoVeiculo.Replace("\n", " || ").Replace(",", " ||| ").Replace(";", " |||| ").Replace("\r", " || "));
                 line.Add(Empresa.ConvertObj(item).DataInicio.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).DataFim.ToString("d", CultureInfo.InvariantCulture));
                 line.Add(Empresa.ConvertObj(item).IdCliente.ToString());
