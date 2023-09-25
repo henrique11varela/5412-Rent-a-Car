@@ -50,21 +50,49 @@ namespace Rent_a_Car.Components.Menus
             //Create carro button
             FlatButton createCarro = new FlatButton();
             createCarro.Text = "Carro";
+            createCarro.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\carro.png");
+            createCarro.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCarro);
-            createCarro.Location = new Point(25, 25);
-            createCarro.Size = new Size(this.Width - 2 * 25, createCarro.Height);
+
+            //size/location before
+            //createCarro.Location = new Point(25, 25);
+            //createCarro.Size = new Size(this.Width - 2 * 25, createCarro.Height);
+
+            //size/location after
+            createCarro.Location = new Point(this.Width / 2 - this.Width / 4, 25);
+            createCarro.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            createCarro.BGC = ts.white;
+            createCarro.BGC_HOVER = ts.dark_emphasis;
+            createCarro.ForeColor = ts.dark;
             void openCarroForm(object sender, EventArgs e) { 
                 this.Parent.Controls.Add(new Rent_a_Car.Components.Forms.CarroForm());
             }
             createCarro.Click += openCarroForm;
             createCarro.Click += closeThis;
 
+
+
+
+
             //Create mota button
             FlatButton createMota = new FlatButton();
             createMota.Text = "Mota";
+            createMota.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\mota.png");
+            createMota.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createMota);
-            createMota.Location = new Point(25, (createMota.Height + 25 * 2));
-            createMota.Size = new Size(this.Width - 2 * 25, createMota.Height);
+
+            //size/location before
+            //createMota.Location = new Point(25, (createMota.Height + 25 * 2));
+            //createMota.Size = new Size(this.Width - 2 * 25, createMota.Height);
+
+            //size/location after
+            createMota.Location = new Point(this.Width - this.Width / 2 + 25, 25);
+            createMota.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            createMota.BGC = ts.white;
+            createMota.BGC_HOVER = ts.dark_emphasis;
+            createMota.ForeColor = ts.dark;
             void openMotaForm(object sender, EventArgs e)
             {
                 this.Parent.Controls.Add(new Rent_a_Car.Components.Forms.MotaForm());
@@ -72,12 +100,28 @@ namespace Rent_a_Car.Components.Menus
             createMota.Click += openMotaForm;
             createMota.Click += closeThis;
 
+
+
+
+
             //Create camiao button
             FlatButton createCamiao = new FlatButton();
             createCamiao.Text = "Camião";
+            createCamiao.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\camiao.png");
+            createCamiao.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCamiao);
-            createCamiao.Location = new Point(25, (createCamiao.Height * 2 + 25 * 3));
-            createCamiao.Size = new Size(this.Width - 2 * 25, createCamiao.Height);
+
+            //size/location before
+            //createCamiao.Location = new Point(25, (createCamiao.Height * 2 + 25 * 3));
+            //createCamiao.Size = new Size(this.Width - 2 * 25, createCamiao.Height);
+
+            //size/location after
+            createCamiao.Location = new Point(this.Width / 2 - this.Width / 4, this.Width / 4 - 25 + 2 * 25);
+            createCamiao.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            createCamiao.BGC = ts.white;
+            createCamiao.BGC_HOVER = ts.dark_emphasis;
+            createCamiao.ForeColor = ts.dark;
             void openCamiaoForm(object sender, EventArgs e)
             {
                 this.Parent.Controls.Add(new Rent_a_Car.Components.Forms.CamiaoForm());
@@ -85,12 +129,30 @@ namespace Rent_a_Car.Components.Menus
             createCamiao.Click += openCamiaoForm;
             createCamiao.Click += closeThis;
 
+            
+            
+            
+            
+            
+            
             //Create camioneta button
             FlatButton createCamioneta = new FlatButton();
             createCamioneta.Text = "Camioneta";
+            createCamioneta.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\camioneta.png");
+            createCamioneta.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCamioneta);
-            createCamioneta.Location = new Point(25, (createCamioneta.Height * 3 + 25 * 4));
-            createCamioneta.Size = new Size(this.Width - 2 * 25, createCamioneta.Height);
+
+            //size/location before
+            //createCamioneta.Location = new Point(25, (createCamioneta.Height * 3 + 25 * 4));
+            //createCamioneta.Size = new Size(this.Width - 2 * 25, createCamioneta.Height);
+
+            //size/location after
+            createCamioneta.Location = new Point(this.Width - this.Width / 2 + 25, this.Width / 4 - 25 + 2 * 25);
+            createCamioneta.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            createCamioneta.BGC = ts.white;
+            createCamioneta.BGC_HOVER = ts.dark_emphasis;
+            createCamioneta.ForeColor = ts.dark;
             void openCamionetaForm(object sender, EventArgs e)
             {
                 this.Parent.Controls.Add(new Rent_a_Car.Components.Forms.CamionetaForm());
@@ -101,9 +163,21 @@ namespace Rent_a_Car.Components.Menus
             //Cancel button
             FlatButton cancel = new FlatButton();
             cancel.Text = "Cancel";
+            cancel.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(cancel);
-            cancel.Location = new Point(25, this.Height - (cancel.Height + 25));
-            cancel.Size = new Size(this.Width - 2 * 25, cancel.Height);
+
+            //size/location before
+            //cancel.Location = new Point(25, this.Height - (cancel.Height + 25));
+            //cancel.Size = new Size(this.Width - 2 * 25, cancel.Height);
+
+            //size/location after
+            cancel.Location = new Point(this.Width / 2 - (this.Width / 4 - 25) / 2, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
+            cancel.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            cancel.BGC = ts.white;
+            cancel.BGC_HOVER = ts.dark_emphasis;
+            cancel.ForeColor = ts.dark;
             cancel.Click += closeThis;
 
 
