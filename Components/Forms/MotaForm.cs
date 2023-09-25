@@ -270,7 +270,7 @@ namespace Rent_a_Car.Components.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro: " + ex.Message);
+                    MessageBox.Show("Erro: " + ex.Message, "");
                     return;
                 }
 
