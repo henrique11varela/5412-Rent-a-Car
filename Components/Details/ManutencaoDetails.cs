@@ -86,26 +86,33 @@ namespace Rent_a_Car.Components.Details
             vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
             vehicleType.Location = new Point(25, 25 + (25 + vehicleType.Height) * 1);
 
+            DetailBox matricula = new DetailBox();
+            matricula.label.Text = "Matricula";
+            this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + vehicleType.Height) * 1);
+
             DetailBox client = new DetailBox();
             client.label.Text = "Descricao Problema";
             client.textBox.Text = manutencao.Problema;
+            client.textBox.Multiline = true;
             this.Controls.Add(client);
-            client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
-            client.Location = new Point(this.Width / 2 + 25, 25 + (25 + client.Height) * 1);
+            client.Size = new Size(this.Width - (25 * 2), client.Height);
+            client.Location = new Point(25, 25 + (25 + client.Height) * 2);
 
             DetailBox startDate = new DetailBox();
             startDate.label.Text = "Data Inicio";
             startDate.textBox.Text = manutencao.DataInicio.ToString();
             this.Controls.Add(startDate);
             startDate.Size = new Size(this.Width / 2 - (25 * 2), startDate.Height);
-            startDate.Location = new Point(25, 25 + (25 + startDate.Height) * 2);
+            startDate.Location = new Point(25, 25 + (25 + startDate.Height) * 5);
 
             DetailBox endDate = new DetailBox();
             endDate.label.Text = "Data Prevista Fim";
             endDate.textBox.Text = manutencao.DataPrevistaFim.ToString();
             this.Controls.Add(endDate);
             endDate.Size = new Size(this.Width / 2 - (25 * 2), endDate.Height);
-            endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 2);
+            endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 5);
 
 
 

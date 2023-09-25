@@ -87,11 +87,18 @@ namespace Rent_a_Car.Components.Details
             vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
             vehicleType.Location = new Point(25, 25 + (25 + vehicleType.Height) * 1);
 
+
+            DetailBox matricula = new DetailBox();
+            matricula.label.Text = "Matricula";
+            this.Controls.Add(matricula);
+            matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
+            matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + matricula.Height) * 1);
+
             DetailBox client = new DetailBox();
             client.label.Text = "Cliente";
             this.Controls.Add(client);
             client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
-            client.Location = new Point(this.Width / 2 + 25, 25 + (25 + client.Height) * 1);
+            client.Location = new Point(25, 25 + (25 + client.Height) * 2 );
 
 
 
@@ -107,6 +114,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = car.Marca;
                         vehicleModel.textBox.Text = car.Modelo;
                         vehicleType.textBox.Text = reservado.TipoVeiculo;
+                        matricula.textBox.Text = car.Matricula;
                     }
                 }
             }else if(reservado.TipoVeiculo.ToString() == "Camiao")
@@ -118,6 +126,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = camO.Marca;
                         vehicleModel.textBox.Text = camO.Modelo;
                         vehicleType.textBox.Text = reservado.TipoVeiculo;
+                        matricula.textBox.Text = camO.Matricula;
                     }
                 }
             }
@@ -130,6 +139,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = camA.Marca;
                         vehicleModel.textBox.Text = camA.Modelo;
                         vehicleType.textBox.Text = reservado.TipoVeiculo;
+                        matricula.textBox.Text = camA.Matricula;
                     }
                 }
             }
@@ -142,6 +152,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = mot.Marca;
                         vehicleModel.textBox.Text = mot.Modelo;
                         vehicleType.textBox.Text = reservado.TipoVeiculo;
+                        matricula.textBox.Text = mot.Matricula;
                     }
                 }
             }
