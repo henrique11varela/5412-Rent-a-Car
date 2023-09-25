@@ -18,7 +18,7 @@ namespace Rent_a_Car
         //CONSTANTS
         int form_width = Screen.PrimaryScreen.WorkingArea.Width;
         int form_height = Screen.PrimaryScreen.WorkingArea.Height;
-        const int number_of_views = 4;
+        const int number_of_views = 5;
         public int nav_bar_height = (int)(Screen.PrimaryScreen.WorkingArea.Height * 0.05);
 
         int ActiveView = 0;
@@ -73,6 +73,13 @@ namespace Rent_a_Car
             Panel historyList = CreateViewElement();
             historyList.Controls.Add(new HistoryList());
             Views.Add(historyList);
+
+            //Page 5
+            Button contasListTab = CreateTabElement("Contas List", tabWidth * 4, tabWidth, 4);
+            Tabs.Add(contasListTab);
+            Panel contasList = CreateViewElement();
+            contasList.Controls.Add(new ContasList());
+            Views.Add(contasList);
 
             for (int i = 0; i < number_of_views; i++)
             {

@@ -58,6 +58,9 @@
     <Compile Update="Components\Tables\ClienteTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Views\ContasList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Views\HistoryList.cs">
       <SubType>Component</SubType>
     </Compile>
