@@ -50,7 +50,7 @@ namespace Rent_a_Car.Components.Menus
             //Create carro button
             FlatButton createCarro = new FlatButton();
             createCarro.Text = "Carro";
-            createCarro.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\carro.png");
+            createCarro.Image = Image.FromFile("..\\..\\..\\assets\\icons\\carro.png");
             createCarro.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCarro);
 
@@ -78,7 +78,7 @@ namespace Rent_a_Car.Components.Menus
             //Create mota button
             FlatButton createMota = new FlatButton();
             createMota.Text = "Mota";
-            createMota.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\mota.png");
+            createMota.Image = Image.FromFile("..\\..\\..\\assets\\icons\\mota.png");
             createMota.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createMota);
 
@@ -107,7 +107,7 @@ namespace Rent_a_Car.Components.Menus
             //Create camiao button
             FlatButton createCamiao = new FlatButton();
             createCamiao.Text = "Camião";
-            createCamiao.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\camiao.png");
+            createCamiao.Image = Image.FromFile("..\\..\\..\\assets\\icons\\camiao.png");
             createCamiao.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCamiao);
 
@@ -138,7 +138,7 @@ namespace Rent_a_Car.Components.Menus
             //Create camioneta button
             FlatButton createCamioneta = new FlatButton();
             createCamioneta.Text = "Camioneta";
-            createCamioneta.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\camioneta.png");
+            createCamioneta.Image = Image.FromFile("..\\..\\..\\assets\\icons\\camioneta.png");
             createCamioneta.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCamioneta);
 
@@ -163,7 +163,7 @@ namespace Rent_a_Car.Components.Menus
             //Cancel button
             FlatButton cancel = new FlatButton();
             cancel.Text = "Cancel";
-            cancel.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(cancel);
 
