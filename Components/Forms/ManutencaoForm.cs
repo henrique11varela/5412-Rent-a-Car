@@ -75,7 +75,7 @@ namespace Rent_a_Car.Components.Forms
             this.Controls.Add(textBox);
 
             FlatButton Submit = new FlatButton();
-            Submit.Text = "Submit";
+            Submit.Text = "Submeter";
             this.Controls.Add(Submit);
             Submit.Location = new Point(25, this.Height - Submit.Height - 25);
             Submit.Size = new Size(this.Width / 2 - 2 * 25, Submit.Height);
@@ -90,7 +90,7 @@ namespace Rent_a_Car.Components.Forms
                     }
                 }
                 catch (Exception ex) {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Erro: " + ex.Message);
                     return;
                 }
 
@@ -107,7 +107,7 @@ namespace Rent_a_Car.Components.Forms
             Submit.Click += submitClick;
 
             FlatButton Cancel = new FlatButton();
-            Cancel.Text = "Cancel";
+            Cancel.Text = "Cancelar";
             this.Controls.Add(Cancel);
             Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
             Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
