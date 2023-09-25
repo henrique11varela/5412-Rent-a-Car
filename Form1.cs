@@ -47,35 +47,35 @@ namespace Rent_a_Car
             int tabWidth = (this.ClientSize.Width - nav_bar_height) / number_of_views;
 
             //Page 1
-            Button vehicleListTab = CreateTabElement("Vehicle List", tabWidth * 0, tabWidth, 0);
+            Button vehicleListTab = CreateTabElement("Lista de Veiculos", tabWidth * 0, tabWidth, 0);
             Tabs.Add(vehicleListTab);
             Panel vehicleListView = CreateViewElement();
             vehicleListView.Controls.Add(new VehicleList());
             Views.Add(vehicleListView);
 
             //Page 2
-            Button statesListTab = CreateTabElement("States List", tabWidth * 1, tabWidth, 1);
+            Button statesListTab = CreateTabElement("Lista de Estados", tabWidth * 1, tabWidth, 1);
             Tabs.Add(statesListTab);
             Panel statesList = CreateViewElement();
             statesList.Controls.Add(new StatesList());
             Views.Add(statesList);
 
             //Page 3
-            Button clienteListTab = CreateTabElement("Client List", tabWidth * 2, tabWidth, 2);
+            Button clienteListTab = CreateTabElement("Lista de Clientes", tabWidth * 2, tabWidth, 2);
             Tabs.Add(clienteListTab);
             Panel clienteList = CreateViewElement();
             clienteList.Controls.Add(new ClienteList());
             Views.Add(clienteList);
 
             //Page 4
-            Button historyListTab = CreateTabElement("History List", tabWidth * 3, tabWidth, 3);
+            Button historyListTab = CreateTabElement("Historico", tabWidth * 3, tabWidth, 3);
             Tabs.Add(historyListTab);
             Panel historyList = CreateViewElement();
             historyList.Controls.Add(new HistoryList());
             Views.Add(historyList);
 
             //Page 5
-            Button contasListTab = CreateTabElement("Contas List", tabWidth * 4, tabWidth, 4);
+            Button contasListTab = CreateTabElement("Lista de Contas", tabWidth * 4, tabWidth, 4);
             Tabs.Add(contasListTab);
             Panel contasList = CreateViewElement();
             contasList.Controls.Add(new ContasList());
@@ -122,7 +122,7 @@ namespace Rent_a_Car
             }
             void closeWindow(object sender, EventArgs e)
             {
-                DialogResult dialogResult = MessageBox.Show("Exit the program?", "Exit", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Fechar programa?", "Sair?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     //TODO: CONVERT FROM LIST OF OBJECTS TO LISTS
