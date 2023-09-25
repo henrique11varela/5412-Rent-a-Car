@@ -128,21 +128,12 @@ namespace Rent_a_Car.Components.Details
             //Reservar Button
             FlatButton Reservar = new FlatButton();
             Reservar.Text = "Reservar";
-            Reservar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\reserva.png");
-            Reservar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Reservar);
-
-            //size/location before
-            //Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
-            //Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
-
-            //size/location after
-            Reservar.Location = new Point(this.Width / 2 - this.Width / 4, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
-            Reservar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-            Reservar.BGC = ts.white;
+            Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
+            Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
+            Reservar.BGC = ts.dark;
             Reservar.BGC_HOVER = ts.dark_emphasis;
-            Reservar.ForeColor = ts.dark;
+            Reservar.ForeColor = ts.white;
             void reservarClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Livre")
@@ -160,22 +151,12 @@ namespace Rent_a_Car.Components.Details
             //Alugar Button
             FlatButton Alugar = new FlatButton();
             Alugar.Text = "Alugar";
-            Alugar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\aluguer.png");
-            Alugar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Alugar);
-
-            //size/location before
-            //Alugar.Location = new Point(25, this.Height - Alugar.Height * 2 - 25 * 2);
-            //Alugar.Size = new Size(this.Width / 2 - 2 * 25, Alugar.Height);
-
-            //size/location after
-            Alugar.Location = new Point(this.Width / 2 - this.Width / 4, this.Height / 2 + 25);
-            Alugar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-
-            Alugar.BGC = Color.White;
+            Alugar.Location = new Point(25, this.Height - Alugar.Height * 2 - 25 * 2);
+            Alugar.Size = new Size(this.Width / 2 - 2 * 25, Alugar.Height);
+            Alugar.BGC = ts.dark;
             Alugar.BGC_HOVER = ts.dark_emphasis;
-            Alugar.ForeColor = ts.dark;
+            Alugar.ForeColor = ts.white;
             void alugarClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Livre" && camiao.Status != "Reservado")
@@ -194,21 +175,12 @@ namespace Rent_a_Car.Components.Details
             //Manutencao Button
             FlatButton Manutencao = new FlatButton();
             Manutencao.Text = "Manutencao";
-            Manutencao.Image = Image.FromFile("..\\..\\..\\assets\\icons\\manutencao.png");
-            Manutencao.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Manutencao);
-
-            //size/location before
-            //Manutencao.Location = new Point(this.Width / 2 + 25, this.Height - Manutencao.Height * 2 - 25 * 2);
-            //Manutencao.Size = new Size(this.Width / 2 - 2 * 25, Manutencao.Height);
-
-            //size/location after
-            Manutencao.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-            Manutencao.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + 25);
-            
-            Manutencao.BGC = ts.white;
+            Manutencao.Location = new Point(this.Width / 2 + 25, this.Height - Manutencao.Height * 2 - 25 * 2);
+            Manutencao.Size = new Size(this.Width / 2 - 2 * 25, Manutencao.Height);
+            Manutencao.BGC = ts.dark;
             Manutencao.BGC_HOVER = ts.dark_emphasis;
-            Manutencao.ForeColor = ts.dark;
+            Manutencao.ForeColor = ts.white;
             void manutencaoClick(object sender, EventArgs e)
             {
                 if (camiao.Status != "Livre")
@@ -227,22 +199,12 @@ namespace Rent_a_Car.Components.Details
             //Cancel Button
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
-            Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
-            Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
-
-            //size/location before
-            //Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
-            //Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
-
-            //size/location after
-            Cancel.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
-            Cancel.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-            
-            Cancel.BGC = ts.white;
+            Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
+            Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
+            Cancel.BGC = ts.dark;
             Cancel.BGC_HOVER = ts.dark_emphasis;
-            Cancel.ForeColor = ts.dark;
+            Cancel.ForeColor = ts.white;
             void cancelClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;
