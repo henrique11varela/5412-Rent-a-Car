@@ -46,10 +46,10 @@ namespace Rent_a_Car.Components.Tables
 
             //Edit button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col++].HeaderText = "Edit";
+            this.Columns[col++].HeaderText = "Editar";
             //Delete button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col].HeaderText = "Delete";
+            this.Columns[col].HeaderText = "Apagar";
 
 
             int colCount = this.Columns.Count;
@@ -121,7 +121,7 @@ namespace Rent_a_Car.Components.Tables
             }
             else if (e.ColumnIndex == this.ColumnCount - 1)
             {
-                DialogResult dialogResult = MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Tem a certeza que deseja eliminar este cliente?", "Confirmacao", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                 {
                     return;
@@ -153,7 +153,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Nome, convertedItem.Contacto, "Edit", "Delete");
+                this.Rows.Add(convertedItem.Id, convertedItem.Nome, convertedItem.Contacto, "Editar", "Apagar");
             }
         }
     }

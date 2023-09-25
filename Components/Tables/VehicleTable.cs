@@ -43,25 +43,23 @@ namespace Rent_a_Car.Components.Tables
             this.Columns[col++].Name = "Id";
             this.Columns[col++].Name = "Marca";
             this.Columns[col++].Name = "Modelo";
-            //this.Columns[col++].Name = "Cor";
-            //this.Columns[col++].Name = "Q Rodas";
             this.Columns[col++].Name = "Matricula";
             this.Columns[col++].Name = "Ano";
-            this.Columns[col++].Name = "Status";
-            this.Columns[col++].Name = "FreeExpect";
-            this.Columns[col++].Name = "ValorDia";
-            this.Columns[col++].Name = "Type";
+            this.Columns[col++].Name = "Estado";
+            this.Columns[col++].Name = "Data Prevista";
+            this.Columns[col++].Name = "Valor Dia";
+            this.Columns[col++].Name = "Tipo";
             this.Columns[col++].Name = "Total";
 
             //Details button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col++].HeaderText = "Details";
+            this.Columns[col++].HeaderText = "Detalhes";
             //Edit button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col++].HeaderText = "Edit";
+            this.Columns[col++].HeaderText = "Editar";
             //Delete button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col].HeaderText = "Delete";
+            this.Columns[col].HeaderText = "Apagar";
 
 
             int colCount = this.Columns.Count;
@@ -117,14 +115,14 @@ namespace Rent_a_Car.Components.Tables
         {
             foreach (DataGridViewRow dgvRow in this.Rows)
             {
-                if (dgvRow.Cells[5].Value.ToString() == "Free")
+                if (dgvRow.Cells[5].Value.ToString() == "Livre")
                 {
                     dgvRow.Cells[5].Style.BackColor = ts.success_emphasis;
                 }else if(dgvRow.Cells[5].Value.ToString() == "Reservado")
                 {
                     dgvRow.Cells[5].Style.BackColor = ts.danger_emphasis;
                 }
-                else if(dgvRow.Cells[5].Value.ToString() == "Manutenção")
+                else if(dgvRow.Cells[5].Value.ToString() == "Manutencao")
                 {
                     dgvRow.Cells[5].Style.BackColor = ts.brown_emphasis;
                 }
@@ -233,7 +231,7 @@ namespace Rent_a_Car.Components.Tables
             }
             else if (e.ColumnIndex == this.ColumnCount - 1)
             {
-                DialogResult dialogResult = MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Tem a certeza que pretende eliminar este veiculo?", "Confirmacao", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                 {
                     return;
@@ -310,7 +308,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia + "€", convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1) + "€", "Details", "Edit", "Delete"); 
+                this.Rows.Add(convertedItem.Id, convertedItem.Marca, convertedItem.Modelo, convertedItem.Matricula, convertedItem.Ano, convertedItem.Status, convertedItem.FreeExpect.Date.ToShortDateString(), convertedItem.ValorDia + "€", convertedItem.GetType().Name, convertedItem.ValorDia * (days + 1) + "€", "Detalhes", "Editar", "Apagar"); 
             }
             statusColor();
         }

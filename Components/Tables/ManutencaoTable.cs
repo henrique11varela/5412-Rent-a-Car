@@ -45,11 +45,11 @@ namespace Rent_a_Car.Components.Tables
             this.Columns[col++].Name = "Tipo Carro";
             this.Columns[col++].Name = "Data Inicio";
             this.Columns[col++].Name = "Data Prevista Fim";
-            this.Columns[col++].Name = "problema";
+            this.Columns[col++].Name = "Problema";
 
             //Details button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col].HeaderText = "Details";
+            this.Columns[col].HeaderText = "Detalhes";
             this.Columns[0].Visible = false;
 
             int colCount = this.Columns.Count;
@@ -151,7 +151,7 @@ namespace Rent_a_Car.Components.Tables
                         break;
                     }
                 }
-                this.Rows.Add(convertedItem.IdVeiculo, matricula, convertedItem.TipoVeiculo, convertedItem.DataInicio.Date.ToShortDateString(), convertedItem.DataPrevistaFim.Date.ToShortDateString(), convertedItem.Problema, "Details");
+                this.Rows.Add(convertedItem.IdVeiculo, matricula, convertedItem.TipoVeiculo, convertedItem.DataInicio.Date.ToShortDateString(), convertedItem.DataPrevistaFim.Date.ToShortDateString(), convertedItem.Problema, "Detalhes");
             }
         }
     }

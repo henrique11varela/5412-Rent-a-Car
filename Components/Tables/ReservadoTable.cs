@@ -48,7 +48,7 @@ namespace Rent_a_Car.Components.Tables
 
             //Details button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col++].HeaderText = "Details";
+            this.Columns[col++].HeaderText = "Detalhes";
 
             this.Columns[0].Visible = false;
 
@@ -160,7 +160,7 @@ namespace Rent_a_Car.Components.Tables
                         break;
                     }
                 }
-                this.Rows.Add(convertedItem.IdVeiculo, matricula, convertedItem.TipoVeiculo, nome, "Details");
+                this.Rows.Add(convertedItem.IdVeiculo, matricula, convertedItem.TipoVeiculo, nome, "Detalhes");
             }
         }
     }

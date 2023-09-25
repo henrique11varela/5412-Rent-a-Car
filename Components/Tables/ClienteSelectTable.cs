@@ -47,7 +47,7 @@ namespace Rent_a_Car.Components.Tables
 
             //Select button column
             this.Columns.Add(new DataGridViewButtonColumn());
-            this.Columns[col].HeaderText = "Select";
+            this.Columns[col].HeaderText = "Selecionar";
 
 
             int colCount = this.Columns.Count;
@@ -201,38 +201,38 @@ namespace Rent_a_Car.Components.Tables
                 {
                     if (clickedVehicleType == "Carro")
                     {
-                        dialogResult = MessageBox.Show($"Reservar o carro {clickedCarro.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Reservar o carro {clickedCarro.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                     else if (clickedVehicleType == "Mota")
                     {
-                        dialogResult = MessageBox.Show($"Reservar a mota {clickedMota.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Reservar a mota {clickedMota.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                     else if (clickedVehicleType == "Camiao")
                     {
-                        dialogResult = MessageBox.Show($"Reservar o camiao {clickedCamiao.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Reservar o camiao {clickedCamiao.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                     else if (clickedVehicleType == "Camioneta")
                     {
-                        dialogResult = MessageBox.Show($"Reservar a camioneta {clickedCamioneta.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Reservar a camioneta {clickedCamioneta.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                 }
                 else
                 {
                     if (clickedVehicleType == "Carro")
                     {
-                        dialogResult = MessageBox.Show($"Alugar o carro {clickedCarro.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Alugar o carro {clickedCarro.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                     else if (clickedVehicleType == "Mota")
                     {
-                        dialogResult = MessageBox.Show($"Alugar a mota {clickedMota.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Alugar a mota {clickedMota.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                     else if (clickedVehicleType == "Camiao")
                     {
-                        dialogResult = MessageBox.Show($"Alugar o camiao {clickedCamiao.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Alugar o camiao {clickedCamiao.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                     else if (clickedVehicleType == "Camioneta")
                     {
-                        dialogResult = MessageBox.Show($"Alugar a camioneta {clickedCamioneta.Matricula} para o cliente {clickedCliente.Nome}?", "Exit", MessageBoxButtons.YesNo);
+                        dialogResult = MessageBox.Show($"Alugar a camioneta {clickedCamioneta.Matricula} para o cliente {clickedCliente.Nome}?", "Confirmacao", MessageBoxButtons.YesNo);
                     }
                 }
 
@@ -295,7 +295,7 @@ namespace Rent_a_Car.Components.Tables
             for (int i = 0; i < length; i++)
             {
                 var convertedItem = Emp.ConvertObj(list[i]);
-                this.Rows.Add(convertedItem.Id, convertedItem.Nome, convertedItem.Contacto, "Select");
+                this.Rows.Add(convertedItem.Id, convertedItem.Nome, convertedItem.Contacto, "Selecionar");
             }
         }
     }
