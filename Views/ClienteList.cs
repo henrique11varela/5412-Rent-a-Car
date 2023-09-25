@@ -47,7 +47,7 @@ namespace Rent_a_Car.Views
             #endregion
 
             Label pageTitle = new Label();
-            pageTitle.Text = "Client List";
+            pageTitle.Text = "Lista de Clientes";
             pageTitle.TextAlign = ContentAlignment.TopCenter;
             pageTitle.Font = ts.largeFont;
             pageTitle.Size = new Size(TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width, pageTitle.Font.Height);

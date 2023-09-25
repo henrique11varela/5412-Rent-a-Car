@@ -54,7 +54,7 @@ namespace Rent_a_Car.Views
             #endregion
 
             Label pageTitle = new Label();
-            pageTitle.Text = "Contas List";
+            pageTitle.Text = "Lista de Contas";
             pageTitle.TextAlign = ContentAlignment.TopCenter;
             pageTitle.Font = ts.largeFont;
             pageTitle.Size = new Size(TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width, pageTitle.Font.Height);
@@ -103,7 +103,7 @@ namespace Rent_a_Car.Views
 
             //Quantidade de alugueres atuais
             DetailBox qAlugueres = new DetailBox();
-            qAlugueres.label.Text = "Quantidade de Alugueres ativos:";
+            qAlugueres.label.Text = "Quantidade de Alugueres Ativos:";
             qAlugueres.textBox.Text = $"{Emp.AlugadoList.Count}";
             qAlugueres.Size = new Size(qAlugueres.Width * 3, qAlugueres.Height);
             this.Controls.Add(qAlugueres);
@@ -119,7 +119,7 @@ namespace Rent_a_Car.Views
 
             //Quantidade de manutençoes atuais
             DetailBox qManutencao = new DetailBox();
-            qManutencao.label.Text = "Quantidade de Manutencoes ativas:";
+            qManutencao.label.Text = "Quantidade de Manutencoes Ativas:";
             qManutencao.textBox.Text = $"{Emp.ManutencaoList.Count}";
             qManutencao.Size = new Size(qManutencao.Width * 3, qManutencao.Height);
             this.Controls.Add(qManutencao);
@@ -127,7 +127,7 @@ namespace Rent_a_Car.Views
 
             //Quantidade de manutençoes terminados
             DetailBox qManutencaoHist = new DetailBox();
-            qManutencaoHist.label.Text = "Quantidade de Manutencoes terminadas:";
+            qManutencaoHist.label.Text = "Quantidade de Manutencoes Terminadas:";
             qManutencaoHist.textBox.Text = $"{Emp.ManutencaoHistList.Count}";
             qManutencaoHist.Size = new Size(qManutencaoHist.Width * 3, qManutencaoHist.Height);
             this.Controls.Add(qManutencaoHist);

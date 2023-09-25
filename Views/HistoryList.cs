@@ -47,7 +47,7 @@ namespace Rent_a_Car.Views
             #endregion
 
             Label pageTitle = new Label();
-            pageTitle.Text = "History List";
+            pageTitle.Text = "Historico";
             pageTitle.TextAlign = ContentAlignment.TopCenter;
             pageTitle.Font = ts.largeFont;
             pageTitle.Size = new Size(TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width, pageTitle.Font.Height);
@@ -68,7 +68,7 @@ namespace Rent_a_Car.Views
             this.Controls.Add(alugadoHistTable);
 
             Label alugadoTitle = new Label();
-            alugadoTitle.Text = "Manutenção";
+            alugadoTitle.Text = "Manutencao";
             alugadoTitle.TextAlign = ContentAlignment.TopCenter;
             alugadoTitle.Font = ts.largeFont;
             alugadoTitle.Size = new Size(TextRenderer.MeasureText(alugadoTitle.Text, alugadoTitle.Font).Width, alugadoTitle.Font.Height);
