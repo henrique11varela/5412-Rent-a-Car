@@ -139,7 +139,7 @@ namespace Rent_a_Car.Components.Forms
             }
 
             FlatButton Submit = new FlatButton();
-            Submit.Text = "Submit";
+            Submit.Text = "Submeter";
             Submit.Image = Image.FromFile("..\\..\\..\\assets\\icons\\submit.png");
             Submit.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Submit);
@@ -173,28 +173,28 @@ namespace Rent_a_Car.Components.Forms
                     tempMarca = marca.textBox.Text;
                     if(tempMarca.Length < 1)
                     {
-                        throw new Exception("Campo Marca não pode estar vazio!");
+                        throw new Exception("Campo Marca nao pode estar vazio!");
                     }
 
                     //validar se modelo não é string vazia
                     tempModelo = modelo.textBox.Text;
                     if (tempModelo.Length < 1)
                     {
-                        throw new Exception("Campo Modelo não pode estar vazio!");
+                        throw new Exception("Campo Modelo nao pode estar vazio!");
                     }
 
                     //validar se cor não é string vazia
                     tempCor = cor.textBox.Text;
                     if (tempCor.Length < 1)
                     {
-                        throw new Exception("Campo Cor não pode estar vazio!");
+                        throw new Exception("Campo Cor nao pode estar vazio!");
                     }
 
                     //validar se matricula não é string vazia
                     tempMatricula = matricula.textBox.Text;
                     if (tempMatricula.Length < 1)
                     {
-                        throw new Exception("Campo Matricula não pode estar vazio!");
+                        throw new Exception("Campo Matricula nao pode estar vazio!");
                     }
                     Regex reg = new Regex("(^\\d{2}-[A-Za-z]{2}-\\d{2}$)|(^[A-Za-z]{2}-\\d{2}-\\d{2}$)|(^\\d{2}-\\d{2}-[A-Za-z]{2}$)|(^\\d{2}-[A-Za-z]{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-\\d{2}-[A-Za-z]{2}$)|(^[A-Za-z]{2}-[A-Za-z]{2}-\\d{2}$)");
                     tempMatricula = reg.Match(tempMatricula).ToString();
