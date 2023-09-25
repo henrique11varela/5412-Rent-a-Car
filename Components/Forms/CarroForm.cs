@@ -140,7 +140,7 @@ namespace Rent_a_Car.Components.Forms
 
             FlatButton Submit = new FlatButton();
             Submit.Text = "Submit";
-            Submit.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\submit.png");
+            Submit.Image = Image.FromFile("..\\..\\..\\assets\\icons\\submit.png");
             Submit.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Submit);
 
@@ -354,7 +354,7 @@ namespace Rent_a_Car.Components.Forms
 
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
-            Cancel.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
 
