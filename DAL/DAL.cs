@@ -56,7 +56,7 @@ namespace Rent_a_Car.DAL
             foreach (var item in csvCarro.Carro)
             {
                 //status, freeExpect
-                string status = "Free";
+                string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
                 list.Add(new Carro(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Boolean.Parse(item[9])));
@@ -75,7 +75,7 @@ namespace Rent_a_Car.DAL
             foreach (var item in csvMota.Mota)
             {
                 //status, freeExpect
-                string status = "Free";
+                string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
                 list.Add(new Mota(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5], Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8])));
@@ -94,7 +94,7 @@ namespace Rent_a_Car.DAL
             foreach (var item in csvCamiao.Camiao)
             {
                 //status, freeExpect
-                string status = "Free";
+                string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
                 list.Add(new Camiao(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), float.Parse(item[8])));
@@ -113,7 +113,7 @@ namespace Rent_a_Car.DAL
             foreach (var item in csvCamioneta.Camioneta)
             {
                 //status, freeExpect
-                string status = "Free";
+                string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
                 list.Add(new Camioneta(Int32.Parse(item[0]), item[1].Replace(" || ", "\n"), item[2].Replace(" || ", "\n"), item[3].Replace(" || ", "\n"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Int32.Parse(item[9])));
@@ -203,7 +203,7 @@ namespace Rent_a_Car.DAL
                     {
                         if (carro.Id == Int32.Parse(item[0]))
                         {
-                            carro.Status = "Manutenção";
+                            carro.Status = "Manutencao";
                             carro.FreeExpect = freeExpect;
                         }
                     }
@@ -214,7 +214,7 @@ namespace Rent_a_Car.DAL
                     {
                         if (camiao.Id == Int32.Parse(item[0]))
                         {
-                            camiao.Status = "Manutenção";
+                            camiao.Status = "Manutencao";
                             camiao.FreeExpect = freeExpect;
                         }
                     }
@@ -225,7 +225,7 @@ namespace Rent_a_Car.DAL
                     {
                         if (camioneta.Id == Int32.Parse(item[0]))
                         {
-                            camioneta.Status = "Manutenção";
+                            camioneta.Status = "Manutencao";
                             camioneta.FreeExpect = freeExpect;
                         }
                     }
@@ -236,7 +236,7 @@ namespace Rent_a_Car.DAL
                     {
                         if (mota.Id == Int32.Parse(item[0]))
                         {
-                            mota.Status = "Manutenção";
+                            mota.Status = "Manutencao";
                         mota.FreeExpect = freeExpect;
                         }
                     }

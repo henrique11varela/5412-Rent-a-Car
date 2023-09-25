@@ -28,7 +28,7 @@ namespace Rent_a_Car.DAL
         {
             var sw = new StreamWriter(@"Histalugado.csv");
             int listLength = Histalugado.Count;
-            sw.WriteLine("idVeiculo,dataInicio,dataFim,idCliente,valor");
+            sw.WriteLine("idVeiculo,tipoVeiculo,dataInicio,dataFim,idCliente,valor");
             foreach (var item in Histalugado)
             {
                 int itemLength = item.Count;

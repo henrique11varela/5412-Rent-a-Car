@@ -43,7 +43,7 @@ namespace Rent_a_Car.Components.Tables
             int col = 0;
             this.Columns[col++].Name = "IdCarro";
             this.Columns[col++].Name = "Carro";
-            this.Columns[col++].Name = "Tipo Carro";
+            this.Columns[col++].Name = "Tipo Veiculo";
             this.Columns[col++].Name = "Cliente";
 
             //Details button column
