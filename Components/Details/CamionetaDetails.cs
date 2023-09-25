@@ -91,7 +91,7 @@ namespace Rent_a_Car.Components.Details
             cor.Location = new Point(25, 25 + (25 + cor.Height) * 1);
 
             DetailBox matricula = new DetailBox();
-            matricula.label.Text = "Matrícula";
+            matricula.label.Text = "Matricula";
             matricula.textBox.Text = camioneta.Matricula.ToString();
             this.Controls.Add(matricula);
             matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
@@ -119,7 +119,7 @@ namespace Rent_a_Car.Components.Details
             valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
 
             DetailBox maxPassengers = new DetailBox();
-            maxPassengers.label.Text = "Máximo Passageiros";
+            maxPassengers.label.Text = "Maximo Passageiros";
             maxPassengers.textBox.Text = camioneta.MaxPassengers.ToString();
             this.Controls.Add(maxPassengers);
             maxPassengers.Size = new Size(this.Width / 2 - (25 * 2), maxPassengers.Height);
@@ -155,9 +155,9 @@ namespace Rent_a_Car.Components.Details
             Reservar.ForeColor = ts.dark;
             void reservarClick(object sender, EventArgs e)
             {
-                if (camioneta.Status != "Free")
+                if (camioneta.Status != "Livre")
                 {
-                    MessageBox.Show($"Este Camioneta está com o estado {camioneta.Status}");
+                    MessageBox.Show($"Este Camioneta esta com o estado {camioneta.Status}");
                     return;
                 }
                 Reservado reserva = new Reservado(id, "Camioneta", -1);
@@ -186,9 +186,9 @@ namespace Rent_a_Car.Components.Details
             Alugar.ForeColor = ts.dark;
             void alugarClick(object sender, EventArgs e)
             {
-                if (camioneta.Status != "Free" && camioneta.Status != "Reservado")
+                if (camioneta.Status != "Livre" && camioneta.Status != "Reservado")
                 {
-                    MessageBox.Show($"Este Camioneta está com o estado {camioneta.Status}");
+                    MessageBox.Show($"Este Camioneta esta com o estado {camioneta.Status}");
                     return;
                 }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);
@@ -217,9 +217,9 @@ namespace Rent_a_Car.Components.Details
             Manutencao.ForeColor = ts.dark;
             void manutencaoClick(object sender, EventArgs e)
             {
-                if (camioneta.Status != "Free")
+                if (camioneta.Status != "Livre")
                 {
-                    MessageBox.Show($"Este Camioneta está com o estado {camioneta.Status}");
+                    MessageBox.Show($"Este Camioneta esta com o estado {camioneta.Status}");
                     return;
                 }
                 VehicleControls controls = Emp.ConvertObj(this.Parent);
@@ -232,7 +232,7 @@ namespace Rent_a_Car.Components.Details
 
             //Cancel Button
             FlatButton Cancel = new FlatButton();
-            Cancel.Text = "Cancel";
+            Cancel.Text = "Cancelar";
             Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
