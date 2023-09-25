@@ -103,7 +103,7 @@ namespace Rent_a_Car.Components.Details
 
             DetailBox endDate = new DetailBox();
             endDate.label.Text = "Data Fim";
-            endDate.textBox.Text = alugado.DataInicio.ToString();
+            endDate.textBox.Text = alugado.DataPrevistaFim.ToString();
             this.Controls.Add(endDate);
             endDate.Size = new Size(this.Width / 2 - (25 * 2), endDate.Height);
             endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 2);

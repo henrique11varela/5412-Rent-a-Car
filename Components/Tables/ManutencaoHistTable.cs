@@ -125,8 +125,7 @@ namespace Rent_a_Car.Components.Tables
             //Details
             if (e.ColumnIndex == this.ColumnCount - 1)
             {
-                MessageBox.Show("Detalhes");
-                //Emp.stateListControls.Controls.Add(new ManutencaoDetails(clickedManutencao));
+                Emp.histControls.Controls.Add(new ManutencaoHistDetails(clickedManutencao));
             }
 
         }

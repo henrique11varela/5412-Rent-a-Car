@@ -13,27 +13,26 @@ using Rent_a_Car.Components.Tables;
 using Rent_a_Car.Components.Forms;
 using System.Windows.Forms;
 using Rent_a_Car.Components.Menus;
-using System.Threading.Channels;
 
 namespace Rent_a_Car.Components.Details
 {
-    internal class AlugadoHistDetails : Panel
+    internal class ManutencaoHistDetails : Panel
     {
         private int[] _margin = { 0, 0, 0, 0 };
-        private AlugadoHist alugado = new AlugadoHist(-1, "", DateTime.Now, DateTime.Now, -1, -1);
+        private ManutencaoHist manutencao = new ManutencaoHist(-1, "", DateTime.Now, DateTime.Now, "", -1);
 
         #region Child elements
         #endregion
 
         #region Constructors
         //Create contructors
-        public AlugadoHistDetails()
+        public ManutencaoHistDetails()
         {
             this.ParentChanged += Setup;
             this.BackColor = ts.dark_emphasis;
         }
 
-        public AlugadoHistDetails(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
+        public ManutencaoHistDetails(int margin_top, int margin_right, int margin_bottom, int margin_left) : this()
         {
             _margin[0] = margin_top;
             _margin[1] = margin_right;
@@ -42,12 +41,12 @@ namespace Rent_a_Car.Components.Details
         }
 
         //Edit constructors
-        public AlugadoHistDetails(AlugadoHist c) : this()
+        public ManutencaoHistDetails(ManutencaoHist c) : this()
         {
-            alugado = c;
+            manutencao = c;
         }
 
-        public AlugadoHistDetails(int margin_top, int margin_right, int margin_bottom, int margin_left, AlugadoHist c) : this(c)
+        public ManutencaoHistDetails(int margin_top, int margin_right, int margin_bottom, int margin_left, ManutencaoHist c) : this(c)
         {
             _margin[0] = margin_top;
             _margin[1] = margin_right;
@@ -68,8 +67,6 @@ namespace Rent_a_Car.Components.Details
             #endregion
 
 
-
-
             DetailBox vehicleBrand = new DetailBox();
             vehicleBrand.label.Text = "Marca Veiculo";
             this.Controls.Add(vehicleBrand);
@@ -83,116 +80,101 @@ namespace Rent_a_Car.Components.Details
             vehicleModel.Location = new Point(this.Width / 2 + 25, 25);
 
             DetailBox vehicleType = new DetailBox();
-            vehicleType.label.Text = "Tipo Veiculo";
+            vehicleType.label.Text = "Marca Veiculo";
+            vehicleType.textBox.Text = manutencao.TipoVeiculo;
             this.Controls.Add(vehicleType);
             vehicleType.Size = new Size(this.Width / 2 - (25 * 2), vehicleType.Height);
             vehicleType.Location = new Point(25, 25 + (25 + vehicleType.Height) * 1);
 
             DetailBox client = new DetailBox();
-            client.label.Text = "Cliente";
+            client.label.Text = "Descricao Problema";
+            client.textBox.Text = manutencao.Problema;
             this.Controls.Add(client);
             client.Size = new Size(this.Width / 2 - (25 * 2), client.Height);
             client.Location = new Point(this.Width / 2 + 25, 25 + (25 + client.Height) * 1);
 
             DetailBox startDate = new DetailBox();
             startDate.label.Text = "Data Inicio";
-            startDate.textBox.Text = alugado.DataInicio.ToString();
+            startDate.textBox.Text = manutencao.DataInicio.ToString();
             this.Controls.Add(startDate);
             startDate.Size = new Size(this.Width / 2 - (25 * 2), startDate.Height);
             startDate.Location = new Point(25, 25 + (25 + startDate.Height) * 2);
 
             DetailBox endDate = new DetailBox();
-            endDate.label.Text = "Data Fim";
-            endDate.textBox.Text = alugado.DataFim.ToString();
+            endDate.label.Text = "Data Prevista Fim";
+            endDate.textBox.Text = manutencao.DataFim.ToString();
             this.Controls.Add(endDate);
             endDate.Size = new Size(this.Width / 2 - (25 * 2), endDate.Height);
             endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 2);
 
             DetailBox valor = new DetailBox();
             valor.label.Text = "Valor";
-            valor.textBox.Text = alugado.Valor.ToString();
+            valor.textBox.Text = manutencao.Valor.ToString();
             this.Controls.Add(valor);
             valor.Size = new Size(this.Width / 2 - (25 * 2), valor.Height);
             valor.Location = new Point(25, 25 + (25 + valor.Height) * 3);
 
 
 
-            if (alugado.TipoVeiculo.ToString() == "Carro")
+            if (manutencao.TipoVeiculo.ToString() == "Carro")
             {
                 foreach (Carro car in Emp.CarrosList)
                 {
-                    if (alugado.IdVeiculo == car.Id)
+                    if (manutencao.IdVeiculo == car.Id)
                     {
                         vehicleBrand.textBox.Text = car.Marca;
                         vehicleModel.textBox.Text = car.Modelo;
-                        vehicleType.textBox.Text = alugado.TipoVeiculo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
                     }
                 }
             }
-            else if (alugado.TipoVeiculo.ToString() == "Camiao")
+            else if (manutencao.TipoVeiculo.ToString() == "Camiao")
             {
                 foreach (Camiao camO in Emp.CamioesList)
                 {
-                    if (alugado.IdVeiculo == camO.Id)
+                    if (manutencao.IdVeiculo == camO.Id)
                     {
                         vehicleBrand.textBox.Text = camO.Marca;
                         vehicleModel.textBox.Text = camO.Modelo;
-                        vehicleType.textBox.Text = alugado.TipoVeiculo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
                     }
                 }
             }
-            else if (alugado.TipoVeiculo.ToString() == "Camioneta")
+            else if (manutencao.TipoVeiculo.ToString() == "Camioneta")
             {
                 foreach (Camioneta camA in Emp.CamionetasList)
                 {
-                    if (alugado.IdVeiculo == camA.Id)
+                    if (manutencao.IdVeiculo == camA.Id)
                     {
                         vehicleBrand.textBox.Text = camA.Marca;
                         vehicleModel.textBox.Text = camA.Modelo;
-                        vehicleType.textBox.Text = alugado.TipoVeiculo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
                     }
                 }
             }
-            else if (alugado.TipoVeiculo.ToString() == "Mota")
+            else if (manutencao.TipoVeiculo.ToString() == "Mota")
             {
                 foreach (Mota mot in Emp.MotasList)
                 {
-                    if (alugado.IdVeiculo == mot.Id)
+                    if (manutencao.IdVeiculo == mot.Id)
                     {
                         vehicleBrand.textBox.Text = mot.Marca;
                         vehicleModel.textBox.Text = mot.Modelo;
-                        vehicleType.textBox.Text = alugado.TipoVeiculo;
+                        vehicleType.textBox.Text = manutencao.TipoVeiculo;
                     }
                 }
             }
 
-
-            foreach (Cliente cli in Emp.ClienteList)
-            {
-                if (alugado.IdCliente == cli.Id)
-                {
-                    client.textBox.Text = cli.Nome;
-                }
-            }
 
             //Cancel Button
             FlatButton Fechar = new FlatButton();
             Fechar.Text = "Fechar";
-            Fechar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
-            Fechar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Fechar);
-
-            //size/location before
-            //Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
-            //Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
-
-            //size/location after
-            Fechar.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
-            Fechar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-            Fechar.BGC = ts.white;
+            Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
+            Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
+            Fechar.BGC = ts.dark;
             Fechar.BGC_HOVER = ts.dark_emphasis;
-            Fechar.ForeColor = ts.dark;
+            Fechar.ForeColor = ts.white;
             void fecharClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;

@@ -16,6 +16,9 @@
     <Compile Update="Components\Details\AlugadoDetails.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Details\ManutencaoHistDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\Details\ManutencaoDetails.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Menus\ClienteControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Components\Menus\HistControls.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Components\Menus\StateListControls.cs">

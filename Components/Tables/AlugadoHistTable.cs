@@ -126,7 +126,7 @@ namespace Rent_a_Car.Components.Tables
             if (e.ColumnIndex == this.ColumnCount - 1)
             {
                 MessageBox.Show("details alugado hist");
-                //Emp.stateListControls.Controls.Add(new AlugadoDetails(clickedAlugado));
+                Emp.histControls.Controls.Add(new AlugadoHistDetails(clickedAlugado));
             }
 
         }

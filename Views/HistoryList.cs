@@ -22,6 +22,7 @@ namespace Rent_a_Car.Views
         #region Child elements
         public AlugadoHistTable alugadoHistTable;
         public ManutencaoHistTable manutencaoHistTable;
+        public HistControls histControls;
         #endregion
 
         public HistoryList()
@@ -78,6 +79,10 @@ namespace Rent_a_Car.Views
             manutencaoHistTable = new ManutencaoHistTable(this.Height / 2 + alugadoTitle.Font.Height * 3, this.Width / 2 + 25, 25, 25);
             manutencaoHistTable.FillData(Emp.ManutencaoHistList);
             this.Controls.Add(manutencaoHistTable);
+
+            histControls = new HistControls(reservadoTitle.Font.Height * 3, 25, 25, this.Width / 2 + 25);
+
+            this.Controls.Add(histControls);
 
 
             #region Preset setup

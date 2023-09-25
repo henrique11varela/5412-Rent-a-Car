@@ -24,6 +24,7 @@ namespace Rent_a_Car.Classes
         public static AlugadoHistTable alugadoHistTable;
         public static ClienteTable clienteTable;
         public static StateListControls stateListControls;
+        public static HistControls histControls;
 
         #region attributes
         private static int[] ids = new int[5];
