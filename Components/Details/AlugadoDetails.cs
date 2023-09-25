@@ -176,7 +176,7 @@ namespace Rent_a_Car.Components.Details
             //Terminar Button
             FlatButton Terminar = new FlatButton();
             Terminar.Text = "Terminar Aluguer";
-            Terminar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\terminar.png");
+            Terminar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\terminar.png");
             Terminar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Terminar);
 
@@ -202,7 +202,7 @@ namespace Rent_a_Car.Components.Details
             //Cancel Button
             FlatButton Fechar = new FlatButton();
             Fechar.Text = "Fechar";
-            Fechar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            Fechar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             Fechar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Fechar);
 
