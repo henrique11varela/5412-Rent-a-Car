@@ -93,7 +93,7 @@ namespace Rent_a_Car.Components.Forms
             this.Controls.Add(textBox);
 
             FlatButton Submit = new FlatButton();
-            Submit.Text = "Submit";
+            Submit.Text = "Submeter";
             this.Controls.Add(Submit);
             Submit.Location = new Point(25, this.Height - Submit.Height - 25);
             Submit.Size = new Size(this.Width / 2 - 2 * 25, Submit.Height);
@@ -112,15 +112,15 @@ namespace Rent_a_Car.Components.Forms
                     }
                     if (float.Parse(textBox.Text) < valor)
                     {
-                        throw new Exception("O valor inserido não é suficiente.");
+                        throw new Exception("O valor inserido nao e suficiente.");
                     }
                 }
                 catch (Exception ex) {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Erro: " + ex.Message);
                     return;
                 }
 
-                DialogResult dialogResult = MessageBox.Show($"Terminar aluguer?\nO troco é {float.Parse(textBox.Text) - valor}€", "Terminar aluguer?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Terminar aluguer?\nO troco é {float.Parse(textBox.Text) - valor}€", "Confirmacao", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                 {
                     return;
@@ -139,7 +139,7 @@ namespace Rent_a_Car.Components.Forms
                     var veiculoTemp = Emp.ConvertObj(veiculo);
                     if (veiculoTemp.Id == alugado.IdVeiculo && veiculoTemp.GetType().Name == alugado.TipoVeiculo)
                     {
-                        veiculoTemp.Status = "Free";
+                        veiculoTemp.Status = "Livre";
                         break;
                     }
                 }
@@ -150,7 +150,7 @@ namespace Rent_a_Car.Components.Forms
             Submit.Click += submitClick;
 
             FlatButton Cancel = new FlatButton();
-            Cancel.Text = "Cancel";
+            Cancel.Text = "Cancelar";
             this.Controls.Add(Cancel);
             Cancel.Location = new Point(this.Width / 2 + 25, this.Height - Cancel.Height - 25);
             Cancel.Size = new Size(this.Width / 2 - 2 * 25, Cancel.Height);
