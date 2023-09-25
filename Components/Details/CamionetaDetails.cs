@@ -138,7 +138,7 @@ namespace Rent_a_Car.Components.Details
             //Reservar Button
             FlatButton Reservar = new FlatButton();
             Reservar.Text = "Reservar";
-            Reservar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\reserva.png");
+            Reservar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\reserva.png");
             Reservar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Reservar);
 
@@ -170,7 +170,7 @@ namespace Rent_a_Car.Components.Details
             //Alugar Button
             FlatButton Alugar = new FlatButton();
             Alugar.Text = "Alugar";
-            Alugar.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\aluguer.png");
+            Alugar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\aluguer.png");
             Alugar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Alugar);
             //size/location before
@@ -202,7 +202,7 @@ namespace Rent_a_Car.Components.Details
             //Manutencao Button
             FlatButton Manutencao = new FlatButton();
             Manutencao.Text = "Manutencao";
-            Manutencao.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\manutencao.png");
+            Manutencao.Image = Image.FromFile("..\\..\\..\\assets\\icons\\manutencao.png");
             Manutencao.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Manutencao);
             //size/location before
@@ -233,7 +233,7 @@ namespace Rent_a_Car.Components.Details
             //Cancel Button
             FlatButton Cancel = new FlatButton();
             Cancel.Text = "Cancel";
-            Cancel.Image = Image.FromFile("C:\\Users\\berna\\Documents\\ATEC\\Módulos\\Atec-modulos\\C#\\5412_Rent-a-Car\\5412-Rent-a-Car\\assets\\icons\\cancelar.png");
+            Cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
             Cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Cancel);
             //size/location before
