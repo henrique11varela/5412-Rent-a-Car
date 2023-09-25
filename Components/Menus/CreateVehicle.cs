@@ -1,10 +1,14 @@
-﻿using Rent_a_Car.Components.Buttons;
+﻿using Rent_a_Car.Classes;
+using Rent_a_Car.Components.Buttons;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
+using Emp = Rent_a_Car.Classes.Empresa;
 
 namespace Rent_a_Car.Components.Menus
 {
@@ -36,6 +40,8 @@ namespace Rent_a_Car.Components.Menus
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
+
         private void Setup(object sender, EventArgs e)
         {
             #region Preset setup
@@ -50,7 +56,7 @@ namespace Rent_a_Car.Components.Menus
             //Create carro button
             FlatButton createCarro = new FlatButton();
             createCarro.Text = "Carro";
-            createCarro.Image = Image.FromFile("..\\..\\..\\assets\\icons\\carro.png");
+            createCarro.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\icons\\carro.png"), createCarro.Font.Height * 5, createCarro.Font.Height * 5);
             createCarro.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCarro);
 
@@ -65,7 +71,8 @@ namespace Rent_a_Car.Components.Menus
             createCarro.BGC = ts.white;
             createCarro.BGC_HOVER = ts.dark_emphasis;
             createCarro.ForeColor = ts.dark;
-            void openCarroForm(object sender, EventArgs e) { 
+            void openCarroForm(object sender, EventArgs e)
+            {
                 this.Parent.Controls.Add(new Rent_a_Car.Components.Forms.CarroForm());
             }
             createCarro.Click += openCarroForm;
@@ -78,7 +85,7 @@ namespace Rent_a_Car.Components.Menus
             //Create mota button
             FlatButton createMota = new FlatButton();
             createMota.Text = "Mota";
-            createMota.Image = Image.FromFile("..\\..\\..\\assets\\icons\\mota.png");
+            createMota.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\icons\\mota.png"), createMota.Font.Height * 5, createMota.Font.Height * 5);
             createMota.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createMota);
 
@@ -107,7 +114,7 @@ namespace Rent_a_Car.Components.Menus
             //Create camiao button
             FlatButton createCamiao = new FlatButton();
             createCamiao.Text = "Camião";
-            createCamiao.Image = Image.FromFile("..\\..\\..\\assets\\icons\\camiao.png");
+            createCamiao.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\icons\\camiao.png"), createCamiao.Font.Height * 5, createCamiao.Font.Height * 5);
             createCamiao.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCamiao);
 
@@ -129,16 +136,16 @@ namespace Rent_a_Car.Components.Menus
             createCamiao.Click += openCamiaoForm;
             createCamiao.Click += closeThis;
 
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             //Create camioneta button
             FlatButton createCamioneta = new FlatButton();
             createCamioneta.Text = "Camioneta";
-            createCamioneta.Image = Image.FromFile("..\\..\\..\\assets\\icons\\camioneta.png");
+            createCamioneta.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\icons\\Camioneta.png"), createCamioneta.Font.Height * 5, createCamioneta.Font.Height * 5);
             createCamioneta.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createCamioneta);
 
@@ -163,7 +170,7 @@ namespace Rent_a_Car.Components.Menus
             //Cancel button
             FlatButton cancel = new FlatButton();
             cancel.Text = "Cancel";
-            cancel.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
+            cancel.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png"), createCamioneta.Font.Height * 5, createCamioneta.Font.Height * 5);
             cancel.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(cancel);
 
