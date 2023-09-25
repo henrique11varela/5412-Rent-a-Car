@@ -256,14 +256,14 @@ namespace Rent_a_Car.Components.Tables
                     for (int i = 0; i < length; i++)
                     {
                         Reservado reservaTemp = Emp.ConvertObj(Emp.ReservadoList[i]);
-                        if (reservaTemp.IdVeiculo == acontecimento.IdVeiculo && reservaTemp.IdCliente == idClicked)
+                        if (reservaTemp.IdVeiculo == acontecimento.IdVeiculo && reservaTemp.IdCliente == idClicked && reservaTemp.TipoVeiculo == acontecimento.TipoVeiculo)
                         {
                             Emp.RemoveReservado(reservaTemp);
                             Emp.reservadoTable.FillData(Emp.ReservadoList);
                             DAL.DAL.storeReservado();
                             DAL.DAL.convertReservado();
                         }
-                        else if (reservaTemp.IdVeiculo == acontecimento.IdVeiculo && reservaTemp.IdCliente != idClicked)
+                        else if (reservaTemp.IdVeiculo == acontecimento.IdVeiculo && reservaTemp.IdCliente != idClicked && reservaTemp.TipoVeiculo == acontecimento.TipoVeiculo)
                         {
                             MessageBox.Show("Veiculo reservado para outro cliente.");
                             this.Parent.Controls.Remove(this);
