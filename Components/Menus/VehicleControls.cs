@@ -81,9 +81,21 @@ namespace Rent_a_Car.Components.Menus
             //Create vehicle button
             FlatButton createVehicle = new FlatButton();
             createVehicle.Text = "Create Vehicle";
+            createVehicle.Image = Image.FromFile("..\\..\\..\\assets\\icons\\create.png");
+            createVehicle.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(createVehicle);
-            createVehicle.Location = new Point(this.Width / 2 + 25, this.Height - 25 - createVehicle.Height);
-            createVehicle.Size = new Size(this.Width / 2 - 2 * 25, createVehicle.Height);
+
+            //size/location before
+            //createVehicle.Location = new Point(this.Width / 2 + 25, this.Height - 25 - createVehicle.Height);
+            //createVehicle.Size = new Size(this.Width / 2 - 2 * 25, createVehicle.Height);
+
+            //size/location after
+            createVehicle.Location = new Point(this.Width / 2 - (this.Width / 4 - 25) / 2, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
+            createVehicle.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
+
+            createVehicle.BGC = ts.white;
+            createVehicle.BGC_HOVER = ts.dark_emphasis;
+            createVehicle.ForeColor = ts.dark;
             createVehicle.Click += newCarro;
 
             #region Preset setup
