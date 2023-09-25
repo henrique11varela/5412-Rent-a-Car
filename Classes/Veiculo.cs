@@ -157,7 +157,7 @@ namespace Rent_a_Car.Classes
             quantRodas = 0;
             matricula = "";
             ano = 0;
-            status = "Free";
+            status = "Livre";
             freeExpect = DateTime.Now;
             valorDia = 0;
         }
