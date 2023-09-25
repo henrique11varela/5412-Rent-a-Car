@@ -178,21 +178,12 @@ namespace Rent_a_Car.Components.Details
             //Cancel Button
             FlatButton Fechar = new FlatButton();
             Fechar.Text = "Fechar";
-            Fechar.Image = Image.FromFile("..\\..\\..\\assets\\icons\\cancelar.png");
-            Fechar.TextAlign = ContentAlignment.BottomCenter;
             this.Controls.Add(Fechar);
-
-            //size/location before
-            //Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
-            //Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
-
-            //size/location after
-            Fechar.Location = new Point(this.Width - this.Width / 2 + 25, this.Height / 2 + this.Width / 4 - 2 * 25 + 2 * 25);
-            Fechar.Size = new Size(this.Width / 4 - 25, this.Width / 4 - 2 * 25);
-
-            Fechar.BGC = ts.white;
+            Fechar.Location = new Point(this.Width / 2 + 25, this.Height - Fechar.Height - 25);
+            Fechar.Size = new Size(this.Width / 2 - 2 * 25, Fechar.Height);
+            Fechar.BGC = ts.dark;
             Fechar.BGC_HOVER = ts.dark_emphasis;
-            Fechar.ForeColor = ts.dark;
+            Fechar.ForeColor = ts.white;
             void fecharClick(object sender, EventArgs e)
             {
                 var parent = this.Parent;
