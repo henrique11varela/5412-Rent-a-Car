@@ -1,8 +1,7 @@
 id,marca,modelo,cor,quantRodas,matricula,ano,valorDia,quantDoors,isManual
-3,Volkswagen,Polo,Blue,4,67-LF-95,2011,1.5,5,true
-7,Toyota,Yaris,Gray,4,50-01-PN,2005,1.5,5,true
-1,Fiat,Punto,Red,4,LN-49-85,2002,1.5,5,true
-4,Ford,Fiest,Blue,4,54-36-GH,1999,1.5,5,true
-6,Citroen,Saxo,Black,4,21-DF-63,2001,1.5,5,true
-2,Peugeot,206,Light Gray,4,YU-45-29,2003,1.5,5,true
-5,Mazda,MX-5,Gray,4,36-PS-67,2005,1.5,5,true
+1,Renault,Twingo 3D,Azul,4,00-00-OO,2017,35,5,False
+2,Peugeot,108 5P,Castanho,4,11-11-II,2020,40,5,False
+3,Fiat,666,Cinza,4,22-22-ZZ,2019,66,5,True
+4,Opel,Adam,Branco,4,33-33-EE,2022,70,5,False
+5,Volkswagen,Polo,Preto,4,67-LF-95,2011,45,5,True
+6,Ford,Fiesta,Preto,4,88-NJ-52,1999,100,5,True

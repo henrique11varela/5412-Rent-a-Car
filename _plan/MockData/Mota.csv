@@ -1,9 +1,7 @@
 id,marca,modelo,cor,quantRodas,matricula,ano,valorDia,cubicCapacity
-6,Honda,Gold Wing,Pink,2,55-55-SS,2034,1.5,1833
-8,Harley-Davidson,Street Bob,Purple,2,11-II-11,2001,1.5,1868
-7,Honda,CBR1000RR,Gray,2,69-UO-64,2008,1.5,1000
-3,Yamaha,YZF-R6,Green,3,24-36-LM,2003,1.5,599
-1,Suzuki,GSX-R750,Yellow,2,IO-HS-57,2006,1.5,750
-2,Kawasaki,Ninja ZX-10R,Blue,2,KA-28-46,2009,1.5,998
-5,Harley-Davidson,Sportster Iron,Red,2,76-SQ-JW,2004,1.5,883
-4,BMW,S1000RR,White,4,WO-82-46,2012,1.5,999
+1,Honda,CBR600RR,Rosa,2,AB-CD-12,2022,42.5,0
+2,Yamaha,MT-07,Laranja,2,50-01-PN,2005,37.35,0
+3,Kawasaki,Ninja ZX-10R,Verde,2,AH-13-EL,2022,54.8,0
+4,Suzuki,GSX-R750,Violeta,2,FU-88-CK,2007,37.9,0
+5,Ducati,Panigale V4,Indigo,2,HE-NR-17,1997,33.43,0
+6,BMW,S1000RR,Amarelo,2,44-44-AA,2004,48.81,0

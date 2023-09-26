@@ -59,7 +59,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Carro(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Boolean.Parse(item[9])));
+                list.Add(new Carro(Int32.Parse(item[0]), item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Boolean.Parse(item[9])));
             }
             return list;
         }
@@ -78,7 +78,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Mota(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5], Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8])));
+                list.Add(new Mota(Int32.Parse(item[0]), item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5], Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8])));
             }
             return list;
         }
@@ -97,7 +97,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Camiao(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), float.Parse(item[8])));
+                list.Add(new Camiao(Int32.Parse(item[0]), item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), float.Parse(item[8])));
             }
             return list;
         }
@@ -116,7 +116,7 @@ namespace Rent_a_Car.DAL
                 string status = "Livre";
                 DateTime freeExpect = DateTime.Now;
                 //DateTime freeExpect = DateTime.ParseExact(strDate, "O", CultureInfo.InvariantCulture);
-                list.Add(new Camioneta(Int32.Parse(item[0]), item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Int32.Parse(item[9])));
+                list.Add(new Camioneta(Int32.Parse(item[0]), item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[2].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), item[3].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[4]), item[5].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), Int32.Parse(item[6]), status, freeExpect, float.Parse(item[7]), Int32.Parse(item[8]), Int32.Parse(item[9])));
             }
             return list;
         }
@@ -133,7 +133,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvAlugado.Alugado)
             {
-                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
+                string tipo = item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime freeExpect = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
                 list.Add(new Alugado(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), freeExpect, Int32.Parse(item[4])));
                 if (tipo == "Carro")
@@ -194,9 +194,9 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvManutencao.Manutencao)
             {
-                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
+                string tipo = item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime freeExpect = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
-                list.Add(new Manutencao(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), freeExpect, item[4].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";")));
+                list.Add(new Manutencao(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), freeExpect, item[4].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";")));
                 if (tipo == "Carro")
                 {
                     foreach (Carro carro in Empresa.CarrosList)
@@ -255,7 +255,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvReservado.Reservado)
             {
-                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
+                string tipo = item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";");
                 list.Add(new Reservado(Int32.Parse(item[0]), tipo, Int32.Parse(item[2])));
                 if (tipo == "Carro")
                 {
@@ -326,9 +326,9 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvHistmanutencao.Histmanutencao)
             {
-                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
+                string tipo = item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime free = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
-                list.Add(new ManutencaoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, item[4].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";"), float.Parse(item[5])));
+                list.Add(new ManutencaoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, item[4].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";"), float.Parse(item[5])));
             }
             return list;
         }
@@ -343,7 +343,7 @@ namespace Rent_a_Car.DAL
             }
             foreach (var item in csvHistalugado.Histalugado)
             {
-                string tipo = item[1].Replace(" || ", "\n").Replace(" ||| ", ",").Replace(" |||| ", ";");
+                string tipo = item[1].Replace(" || ", "" + System.Environment.NewLine).Replace(" ||| ", ",").Replace(" |||| ", ";");
                 DateTime free = DateTime.ParseExact(item[3], "d", CultureInfo.InvariantCulture);
                 list.Add(new AlugadoHist(Int32.Parse(item[0]), tipo, DateTime.ParseExact(item[2], "d", CultureInfo.InvariantCulture), free, Int32.Parse(item[4]), float.Parse(item[5])));
             }

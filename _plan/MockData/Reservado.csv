@@ -1,5 +1,1 @@
-idVeiculo,tipoVeiculo,contacto
-1,Carro,1
-2,Carro,2
-3,Carro,3
-4,Carro,4
+idVeiculo,tipoVeiculo,idCliente

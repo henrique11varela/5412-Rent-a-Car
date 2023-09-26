@@ -1,5 +1,7 @@
 id,marca,modelo,cor,quantRodas,matricula,ano,valorDia,maxWeight
-1,Fiat,Punto,Red,6,11-DD-22,2000,1.5,3000
-4,Skoda,Fabia,Black,8,14-DA-28,2003,2.5,1000
-3,Lamborghini,Gallardo,Dark Gray,12,17-DB-26,2018,7.5,1250
-2,Honda,Civic,Green,8,45-87-US,2006,4.5,2000
+1,Volvo,FH16,Lilás,6,11-AB-22,2022,70.01,40
+2,Mercedes-Benz,Actros,#53991D,8,33-CD-44,2023,82.2,44
+3,Scania,R730,rgb(29 |||  126 |||  153),6,55-EF-66,2019,75,44
+4,MAN,TGX,CMYK(0% |||  81% |||  48% |||  40%),6,77-GH-88,2000,59,38
+5,Iveco,Stralis,Salmão,8,22-KL-11,2023,45,42
+6,Renault Trucks,T High,Musgo,8,77-TT-77,2007,64,43

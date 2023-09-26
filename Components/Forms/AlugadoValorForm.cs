@@ -66,7 +66,7 @@ namespace Rent_a_Car.Components.Forms
             {
                 if (item.Id == alugado.IdVeiculo && item.GetType().Name == alugado.TipoVeiculo)
                 {
-                    valor = ((alugado.DataInicio - DateTime.Now).Days + 1) * item.ValorDia;
+                    valor = ((DateTime.Now - alugado.DataInicio).Days + 1) * item.ValorDia;
                     break;
                 }
             }
