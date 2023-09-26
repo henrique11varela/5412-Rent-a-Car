@@ -92,27 +92,33 @@ namespace Rent_a_Car.Components.Details
             matricula.Size = new Size(this.Width / 2 - (25 * 2), matricula.Height);
             matricula.Location = new Point(this.Width / 2 + 25, 25 + (25 + vehicleType.Height) * 1);
 
-            DetailBox client = new DetailBox();
-            client.label.Text = "Descricao Problema";
-            client.textBox.Text = manutencao.Problema;
-            client.textBox.Multiline = true;
-            this.Controls.Add(client);
-            client.Size = new Size(this.Width - (25 * 2), client.Height);
-            client.Location = new Point(25, 25 + (25 + client.Height) * 2);
+            Label issueLabel = new Label();
+            issueLabel.Text = "Descricao Problema";
+            this.Controls.Add(issueLabel);
+            issueLabel.Size = new Size(TextRenderer.MeasureText(issueLabel.Text, issueLabel.Font).Width, issueLabel.Font.Height);
+            issueLabel.Location = new Point(25, 25 + (25 + vehicleType.Height) * 3);
+
+            TextBox issueTextbox = new TextBox();
+            issueTextbox.Text = manutencao.Problema;
+            issueTextbox.Multiline = true;
+            issueTextbox.Enabled = false;
+            this.Controls.Add(issueTextbox);
+            issueTextbox.Size = new Size(this.Width - (25 * 2), this.Height - vehicleBrand.Height * 4 - 25 * 7);
+            issueTextbox.Location = new Point(25, 25 + (25 + vehicleType.Height) * 3 + issueLabel.Height + 25);
 
             DetailBox startDate = new DetailBox();
             startDate.label.Text = "Data Inicio";
             startDate.textBox.Text = manutencao.DataInicio.ToString();
             this.Controls.Add(startDate);
             startDate.Size = new Size(this.Width / 2 - (25 * 2), startDate.Height);
-            startDate.Location = new Point(25, 25 + (25 + startDate.Height) * 5);
+            startDate.Location = new Point(25, 25 + (25 + vehicleType.Height) * 2);
 
             DetailBox endDate = new DetailBox();
             endDate.label.Text = "Data Prevista Fim";
             endDate.textBox.Text = manutencao.DataPrevistaFim.ToString();
             this.Controls.Add(endDate);
             endDate.Size = new Size(this.Width / 2 - (25 * 2), endDate.Height);
-            endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + endDate.Height) * 5);
+            endDate.Location = new Point(this.Width / 2 + 25, 25 + (25 + vehicleType.Height) * 2);
 
 
 
@@ -125,6 +131,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = car.Marca;
                         vehicleModel.textBox.Text = car.Modelo;
                         vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                        matricula.textBox.Text = car.Matricula;
                     }
                 }
             }
@@ -137,6 +144,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = camO.Marca;
                         vehicleModel.textBox.Text = camO.Modelo;
                         vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                        matricula.textBox.Text = camO.Matricula;
                     }
                 }
             }
@@ -149,6 +157,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = camA.Marca;
                         vehicleModel.textBox.Text = camA.Modelo;
                         vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                        matricula.textBox.Text = camA.Matricula;
                     }
                 }
             }
@@ -161,6 +170,7 @@ namespace Rent_a_Car.Components.Details
                         vehicleBrand.textBox.Text = mot.Marca;
                         vehicleModel.textBox.Text = mot.Modelo;
                         vehicleType.textBox.Text = manutencao.TipoVeiculo;
+                        matricula.textBox.Text = mot.Matricula;
                     }
                 }
             }
