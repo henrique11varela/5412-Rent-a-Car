@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ts = Rent_a_Car.ThemeScheme;
 using Emp = Rent_a_Car.Classes.Empresa;
+using Rent_a_Car.Components.Tables;
 
 namespace Rent_a_Car.Components.Menus
 {
@@ -62,20 +63,100 @@ namespace Rent_a_Car.Components.Menus
 
             _dateRange = 0;
 
+
+            Label filter = new Label();
+            filter.Text = "Filtrar veiculos";
+            filter.Font = ts.largeFont;
+            filter.Size = new Size(TextRenderer.MeasureText(filter.Text, filter.Font).Width, filter.Font.Height);
+            filter.Location = new Point(this.Width / 2 - (filter.Width / 2), this.Height / 2 - 25 - filter.Height * 5);
+            this.Controls.Add(filter);
+
+            FlatButton Camiao = new FlatButton();
+            Camiao.Text = "Camiao";
+            this.Controls.Add(Camiao);
+            Camiao.Size = new Size(this.Width / 2 - 2 * 25, Camiao.Height);
+            Camiao.Location = new Point(25, this.Height / 2 - Camiao.Height - 25);
+            Camiao.BGC = ts.dark;
+            Camiao.BGC_HOVER = ts.dark_emphasis;
+            Camiao.ForeColor = ts.white;
+            void camiaoFilter(Object sender, EventArgs e)
+            {
+                Emp.vehicleTable.FillData(Emp.CamioesList, DateRange);
+            }
+            Camiao.Click += camiaoFilter;
+
+
             //Logica reserva
             StartCalendar = new MonthCalendar();
             this.Controls.Add(StartCalendar);
             StartCalendar.MaxSelectionCount = 1;
-            StartCalendar.Location = new Point(this.Width / 4 - (StartCalendar.Right - StartCalendar.Left), 25);
+            StartCalendar.Location = new Point(25 + Camiao.Width / 2 - 110, 25);
             StartCalendar.DateSelected += StartClick;
 
             EndCalendar = new MonthCalendar();
             this.Controls.Add(EndCalendar);
             EndCalendar.MaxSelectionCount = 1;
-            EndCalendar.Size = EndCalendar.Size;
-            EndCalendar.Location = new Point(this.Width / 4 * 3 - (EndCalendar.Right - EndCalendar.Left), 25);
+            EndCalendar.Size = StartCalendar.Size;
+            EndCalendar.Location = new Point(this.Width - 25 - Camiao.Width / 2 - 110, 25);
             EndCalendar.DateSelected += EndClick;
             EndCalendar.MinDate = StartCalendar.SelectionStart;
+
+            FlatButton Camioneta = new FlatButton();
+            Camioneta.Text = "Camioneta";
+            this.Controls.Add(Camioneta);
+            Camioneta.Size = new Size(this.Width / 2 - 2 * 25, Camioneta.Height);
+            Camioneta.Location = new Point(this.Width / 2 + 25, this.Height / 2 - Camioneta.Height - 25);
+            Camioneta.BGC = ts.dark;
+            Camioneta.BGC_HOVER = ts.dark_emphasis;
+            Camioneta.ForeColor = ts.white;
+            void camionetaFilter(Object sender, EventArgs e)
+            {
+                Emp.vehicleTable.FillData(Emp.CamionetasList, DateRange);
+            }
+            Camioneta.Click += camionetaFilter;
+
+            FlatButton Carro = new FlatButton();
+            Carro.Text = "Carro";
+            this.Controls.Add(Carro);
+            Carro.Size = new Size(this.Width / 2 - 2 * 25, Carro.Height);
+            Carro.Location = new Point(25, this.Height / 2);
+            Carro.BGC = ts.dark;
+            Carro.BGC_HOVER = ts.dark_emphasis;
+            Carro.ForeColor = ts.white;
+            void carroFilter(Object sender, EventArgs e)
+            {
+                Emp.vehicleTable.FillData(Emp.CarrosList, DateRange);
+            }
+            Carro.Click += carroFilter;
+
+            FlatButton Mota = new FlatButton();
+            Mota.Text = "Mota";
+            this.Controls.Add(Mota);
+            Mota.Size = new Size(this.Width / 2 - 2 * 25, Mota.Height);
+            Mota.Location = new Point(this.Width / 2 + 25, this.Height / 2);
+            Mota.BGC = ts.dark;
+            Mota.BGC_HOVER = ts.dark_emphasis;
+            Mota.ForeColor = ts.white;
+            void motaFilter(Object sender, EventArgs e)
+            {
+                Emp.vehicleTable.FillData(Emp.MotasList, DateRange);
+            }
+            Mota.Click += motaFilter;
+
+            FlatButton Todos = new FlatButton();
+            Todos.Text = "Todos";
+            this.Controls.Add(Todos);
+            Todos.Size = new Size(this.Width / 2 - 2 * 25, Todos.Height);
+            Todos.Location = new Point(this.Width / 2 - Todos.Width / 2, this.Height / 2 + Todos.Height + 25);
+            Todos.BGC = ts.dark;
+            Todos.BGC_HOVER = ts.dark_emphasis;
+            Todos.ForeColor = ts.white;
+            void allFilter(Object sender, EventArgs e)
+            {
+                Emp.vehicleTable.FillData(Emp.VehicleList, DateRange);
+            }
+            Todos.Click += allFilter;
+
 
 
             //Create vehicle button
