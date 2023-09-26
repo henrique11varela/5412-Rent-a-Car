@@ -1,1 +1,6 @@
 idVeiculo,tipoVeiculo,dataInicio,dataPrevistaFim,idCliente
+1,Mota,09/28/2023,10/13/2023,8
+4,Mota,09/25/2023,09/29/2023,7
+5,Camioneta,09/25/2023,09/29/2023,5
+5,Camiao,09/29/2023,10/03/2023,2
+4,Camiao,09/21/2023,09/30/2023,11
