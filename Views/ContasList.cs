@@ -153,7 +153,6 @@ namespace Rent_a_Car.Views
             qClientes.label.Text = "Quantidade de Clientes:";
             qClientes.textBox.Text = $"{Emp.ClienteList.Count}";
             qClientes.textBox.TextAlign = HorizontalAlignment.Center;
-            qClientes.Size = new Size(qClientes.Width * 3, qClientes.Height);
             this.Controls.Add(qClientes);
             qClientes.Size = DBsize;
             qClientes.Location = new Point(2 * this.Width / 3 + 50, content / 5 - qClientes.Height);
@@ -163,7 +162,6 @@ namespace Rent_a_Car.Views
             qCarros.label.Text = "Quantidade de Carros:";
             qCarros.textBox.Text = $"{Emp.CarrosList.Count}";
             qCarros.textBox.TextAlign = HorizontalAlignment.Center;
-            qCarros.Size = new Size(qCarros.Width * 3, qCarros.Height);
             this.Controls.Add(qCarros);
             qCarros.Size = DBsize;
             qCarros.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 4 - qCarros.Height);
@@ -172,7 +170,6 @@ namespace Rent_a_Car.Views
             qMotas.label.Text = "Quantidade de Motas:";
             qMotas.textBox.Text = $"{Emp.MotasList.Count}";
             qMotas.textBox.TextAlign = HorizontalAlignment.Center;
-            qMotas.Size = new Size(qMotas.Width * 3, qMotas.Height);
             this.Controls.Add(qMotas);
             qMotas.Size = DBsize;
             qMotas.Location = new Point(2 * this.Width / 3 + 50, content - qMotas.Height);
@@ -181,7 +178,6 @@ namespace Rent_a_Car.Views
             qCamioes.label.Text = "Quantidade de Camioes:";
             qCamioes.textBox.Text = $"{Emp.CamioesList.Count}";
             qCamioes.textBox.TextAlign = HorizontalAlignment.Center;
-            qCamioes.Size = new Size(qCamioes.Width * 3, qCamioes.Height);
             this.Controls.Add(qCamioes);
             qCamioes.Size = DBsize;
             qCamioes.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 2 - qCamioes.Height);
@@ -190,10 +186,16 @@ namespace Rent_a_Car.Views
             qCamionetas.label.Text = "Quantidade de Camionetas:";
             qCamionetas.textBox.Text = $"{Emp.CamionetasList.Count}";
             qCamionetas.textBox.TextAlign = HorizontalAlignment.Center;
-            qCamionetas.Size = new Size(qCamionetas.Width * 3, qCamionetas.Height);
             this.Controls.Add(qCamionetas);
             qCamionetas.Size = DBsize;
             qCamionetas.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 3 - qCamionetas.Height);
+
+            PictureBox pic = new PictureBox();
+            pic.Location = new Point(this.Width / 3 + 50, content / 5 * 3 + 25);
+            pic.Size = new Size(DBsize.Width, this.Height - (content / 5 * 3 + 25) - (qCamionetas.Height * 2) - 25);
+            pic.Image = Emp.ResizeImage(Image.FromFile("..\\..\\..\\assets\\logo.excalidraw.png"), pic.Width, pic.Height);
+            this.Controls.Add(pic);
+
 
             FlatButton skipDay = new FlatButton();
             skipDay.Text = $"Skip Day: {Emp.runDate.ToShortDateString()}";
