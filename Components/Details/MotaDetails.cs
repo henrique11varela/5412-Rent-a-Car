@@ -130,8 +130,8 @@ namespace Rent_a_Car.Components.Details
             FlatButton Reservar = new FlatButton();
             Reservar.Text = "Reservar";
             this.Controls.Add(Reservar);
-            //Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
-            //Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
+            Reservar.Location = new Point(25, this.Height - Reservar.Height - 25);
+            Reservar.Size = new Size(this.Width / 2 - 2 * 25, Reservar.Height);
             Reservar.BGC = ts.dark;
             Reservar.BGC_HOVER = ts.dark_emphasis;
             Reservar.ForeColor = ts.white;
