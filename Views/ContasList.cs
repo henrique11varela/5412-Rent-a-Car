@@ -30,7 +30,8 @@ namespace Rent_a_Car.Views
             this.ParentChanged += Setup;
             this.BackColor = ts.light;
 
-            void updateView(Object sender, EventArgs e) {
+            void updateView(Object sender, EventArgs e)
+            {
                 this.Controls.Clear();
                 Setup(sender, e);
             }
@@ -194,7 +195,147 @@ namespace Rent_a_Car.Views
             qCamionetas.Size = DBsize;
             qCamionetas.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 3 - qCamionetas.Height);
 
+            FlatButton skipDay = new FlatButton();
+            skipDay.Text = $"Skip Day: {Emp.runDate.ToShortDateString()}";
+            this.Controls.Add(skipDay);
+            skipDay.Size = new Size(DBsize.Width, skipDay.Height);
+            skipDay.Location = new Point(this.Width / 3 + 50, content - skipDay.Height);
+            void skipHandler(Object sender, EventArgs e)
+            {
+                Emp.runDate = Emp.runDate.AddDays(1);
+                skipDay.Text = $"Skip Day: {Emp.runDate.ToShortDateString()}";
+                //check dates
+                bool warn = false;
+                string msg = "";
+                List<Alugado> alugados = new List<Alugado>();
+                foreach (Alugado item in Emp.AlugadoList)
+                {
+                    if (item.DataPrevistaFim.Date == Emp.runDate.Date)
+                    {
+                        alugados.Add(item);
+                    }
+                }
+                if (alugados.Count > 0)
+                {
+                    warn = true;
+                    msg += "Alugueres que terminam hoje:" + System.Environment.NewLine;
+                    foreach (Alugado item in alugados)
+                    {
+                        if (item.TipoVeiculo == "Carro")
+                        {
+                            foreach (Carro c in Emp.CarrosList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (item.TipoVeiculo == "Mota")
+                        {
+                            foreach (Mota c in Emp.MotasList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (item.TipoVeiculo == "Camiao")
+                        {
+                            foreach (Camiao c in Emp.CamioesList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (item.TipoVeiculo == "Camioneta")
+                        {
+                            foreach (Camioneta c in Emp.CamionetasList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    msg += System.Environment.NewLine;
+                }
 
+                List<Manutencao> emManutencao = new List<Manutencao>();
+                foreach (Manutencao item in Emp.ManutencaoList)
+                {
+                    if (item.DataPrevistaFim.Date == Emp.runDate.Date)
+                    {
+                        emManutencao.Add(item);
+                    }
+                }
+                if (emManutencao.Count > 0)
+                {
+                    warn = true;
+                    msg += "Manutencoes que terminam hoje:" + System.Environment.NewLine;
+                    foreach (Manutencao item in emManutencao)
+                    {
+                        if (item.TipoVeiculo == "Carro")
+                        {
+                            foreach (Carro c in Emp.CarrosList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (item.TipoVeiculo == "Mota")
+                        {
+                            foreach (Mota c in Emp.MotasList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (item.TipoVeiculo == "Camiao")
+                        {
+                            foreach (Camiao c in Emp.CamioesList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                        else if (item.TipoVeiculo == "Camioneta")
+                        {
+                            foreach (Camioneta c in Emp.CamionetasList)
+                            {
+                                if (c.Id == item.IdVeiculo)
+                                {
+                                    msg += c.Matricula + System.Environment.NewLine;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (warn)
+                {
+                    MessageBox.Show(msg, "Aviso!");
+                }
+            }
+            skipDay.Click += skipHandler;
             //By nos
 
             #region Preset setup
