@@ -110,7 +110,7 @@ namespace Rent_a_Car.Components.Forms
             //specific inputs
 
             InputBox maxWeight = new InputBox();
-            maxWeight.label.Text = "Peso Maximo";
+            maxWeight.label.Text = "Peso Maximo (kg)";
             this.Controls.Add(maxWeight);
             maxWeight.Size = new Size(this.Width / 2 - (25 * 2), maxWeight.Height);
             maxWeight.Location = new Point(this.Width / 2 + 25, 25 + (25 + maxWeight.Height) * 3);

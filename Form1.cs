@@ -32,6 +32,7 @@ namespace Rent_a_Car
         {
             CSV.readAll(); //Reads CSV files
             Emp.InicialSetup(); //Converts CSV data into the List of objects
+            Emp.runDate = DateTime.Now;
 
             //FORM1 SETUP
             this.Size = new Size(form_width, form_height);

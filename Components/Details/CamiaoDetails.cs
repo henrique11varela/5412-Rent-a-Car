@@ -118,7 +118,7 @@ namespace Rent_a_Car.Components.Details
             valorDia.Location = new Point(25, 25 + (25 + valorDia.Height) * 3);
 
             DetailBox maxWeight = new DetailBox();
-            maxWeight.label.Text = "Peso Maximo";
+            maxWeight.label.Text = "Peso Maximo (kg)";
             maxWeight.textBox.Text = camiao.MaxWeight.ToString();
             this.Controls.Add(maxWeight);
             maxWeight.Size = new Size(this.Width / 2 - (25 * 2), maxWeight.Height);
