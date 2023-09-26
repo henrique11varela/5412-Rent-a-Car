@@ -73,22 +73,32 @@ namespace Rent_a_Car.Components.Forms
 
             Label label = new Label();
             label.Font = ts.largeFont;
-            label.Text = "Valor";
-            label.Size = new Size(TextRenderer.MeasureText(label.Text, label.Font).Width, label.Font.Height) ;
+            label.Text = "Custo de Aluguer";
+            label.Size = new Size(TextRenderer.MeasureText(label.Text, label.Font).Width, label.Font.Height);
             label.Location = new Point((this.Width - label.Width) / 2, label.Font.Height);
             this.Controls.Add(label);
 
+
+            Label payValue = new Label();
+            payValue.Text = "Valor a pagar";
+            payValue.Size = new Size(TextRenderer.MeasureText(payValue.Text, payValue.Font).Width, payValue.Font.Height);
+            payValue.Location = new Point(25, label.Height * 3);
+            this.Controls.Add(payValue);
             TextBox valorPagar = new TextBox();
             valorPagar.Text = valor.ToString() + "€";
             valorPagar.ReadOnly = true;
-            valorPagar.Location = new Point(25, label.Height * 3);
+            valorPagar.Location = new Point(25, label.Height * 3 + payValue.Height);
             valorPagar.Size = new Size(this.Width - 2 * 25, ts.mediumFont.Height);
             this.Controls.Add(valorPagar);
 
 
-
+            Label givenValue = new Label();
+            givenValue.Text = "Valor pago pelo cliente";
+            givenValue.Size = new Size(TextRenderer.MeasureText(givenValue.Text, givenValue.Font).Width, givenValue.Font.Height);
+            givenValue.Location = new Point(25, label.Height * 3 + payValue.Height + valorPagar.Height + 25);
+            this.Controls.Add(givenValue);
             TextBox textBox = new TextBox();
-            textBox.Location = new Point(25, label.Height * 3 + 25 + valorPagar.Height);
+            textBox.Location = new Point(25, label.Height * 3 + payValue.Height + valorPagar.Height + 25 + givenValue.Height);
             textBox.Size = new Size(this.Width - 2 * 25, ts.mediumFont.Height);
             this.Controls.Add(textBox);
 
