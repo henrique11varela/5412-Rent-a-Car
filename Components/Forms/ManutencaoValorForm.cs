@@ -63,13 +63,18 @@ namespace Rent_a_Car.Components.Forms
 
             Label label = new Label();
             label.Font = ts.largeFont;
-            label.Text = "Valor";
+            label.Text = "Custo Manutenção";
             label.Size = new Size(TextRenderer.MeasureText(label.Text, label.Font).Width, label.Font.Height) ;
             label.Location = new Point((this.Width - label.Width) / 2, label.Font.Height);
             this.Controls.Add(label);
 
+            Label custo = new Label();
+            custo.Text = "Valor";
+            this.Controls.Add(custo);
+            custo.Location = new Point(25, label.Height * 3);
+
             TextBox textBox = new TextBox();
-            textBox.Location = new Point(25, label.Height * 3);
+            textBox.Location = new Point(25, label.Height * 3 + custo.Height);
             textBox.Size = new Size(this.Width - 2 * 25, ts.mediumFont.Height);
             this.Controls.Add(textBox);
 
