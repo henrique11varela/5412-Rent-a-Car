@@ -61,6 +61,8 @@ namespace Rent_a_Car.Views
             pageTitle.Location = new Point((this.Width - TextRenderer.MeasureText(pageTitle.Text, pageTitle.Font).Width) / 2, pageTitle.Font.Height);
             this.Controls.Add(pageTitle);
 
+            var content = this.Height - pageTitle.Height * 3;
+
             //Ganhos
             float ganhos = 0;
             foreach (AlugadoHist c in Emp.AlugadoHistList)
@@ -72,9 +74,9 @@ namespace Rent_a_Car.Views
             ganhosBox.textBox.Text = $"{ganhos}€";
             ganhosBox.textBox.TextAlign = HorizontalAlignment.Center;
             this.Controls.Add(ganhosBox);
-            ganhosBox.Location = new Point(this.Width / 3 + 50, 100);
             Size DBsize = new Size(this.Width / 3 - 50 * 2, ganhosBox.Height);
             ganhosBox.Size = DBsize;
+            ganhosBox.Location = new Point(this.Width / 3 + 50, content / 5 - ganhosBox.Height);
 
             //Gastos
             float gastos = 0;
@@ -87,8 +89,8 @@ namespace Rent_a_Car.Views
             gastosBox.textBox.Text = $"{gastos}€";
             gastosBox.textBox.TextAlign = HorizontalAlignment.Center;
             this.Controls.Add(gastosBox);
-            gastosBox.Location = new Point(this.Width / 3 + 50, 200);
             gastosBox.Size = DBsize;
+            gastosBox.Location = new Point(this.Width / 3 + 50, content / 5 * 2 - gastosBox.Height);
 
             //Lucros
             float lucro = ganhos - gastos;
@@ -97,10 +99,8 @@ namespace Rent_a_Car.Views
             lucroBox.textBox.Text = $"{lucro}€";
             lucroBox.textBox.TextAlign = HorizontalAlignment.Center;
             this.Controls.Add(lucroBox);
-            lucroBox.Location = new Point(this.Width / 3 + 50, 300);
             lucroBox.Size = DBsize;
-
-            var content = this.Height - pageTitle.Height * 3;
+            lucroBox.Location = new Point(this.Width / 3 + 50, content / 5 * 3 - lucroBox.Height);
 
             //Quantidade de reservas atuais
             DetailBox qReservas = new DetailBox();
@@ -154,8 +154,8 @@ namespace Rent_a_Car.Views
             qClientes.textBox.TextAlign = HorizontalAlignment.Center;
             qClientes.Size = new Size(qClientes.Width * 3, qClientes.Height);
             this.Controls.Add(qClientes);
-            qClientes.Location = new Point(2 * this.Width / 3 + 50, 100);
             qClientes.Size = DBsize;
+            qClientes.Location = new Point(2 * this.Width / 3 + 50, content / 5 - qClientes.Height);
 
             //quantidade veiculos / por tipo
             DetailBox qCarros = new DetailBox();
@@ -164,8 +164,8 @@ namespace Rent_a_Car.Views
             qCarros.textBox.TextAlign = HorizontalAlignment.Center;
             qCarros.Size = new Size(qCarros.Width * 3, qCarros.Height);
             this.Controls.Add(qCarros);
-            qCarros.Location = new Point(2 * this.Width / 3 + 50, 400);
             qCarros.Size = DBsize;
+            qCarros.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 4 - qCarros.Height);
 
             DetailBox qMotas = new DetailBox();
             qMotas.label.Text = "Quantidade de Motas:";
@@ -173,8 +173,8 @@ namespace Rent_a_Car.Views
             qMotas.textBox.TextAlign = HorizontalAlignment.Center;
             qMotas.Size = new Size(qMotas.Width * 3, qMotas.Height);
             this.Controls.Add(qMotas);
-            qMotas.Location = new Point(2 * this.Width / 3 + 50, 500);
             qMotas.Size = DBsize;
+            qMotas.Location = new Point(2 * this.Width / 3 + 50, content - qMotas.Height);
 
             DetailBox qCamioes = new DetailBox();
             qCamioes.label.Text = "Quantidade de Camioes:";
@@ -182,8 +182,8 @@ namespace Rent_a_Car.Views
             qCamioes.textBox.TextAlign = HorizontalAlignment.Center;
             qCamioes.Size = new Size(qCamioes.Width * 3, qCamioes.Height);
             this.Controls.Add(qCamioes);
-            qCamioes.Location = new Point(2 * this.Width / 3 + 50, 200);
             qCamioes.Size = DBsize;
+            qCamioes.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 2 - qCamioes.Height);
 
             DetailBox qCamionetas = new DetailBox();
             qCamionetas.label.Text = "Quantidade de Camionetas:";
@@ -191,8 +191,8 @@ namespace Rent_a_Car.Views
             qCamionetas.textBox.TextAlign = HorizontalAlignment.Center;
             qCamionetas.Size = new Size(qCamionetas.Width * 3, qCamionetas.Height);
             this.Controls.Add(qCamionetas);
-            qCamionetas.Location = new Point(2 * this.Width / 3 + 50, 300);
             qCamionetas.Size = DBsize;
+            qCamionetas.Location = new Point(2 * this.Width / 3 + 50, content / 5 * 3 - qCamionetas.Height);
 
 
             //By nos
