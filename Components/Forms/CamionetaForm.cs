@@ -206,7 +206,7 @@ namespace Rent_a_Car.Components.Forms
                         throw new Exception("O ano tem de ser um numero inteiro!");
                     }
 
-                    if (tempAno < 1980 || tempAno >= DateTime.Now.Year)
+                    if (tempAno < 1980 || tempAno > DateTime.Now.Year)
                     {
                         throw new Exception("Ano tem de ser um numero entre 1980 e " + DateTime.Now.Year);
                     }
