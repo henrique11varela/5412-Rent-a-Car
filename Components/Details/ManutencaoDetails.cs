@@ -101,7 +101,8 @@ namespace Rent_a_Car.Components.Details
             TextBox issueTextbox = new TextBox();
             issueTextbox.Text = manutencao.Problema;
             issueTextbox.Multiline = true;
-            issueTextbox.Enabled = false;
+            issueTextbox.ReadOnly = true;
+            issueTextbox.ScrollBars = ScrollBars.Vertical;
             this.Controls.Add(issueTextbox);
             issueTextbox.Size = new Size(this.Width - (25 * 2), this.Height - vehicleBrand.Height * 4 - 25 * 7);
             issueTextbox.Location = new Point(25, 25 + (25 + vehicleType.Height) * 3 + issueLabel.Height + 25);
