@@ -100,55 +100,52 @@ namespace Rent_a_Car.Views
             lucroBox.Location = new Point(this.Width / 3 + 50, 300);
             lucroBox.Size = DBsize;
 
+            var content = this.Height - pageTitle.Height * 3;
+
             //Quantidade de reservas atuais
             DetailBox qReservas = new DetailBox();
             qReservas.label.Text = "Quantidade de Reservas:";
             qReservas.textBox.Text = $"{Emp.ReservadoList.Count}";
             qReservas.textBox.TextAlign = HorizontalAlignment.Center;
-            qReservas.Size = new Size(qReservas.Width * 3, qReservas.Height);
             this.Controls.Add(qReservas);
-            qReservas.Location = new Point(50, 100);
             qReservas.Size = DBsize;
+            qReservas.Location = new Point(50, content / 5 - qReservas.Height);
 
             //Quantidade de alugueres atuais
             DetailBox qAlugueres = new DetailBox();
             qAlugueres.label.Text = "Quantidade de Alugueres Ativos:";
             qAlugueres.textBox.Text = $"{Emp.AlugadoList.Count}";
             qAlugueres.textBox.TextAlign = HorizontalAlignment.Center;
-            qAlugueres.Size = new Size(qAlugueres.Width * 3, qAlugueres.Height);
             this.Controls.Add(qAlugueres);
-            qAlugueres.Location = new Point(50, 200);
             qAlugueres.Size = DBsize;
+            qAlugueres.Location = new Point(50, content / 5 * 2 - qAlugueres.Height);
 
             //Quantidade de alugueres terminados
             DetailBox qAlugueresHist = new DetailBox();
             qAlugueresHist.label.Text = "Quantidade de Alugueres terminados:";
             qAlugueresHist.textBox.Text = $"{Emp.AlugadoHistList.Count}";
             qAlugueresHist.textBox.TextAlign = HorizontalAlignment.Center;
-            qAlugueresHist.Size = new Size(qAlugueresHist.Width * 3, qAlugueresHist.Height);
             this.Controls.Add(qAlugueresHist);
-            qAlugueresHist.Location = new Point(50, 300);
             qAlugueresHist.Size = DBsize;
+            qAlugueresHist.Location = new Point(50, content / 5 * 3 - qAlugueresHist.Height);
 
             //Quantidade de manutençoes atuais
             DetailBox qManutencao = new DetailBox();
             qManutencao.label.Text = "Quantidade de Manutencoes Ativas:";
             qManutencao.textBox.Text = $"{Emp.ManutencaoList.Count}";
             qManutencao.textBox.TextAlign = HorizontalAlignment.Center;
-            qManutencao.Size = new Size(qManutencao.Width * 3, qManutencao.Height);
             this.Controls.Add(qManutencao);
-            qManutencao.Location = new Point(50, 400);
             qManutencao.Size = DBsize;
+            qManutencao.Location = new Point(50, content / 5 * 4 - qManutencao.Height);
 
             //Quantidade de manutençoes terminados
             DetailBox qManutencaoHist = new DetailBox();
             qManutencaoHist.label.Text = "Quantidade de Manutencoes Terminadas:";
             qManutencaoHist.textBox.Text = $"{Emp.ManutencaoHistList.Count}";
             qManutencaoHist.textBox.TextAlign = HorizontalAlignment.Center;
-            qManutencaoHist.Size = new Size(qManutencaoHist.Width * 3, qManutencaoHist.Height);
             this.Controls.Add(qManutencaoHist);
-            qManutencaoHist.Location = new Point(50, 500);
             qManutencaoHist.Size = DBsize;
+            qManutencaoHist.Location = new Point(50, content - qManutencaoHist.Height);
 
             //quantidade clientes
             DetailBox qClientes = new DetailBox();
